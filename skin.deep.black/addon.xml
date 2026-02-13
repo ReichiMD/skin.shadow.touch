@@ -8,7 +8,7 @@
     </extension>
     <extension point="xbmc.addon.metadata">
         <summary lang="de">Deep Black Skin für Pixel 7 und Shield</summary>
-        <description lang="de">Ein minimalistischer, tiefschwarzer Skin optimiert für OLED-Displays und Touch-Bedienung.</description>
+        <description lang="de">Ein minimalistischer, tiefschwarzer Skin optimiert für OLED-Displays. (Kodi 21 Omega)</description>
         <platform>all</platform>
         <license>GPL-2.0-only</license>
     </extension>
