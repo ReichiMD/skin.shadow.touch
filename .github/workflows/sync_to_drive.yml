@@ -1,0 +1,22 @@
+name: "Postbote: Sync zu Google Drive"
+
+on:
+  push:
+    branches:
+      - main  # Er schickt es ab, sobald du den Merge auf Main machst
+
+jobs:
+  deploy:
+    runs-with: ubuntu-latest
+    steps:
+      - name: "Code auschecken"
+        uses: actions/checkout@v4
+
+      - name: "Dateien zu Google Drive schieben"
+        uses: adityassubramanian/gdrive-upload-action@master
+        with:
+          credentials: ${{ secrets.GDRIVE_CREDENTIALS }}
+          filename: "skin.deep.black" # Dein Skin-Ordner
+          folderId: ${{ secrets.GDRIVE_FOLDER_ID }}
+          overwrite: true
+          
