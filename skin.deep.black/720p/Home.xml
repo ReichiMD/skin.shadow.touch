@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-    <defaultcontrol always="true">1</defaultcontrol>
+    <defaultcontrol always="true">100</defaultcontrol>
     <controls>
         <control type="image">
             <width>100%</width>
             <height>100%</height>
             <texture colordiffuse="FF000000">common/white.png</texture>
-            <aspectratio>stretch</aspectratio>
+        </control>
+
+        <control type="button" id="100">
+            <left>20</left>
+            <top>20</top>
+            <width>200</width>
+            <height>60</height>
+            <label>RELOAD SKIN</label>
+            <font>font13</font>
+            <textcolor>FFFFFFFF</textcolor>
+            <focusedcolor>FF0088FF</focusedcolor> <onclick>ReloadSkin()</onclick> 
         </control>
 
         <control type="label">
@@ -17,8 +27,7 @@
             <font>font30</font>
             <textcolor>FFFFFFFF</textcolor>
             <align>center</align>
-            <aligny>center</aligny>
-            <label>Deep Black Fabrik: Projekt gestartet!</label>
+            <label>Deep Black Fabrik: Aktiv</label>
         </control>
     </controls>
 </window>
