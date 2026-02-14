@@ -34,6 +34,8 @@
 		<control type="group">
 			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
 			<control type="group" id="2000">
+				<description>DISABLED: Original horizontal widgets (replaced by Vertical Grid)</description>
+				<visible>false</visible>
 				<left>460</left>
 				<animation type="Conditional" condition="Control.IsVisible(20000)" reversible="false">
 					<effect type="slide" end="0,20" time="60" tween="sine" />
@@ -1100,6 +1102,152 @@
 					</include>
 				</control>
 			</control>
+
+			<!-- Shadow Touch: Vertical Poster Grid -->
+			<control type="group" id="6000">
+				<description>Shadow Touch Vertical Grid (Phase 2)</description>
+				<left>30</left>
+				<top>140</top>
+				<width>1860</width>
+				<bottom>140</bottom>
+				<visible>true</visible>
+
+				<!-- Main Poster Grid Panel -->
+				<control type="panel" id="6100">
+					<description>Movie/TV Show Poster Grid (7x2 visible)</description>
+					<left>0</left>
+					<top>0</top>
+					<width>1860</width>
+					<height>800</height>
+					<onup>6100</onup>
+					<ondown>9200</ondown>
+					<onleft>6100</onleft>
+					<onright>6100</onright>
+					<viewtype label="536">panel</viewtype>
+					<pagecontrol>9500</pagecontrol>
+					<scrolltime tween="sine" easing="out">300</scrolltime>
+					<orientation>vertical</orientation>
+					<preloaditems>2</preloaditems>
+
+					<!-- Focused Poster Layout -->
+					<focusedlayout width="270" height="400">
+						<control type="group">
+							<!-- Focus Border & Shadow -->
+							<control type="image">
+								<left>15</left>
+								<top>20</top>
+								<width>240</width>
+								<height>360</height>
+								<texture border="4">colors/white.png</texture>
+								<bordersize>4</bordersize>
+								<colordiffuse>button_focus</colordiffuse>
+								<aspectratio>stretch</aspectratio>
+								<animation effect="fade" start="0" end="100" time="250" tween="elastic" easing="out">Focus</animation>
+							</control>
+
+							<!-- Poster Image -->
+							<control type="image">
+								<left>15</left>
+								<top>20</top>
+								<width>240</width>
+								<height>360</height>
+								<texture>$INFO[ListItem.Art(poster)]</texture>
+								<aspectratio>scale</aspectratio>
+								<bordertexture border="4">colors/black.png</bordertexture>
+								<bordersize>2</bordersize>
+								<animation effect="zoom" start="100" end="105" center="auto" time="250" tween="elastic" easing="out">Focus</animation>
+							</control>
+
+							<!-- Title Label (below poster) -->
+							<control type="label">
+								<left>15</left>
+								<top>390</top>
+								<width>240</width>
+								<height>30</height>
+								<align>center</align>
+								<aligny>top</aligny>
+								<font>font12</font>
+								<textcolor>FFFFFFFF</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+								<scroll>false</scroll>
+								<animation effect="fade" start="80" end="100" time="250">Focus</animation>
+							</control>
+
+							<!-- Shadow Effect (focused) -->
+							<control type="image">
+								<left>7</left>
+								<top>12</top>
+								<width>256</width>
+								<height>376</height>
+								<texture>colors/black.png</texture>
+								<colordiffuse>40000000</colordiffuse>
+								<aspectratio>stretch</aspectratio>
+								<animation effect="fade" start="0" end="100" time="250">Focus</animation>
+							</control>
+						</control>
+					</focusedlayout>
+
+					<!-- Unfocused Poster Layout -->
+					<itemlayout width="270" height="400">
+						<control type="group">
+							<!-- Poster Image -->
+							<control type="image">
+								<left>15</left>
+								<top>20</top>
+								<width>240</width>
+								<height>360</height>
+								<texture>$INFO[ListItem.Art(poster)]</texture>
+								<aspectratio>scale</aspectratio>
+								<bordertexture border="2">colors/black.png</bordertexture>
+								<bordersize>1</bordersize>
+							</control>
+
+							<!-- Title Label (below poster) -->
+							<control type="label">
+								<left>15</left>
+								<top>390</top>
+								<width>240</width>
+								<height>30</height>
+								<align>center</align>
+								<aligny>top</aligny>
+								<font>font12</font>
+								<textcolor>CCCCCCCC</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+								<scroll>false</scroll>
+							</control>
+
+							<!-- Subtle Shadow (unfocused) -->
+							<control type="image">
+								<left>13</left>
+								<top>18</top>
+								<width>244</width>
+								<height>364</height>
+								<texture>colors/black.png</texture>
+								<colordiffuse>20000000</colordiffuse>
+								<aspectratio>stretch</aspectratio>
+							</control>
+						</control>
+					</itemlayout>
+
+					<!-- Content: All Movies from Library -->
+					<content target="videos">library://video/movies/titles/</content>
+				</control>
+
+				<!-- Page Control (optional scrollbar indicator) -->
+				<control type="scrollbar" id="9500">
+					<left>1870</left>
+					<top>0</top>
+					<width>10</width>
+					<height>800</height>
+					<onleft>6100</onleft>
+					<onright>6100</onright>
+					<orientation>vertical</orientation>
+					<visible>true</visible>
+					<animation effect="fade" start="100" end="40" time="300">Unfocus</animation>
+				</control>
+			</control>
+			<!-- End Shadow Touch Vertical Grid -->
+
 			<control type="group">
 				<depth>DepthContentPanel</depth>
 				<include>OpenClose_Left</include>
@@ -1427,7 +1575,7 @@
 					<orientation>horizontal</orientation>
 					<focusposition>0</focusposition>
 					<movement>1</movement>
-					<onup>9000</onup>
+					<onup>6100</onup>
 					<ondown>9200</ondown>
 					<scrolltime tween="sine" easing="out">200</scrolltime>
 
