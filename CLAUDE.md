@@ -28,6 +28,7 @@
 Skin-Deep-Black/
 ├── CLAUDE.md           ← YOU ARE HERE (session context)
 ├── ROADMAP.md          ← Development phases & checkboxes
+├── DESIGN.md           ← VISUAL DESIGN SPEC (exact measurements!)
 ├── skin-structure.md   ← Kodi skin concepts reference
 ├── addon.xml           ← Skin metadata & dependencies
 ├── xml/                ← All UI definitions
@@ -176,9 +177,12 @@ When starting a new session, DO THIS:
 
 1. ✅ Read this file (CLAUDE.md)
 2. ✅ Read ROADMAP.md to see current phase
-3. ✅ Check last commit message for context
-4. ✅ Review skin-structure.md if working with unfamiliar XML
-5. ✅ Ask user for device testing availability before major changes
+3. ✅ **Read DESIGN.md** - EXACT visual specs (measurements, colors, layouts)
+4. ✅ Check last commit message for context
+5. ✅ Review skin-structure.md if working with unfamiliar XML
+6. ✅ Ask user for device testing availability before major changes
+
+**CRITICAL:** DESIGN.md contains EXACT measurements and specs. Do NOT deviate!
 
 ---
 
@@ -186,9 +190,19 @@ When starting a new session, DO THIS:
 
 ### Session 1 (2025-02-14):
 - Cloned EstuaryPVR+ Omega as base
-- Created documentation structure
+- Created documentation structure (CLAUDE.md, ROADMAP.md, skin-structure.md)
 - Chose name: Shadow Touch (`skin.shadow.touch`)
 - Base skin has extensive PVR features already (good!)
+- **Phase 1.1 COMPLETE:** Bottom Navigation Bar implemented
+  - 4 buttons: Home, Live TV, Library, Search
+  - Fixed horizontal bar at bottom (120px height)
+  - Touch-optimized (300×100px buttons)
+  - Old side menu disabled
+- Created DESIGN.md (visual specification document)
+  - Exact measurements for all components
+  - Color palette defined
+  - Future component specs (Grid, Overlay)
+  - Design rules and constraints documented
 
 ### Session N (add date):
 - [Future sessions add notes here]
