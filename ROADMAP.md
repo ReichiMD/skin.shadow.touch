@@ -52,23 +52,25 @@
 
 **Goal:** Replace horizontal widgets with vertical tile grid
 
-### 2.1 Panel Container Setup
-- [ ] Replace default widget containers in Home.xml
-- [ ] Create Panel container (vertical orientation)
-- [ ] Set poster size: 200x300px (with 20% padding = ~240px spacing)
-- [ ] Enable vertical wrap (fill screen top-to-bottom, then right)
+### 2.1 Panel Container Setup ✅
+- [x] Replace default widget containers in Home.xml
+- [x] Create Panel container (vertical orientation)
+- [x] Set poster size: 240x360px (2:3 ratio, exact per DESIGN.md)
+- [x] Enable vertical wrap (7 columns, scrolls vertically)
+- [x] Add focus animations (1.05× zoom, 4px border, shadow)
+- [x] Connect navigation (Grid ↔ Bottom Nav)
 
 ### 2.2 Content Binding
-- [ ] Bind to Movies library (`Container.Content`)
-- [ ] Bind to TV Shows library
-- [ ] Implement "Recently Added" smart playlist
-- [ ] Test scrolling (touch-friendly, no lag)
+- [x] Bind to Movies library (library://video/movies/titles/)
+- [ ] Bind to TV Shows library (future enhancement)
+- [ ] Implement "Recently Added" smart playlist (future enhancement)
+- [ ] Test scrolling (touch-friendly, no lag) - NEEDS USER TESTING
 
-### 2.3 Poster Visuals
-- [ ] Display poster image (`ListItem.Art(poster)`)
-- [ ] Add subtle shadow (ColorDiffuse or overlay texture)
-- [ ] Show minimal metadata (title overlay on focus)
-- [ ] Test with 100+ items for performance
+### 2.3 Poster Visuals ✅
+- [x] Display poster image (`ListItem.Art(poster)`)
+- [x] Add subtle shadow (unfocused: 20%, focused: 40%)
+- [x] Show minimal metadata (title label below poster)
+- [ ] Test with 100+ items for performance - NEEDS USER TESTING
 
 **Deliverable:** Home screen with scrollable poster grid
 
@@ -231,8 +233,8 @@
 
 **To demonstrate core concept, complete:**
 - ✅ Phase 0 (Foundation)
-- Phase 1 (Bottom Nav)
-- Phase 2 (Vertical Grid)
+- ✅ Phase 1 (Bottom Nav)
+- 🟡 Phase 2 (Vertical Grid) - 85% done, needs testing
 - Phase 3 (Long-Press Overlay)
 
 **This proves the touch-first design works!**
@@ -241,13 +243,13 @@
 
 ## 📊 Progress Tracking
 
-**Overall Status:** 12% (Foundation complete, starting Bottom Nav)
+**Overall Status:** 35% (Bottom Nav + Vertical Grid implemented!)
 
 | Phase | Status | Progress |
 |-------|--------|----------|
 | Phase 0 | 🟢 Complete | 100% |
-| Phase 1 | 🟡 In Progress | 0% |
-| Phase 2 | ⚪ Pending | 0% |
+| Phase 1 | 🟢 Complete | 100% |
+| Phase 2 | 🟡 In Progress | 85% |
 | Phase 3 | ⚪ Pending | 0% |
 | Phase 4 | ⚪ Pending | 0% |
 | Phase 5 | ⚪ Pending | 0% |
@@ -270,7 +272,16 @@
 - Defined 8 development phases
 - Identified MVP scope (Phases 0-3)
 - ✅ Phase 0 completed: Foundation established
-- Started Phase 1: Bottom Navigation Bar
+- ✅ Phase 1 completed: Bottom Navigation Bar
+  - 4 buttons (Home, Live TV, Library, Search)
+  - Fixed at bottom, 120px height
+  - Touch-optimized (300×100px buttons)
+- 🟡 Phase 2 started: Vertical Poster Grid
+  - ✅ Phase 2.1 complete: Panel container + layouts
+  - Grid: 7×2 visible posters (240×360px each)
+  - Focus animations (zoom, border, shadow)
+  - Connected to movie library
+  - Navigation integrated with bottom nav
 
 ---
 
