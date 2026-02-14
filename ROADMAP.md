@@ -282,7 +282,19 @@
   - Focus animations (zoom, border, shadow)
   - Connected to movie library
   - Navigation integrated with bottom nav
+- 🔴 **CRITICAL BUGS DISCOVERED (User Testing on Pixel 7):**
+  - ❌ No Settings button → User locked out of Kodi settings
+  - ❌ Grid not showing → Old Estuary widgets still visible
+  - ❌ Side menu disabled → No alternative navigation
+  - See KNOWN_ISSUES.md for full details + solutions
+- 📝 Documentation created:
+  - KNOWN_ISSUES.md: All bugs + solutions documented
+  - DESIGN.md: Complete visual spec
+  - GitHub Actions: Auto-ZIP releases
+- ✅ v0.0.1-alpha released (with known critical issues)
+- 📋 v0.0.2 fixes ready (documented in KNOWN_ISSUES.md)
 
 ---
 
 **Last Updated:** 2025-02-14
+**Status:** v0.0.1-alpha released, critical bugs identified, ready for merge
