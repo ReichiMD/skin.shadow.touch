@@ -1,0 +1,29 @@
+name: Create Kodi Addon ZIP
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Create addon ZIP
+        run: |
+          mkdir -p /tmp/skin-package
+          cp -r . /tmp/skin-package/skin.shadow.touch
+          cd /tmp/skin-package/skin.shadow.touch
+          rm -rf .git .github *.md
+          cd /tmp/skin-package
+          zip -r skin.shadow.touch-${GITHUB_REF#refs/tags/}.zip skin.shadow.touch
+          mv skin.shadow.touch-*.zip $GITHUB_WORKSPACE/
+          
+      - name: Upload Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: skin.shadow.touch-*.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
