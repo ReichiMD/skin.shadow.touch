@@ -1114,6 +1114,8 @@
 					</include>				
 				</control>
 				<control type="fixedlist" id="9000">
+					<description>DISABLED: Original Side Menu (replaced by Bottom Nav)</description>
+					<visible>false</visible>
 					<left>0</left>
 					<top>115</top>
 					<width>515</width>
@@ -1393,8 +1395,148 @@
 				<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
 				<top>10</top>
 				<left>20</left>
-				
+
 			</control>
+
+			<!-- Shadow Touch: Bottom Navigation Bar -->
+			<control type="group" id="9100">
+				<description>Bottom Navigation Bar (Shadow Touch)</description>
+				<bottom>0</bottom>
+				<left>0</left>
+				<width>1920</width>
+				<height>120</height>
+				<visible>true</visible>
+
+				<!-- Background Bar -->
+				<control type="image">
+					<left>0</left>
+					<bottom>0</bottom>
+					<width>1920</width>
+					<height>120</height>
+					<texture colordiffuse="FF000000">colors/white.png</texture>
+					<animation effect="fade" start="0" end="95" time="300">WindowOpen</animation>
+				</control>
+
+				<!-- Navigation Buttons -->
+				<control type="fixedlist" id="9200">
+					<description>Bottom Nav Items</description>
+					<left>360</left>
+					<bottom>10</bottom>
+					<width>1200</width>
+					<height>100</height>
+					<orientation>horizontal</orientation>
+					<focusposition>0</focusposition>
+					<movement>1</movement>
+					<onup>9000</onup>
+					<ondown>9200</ondown>
+					<scrolltime tween="sine" easing="out">200</scrolltime>
+
+					<!-- Focused Button Layout -->
+					<focusedlayout width="300" height="100">
+						<control type="group">
+							<!-- Focus Indicator (Underline) -->
+							<control type="image">
+								<left>50</left>
+								<bottom>0</bottom>
+								<width>200</width>
+								<height>4</height>
+								<texture colordiffuse="button_focus">colors/white.png</texture>
+								<animation effect="fade" start="0" end="100" time="200">Focus</animation>
+							</control>
+
+							<!-- Icon -->
+							<control type="image">
+								<left>110</left>
+								<top>10</top>
+								<width>80</width>
+								<height>60</height>
+								<texture>$INFO[ListItem.Art(thumb)]</texture>
+								<aspectratio>keep</aspectratio>
+							</control>
+
+							<!-- Label -->
+							<control type="label">
+								<left>0</left>
+								<bottom>10</bottom>
+								<width>300</width>
+								<height>30</height>
+								<align>center</align>
+								<aligny>center</aligny>
+								<font>font13</font>
+								<textcolor>button_focus</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+								<animation effect="fade" start="80" end="100" time="200">Focus</animation>
+							</control>
+						</control>
+					</focusedlayout>
+
+					<!-- Unfocused Button Layout -->
+					<itemlayout width="300" height="100">
+						<control type="group">
+							<!-- Icon -->
+							<control type="image">
+								<left>110</left>
+								<top>10</top>
+								<width>80</width>
+								<height>60</height>
+								<texture>$INFO[ListItem.Art(thumb)]</texture>
+								<aspectratio>keep</aspectratio>
+								<colordiffuse>80FFFFFF</colordiffuse>
+							</control>
+
+							<!-- Label -->
+							<control type="label">
+								<left>0</left>
+								<bottom>10</bottom>
+								<width>300</width>
+								<height>30</height>
+								<align>center</align>
+								<aligny>center</aligny>
+								<font>font13</font>
+								<textcolor>80FFFFFF</textcolor>
+								<label>$INFO[ListItem.Label]</label>
+							</control>
+						</control>
+					</itemlayout>
+
+					<!-- Nav Items -->
+					<content>
+						<!-- Home -->
+						<item>
+							<label>Home</label>
+							<onclick>ActivateWindow(Home)</onclick>
+							<thumb>icons/sidemenu/home.png</thumb>
+							<visible>true</visible>
+						</item>
+
+						<!-- Live TV -->
+						<item>
+							<label>Live TV</label>
+							<onclick>ActivateWindow(TVGuide)</onclick>
+							<thumb>icons/sidemenu/livetv.png</thumb>
+							<visible>!Skin.HasSetting(HomeMenuNoTVButton)</visible>
+						</item>
+
+						<!-- Library -->
+						<item>
+							<label>Library</label>
+							<onclick>ActivateWindow(Videos,videodb://movies/titles/,return)</onclick>
+							<thumb>icons/sidemenu/movies.png</thumb>
+							<visible>true</visible>
+						</item>
+
+						<!-- Search -->
+						<item>
+							<label>Search</label>
+							<onclick>ActivateWindow(1103)</onclick>
+							<thumb>icons/sidemenu/search.png</thumb>
+							<visible>true</visible>
+						</item>
+					</content>
+				</control>
+			</control>
+			<!-- End Shadow Touch Bottom Nav -->
+
 		</control>
 	</controls>
 </window>
