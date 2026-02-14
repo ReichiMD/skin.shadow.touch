@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="skin.deep.black" version="1.0.0" name="Deep Black" provider-name="Deine Fabrik">
+    <requires>
+        <import addon="xbmc.gui" version="5.17.0"/>
+    </requires>
+    <extension point="xbmc.gui.skin" defaultresolution="720p" destresolution="720p" debugging="true" effects="true" touch="true">
+        <res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="de">Deep Black Skin für Pixel 7 und Shield</summary>
+        <description lang="de">Ein minimalistischer, tiefschwarzer Skin optimiert für OLED-Displays. (Kodi 21 Omega)</description>
+        <platform>all</platform>
+        <license>GPL-2.0-only</license>
+    </extension>
+</addon>
