@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="skin.shadow.touch" version="0.0.1" name="Shadow Touch" provider-name="ReichiMD">
+	<requires>
+		<import addon="xbmc.gui" version="5.17.0"/>
+	</requires>
+	<extension point="xbmc.gui.skin" debugging="false">
+		<res width="1920" height="1440" aspect="1.33" default="false" folder="xml" />
+		<res width="1920" height="1280" aspect="1.5"  default="false" folder="xml" />
+		<res width="1920" height="1200" aspect="1.6"  default="false" folder="xml" />
+		<res width="1800" height="1080" aspect="1.66" default="false" folder="xml" />
+		<res width="1920" height="1080" aspect="1.77" default="true"  folder="xml" />
+		<res width="2040" height="1080" aspect="1.88" default="false" folder="xml" />
+		<res width="2160" height="1080" aspect="2"    default="false" folder="xml" />
+		<res width="2338" height="1080" aspect="2.16" default="false" folder="xml" />
+		<res width="2560" height="1080" aspect="2.37" default="false" folder="xml" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_GB">Shadow Touch - A modern, touch-optimized Kodi skin for tablets and TV devices</summary>
+		<description lang="en_GB">Shadow Touch is a touch-first Kodi skin designed for Samsung tablets and Nvidia Shield devices. Based on EstuaryPVR+ Omega, it combines the sleek aesthetics of modern streaming apps (Netflix, Apple TV) with the technical efficiency of a lightweight skin.[CR][CR]Key Features:[CR]- Bottom navigation bar optimized for thumb reach on tablets[CR]- Vertical grid layout with generous spacing to prevent accidental taps[CR]- Long-press overlays for quick access to media info and actions[CR]- Enhanced PVR/Live TV integration with optimized touch controls[CR]- Code-first rendering with minimal image assets for maximum performance[CR]- Dark theme with modern, minimalist design[CR][CR]Target devices: Samsung S9 FE Tablet (Touch), Nvidia Shield (Remote)[CR]Resolution: Landscape 1080p (scalable)[CR][CR]Based on EstuaryPVR+ Omega by Dumyat/SplitEnz[CR]Original Estuary skin by phil65 and Team Kodi</description>
+		<disclaimer lang="en_GB">Shadow Touch is in active development. Some features may be incomplete.</disclaimer>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE Version 2.0</license>
+		<forum></forum>
+		<source>https://github.com/ReichiMD/Skin-Deep-Black</source>
+		<assets>
+			<icon>resources/icon.png</icon>
+			<fanart>resources/fanart.jpg</fanart>
+		</assets>
+		<news>
+v0.0.1 (2025-02-14)
+- Initial release
+- Based on EstuaryPVR+ Omega
+- Project foundation established
+		</news>
+	</extension>
+</addon>
