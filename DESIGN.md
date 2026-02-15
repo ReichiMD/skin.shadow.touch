@@ -1,10 +1,11 @@
 # Shadow Touch - Visual Design Specification
 
-> **CRITICAL**: This document defines the EXACT visual design of Shadow Touch.
-> Do NOT deviate from these specifications without explicit user approval!
+> **CRITICAL**: This document defines the TARGET visual design of Shadow Touch.
+> These are GOALS, not current implementation!
 
-**Last Updated:** 2025-02-14
-**Status:** Phase 1 (Bottom Nav implemented)
+**Last Updated:** 2026-02-15
+**Current Status:** Nimbus 0.1.38 (unmodified base)
+**Implementation Status:** PLANNING PHASE - Nothing implemented yet!
 
 ---
 
@@ -56,7 +57,10 @@ XL:  120px (major sections)
 
 ### 1. Bottom Navigation Bar
 
-**IMPLEMENTED ✓ - DO NOT CHANGE THESE VALUES!**
+**TARGET DESIGN (NOT YET IMPLEMENTED!)**
+**Current Nimbus:** Uses side menu (left side), NOT bottom nav
+
+**Decision needed:** Do we replace Nimbus side menu with bottom nav, or keep it?
 
 #### Layout
 ```
@@ -499,6 +503,6 @@ Before implementing ANY new component, verify:
 
 ---
 
-**Last Updated:** 2025-02-14
-**Document Version:** 1.0
-**Phase:** 1 (Bottom Nav complete)
+**Last Updated:** 2026-02-15
+**Document Version:** 1.1
+**Phase:** PLANNING - Nimbus evaluation needed before implementing changes

@@ -129,12 +129,25 @@ See **skin-structure.md** for detailed explanations.
 
 **Check ROADMAP.md for detailed status!**
 
-**Last Session:** Initial setup (EstuaryPVR+ cloned, docs created)
+**Current Status:** Nimbus 0.1.38 installed as base - UNMODIFIED
+**Base Skin:** Pure Nimbus (no Shadow Touch modifications yet!)
 
-**Next Priority:**
-1. Rename addon.xml to `skin.shadow.touch`
-2. Clean up EstuaryPVR+ README (create Shadow Touch specific)
-3. Start Phase 1 - Bottom Nav Bar prototype
+**IMPORTANT:** Nimbus already has:
+- ✅ Touch-first Netflix-style interface
+- ✅ Landscape/Portrait widgets
+- ✅ Full PVR support
+- ✅ Modern dark theme
+
+**Next Steps:**
+1. **USER TESTING:** Test current Nimbus on Samsung S9 FE Tablet
+2. **EVALUATION:** Compare Nimbus with Shadow Touch goals (DESIGN.md)
+3. **PLANNING:** Decide what ACTUALLY needs to be changed:
+   - Do we need bottom nav? (Nimbus has side menu)
+   - Is the grid already vertical? Or still horizontal?
+   - What's missing for touch optimization?
+4. **IMPLEMENTATION:** Only modify what doesn't match our requirements
+
+**Don't waste time rebuilding what Nimbus already has!**
 
 ---
 
@@ -213,8 +226,6 @@ When starting a new session, DO THIS:
 4. ✅ Restored documentation with updates
 5. ✅ Changed addon.xml (ID: skin.shadow.touch, version: 0.0.1)
 6. ✅ Created NIMBUS-STRUCTURE.md (architecture reference)
-7. ⏳ Implementing Bottom Nav in Nimbus context
-8. ⏳ Implementing Vertical Grid in Nimbus context
 
 **What We Kept:**
 - All documentation (updated for Nimbus)
@@ -225,14 +236,32 @@ When starting a new session, DO THIS:
 **What Changed:**
 - Base skin: Nimbus instead of EstuaryPVR+
 - License: CC BY-SA 4.0 (Nimbus) + GPL v2 (code parts)
-- Starting fresh with Phase 1 (but much faster path to goal!)
+- Starting fresh with better foundation!
 
-**Status:** Fresh start with better foundation, documentation preserved
+**Status:** Nimbus installed as-is, NO modifications yet
+
+### Session 3 (2026-02-15):
+**Tasks completed:**
+1. ✅ Fixed addon.xml syntax error preventing Kodi installation
+   - Missing closing `>` on `<addon>` tag line 2
+   - Skin now installs correctly via ZIP or manual copy
+2. ✅ Clarified script.nimbus.helper dependency
+   - Handles widget management, API keys, menu customization
+   - Keeping it for now (provides important functionality)
+3. ✅ Updated documentation to reflect TRUE current status
+   - Corrected CLAUDE.md, DESIGN.md, ROADMAP.md
+   - Removed misleading "IMPLEMENTED" claims
+   - Clarified: Nimbus is UNMODIFIED base
+
+**Next Priority:**
+- USER TESTING: Install & test Nimbus on Samsung S9 FE
+- EVALUATE: What Nimbus already provides vs. what we need
+- PLAN: Minimal changes to achieve Shadow Touch goals
 
 ### Session N (add date):
 - [Future sessions add notes here]
 
 ---
 
-**Last Updated:** 2025-02-15
-**Project Status:** Migrating to Nimbus Base
+**Last Updated:** 2026-02-15
+**Project Status:** Nimbus installed & working - Ready for user testing & evaluation
