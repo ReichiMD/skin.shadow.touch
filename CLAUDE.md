@@ -29,6 +29,7 @@ Skin-Deep-Black/
 ├── CLAUDE.md           ← YOU ARE HERE (session context)
 ├── ROADMAP.md          ← Development phases & checkboxes
 ├── DESIGN.md           ← VISUAL DESIGN SPEC (exact measurements!)
+├── NIMBUS-STRUCTURE.md ← Nimbus architecture reference (READ THIS!)
 ├── addon.xml           ← Skin metadata & dependencies
 ├── xml/                ← All UI definitions
 │   ├── Home.xml        ← Main home screen
@@ -175,10 +176,11 @@ See **skin-structure.md** for detailed explanations.
 When starting a new session, DO THIS:
 
 1. ✅ Read this file (CLAUDE.md)
-2. ✅ Read ROADMAP.md to see current phase
-3. ✅ **Read DESIGN.md** - EXACT visual specs (measurements, colors, layouts)
-4. ✅ Check last commit message for context
-5. ✅ Ask user for device testing availability before major changes
+2. ✅ Read NIMBUS-STRUCTURE.md - Nimbus architecture & XML guide
+3. ✅ Read ROADMAP.md to see current phase
+4. ✅ **Read DESIGN.md** - EXACT visual specs (measurements, colors, layouts)
+5. ✅ Check last commit message for context
+6. ✅ Ask user for device testing availability before major changes
 
 **CRITICAL:** DESIGN.md contains EXACT measurements and specs. Do NOT deviate!
 
@@ -209,9 +211,10 @@ When starting a new session, DO THIS:
 2. ✅ Deleted all EstuaryPVR+ files
 3. ✅ Cloned Nimbus (v0.1.38) as new base
 4. ✅ Restored documentation with updates
-5. ⏳ Changing addon.xml (ID: skin.shadow.touch, name, version)
-6. ⏳ Implementing Bottom Nav in Nimbus context
-7. ⏳ Implementing Vertical Grid in Nimbus context
+5. ✅ Changed addon.xml (ID: skin.shadow.touch, version: 0.0.1)
+6. ✅ Created NIMBUS-STRUCTURE.md (architecture reference)
+7. ⏳ Implementing Bottom Nav in Nimbus context
+8. ⏳ Implementing Vertical Grid in Nimbus context
 
 **What We Kept:**
 - All documentation (updated for Nimbus)
