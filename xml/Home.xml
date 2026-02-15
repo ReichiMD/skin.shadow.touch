@@ -1002,7 +1002,102 @@
 					<visible>$EXP[isContent]</visible>
 					<include>OpenClose_Left</include>
 					<include>HomeFlixPanelAnimations</include>
-					<include>FlixPanel</include>
+					<!-- <include>FlixPanel</include> --> <!-- Shadow Touch: Replaced with Vertical Grid -->
+
+					<!-- ========================================= -->
+					<!-- SHADOW TOUCH: Vertical Poster Grid -->
+					<!-- ========================================= -->
+					<control type="panel" id="9300">
+						<left>50</left>
+						<top>50</top>
+						<width>1820</width>
+						<height>900</height>
+						<onup>9300</onup>
+						<ondown>9201</ondown> <!-- Navigate to Bottom Nav -->
+						<onleft>9300</onleft>
+						<onright>9300</onright>
+						<pagecontrol>-</pagecontrol>
+						<scrolltime tween="cubic" easing="out">300</scrolltime>
+						<orientation>vertical</orientation>
+						<preloaditems>2</preloaditems>
+
+						<!-- Item Layout (Unfocused) -->
+						<itemlayout width="220" height="360">
+							<!-- Poster Image -->
+							<control type="image">
+								<left>10</left>
+								<top>10</top>
+								<width>200</width>
+								<height>300</height>
+								<texture background="true">$INFO[ListItem.Art(poster)]</texture>
+								<aspectratio>scale</aspectratio>
+								<bordertexture border="5" colordiffuse="40FFFFFF">colors/white.png</bordertexture>
+								<bordersize>2</bordersize>
+							</control>
+
+							<!-- Title Label -->
+							<control type="label">
+								<left>10</left>
+								<top>320</top>
+								<width>200</width>
+								<height>30</height>
+								<font>font12</font>
+								<align>center</align>
+								<aligny>center</aligny>
+								<label>$INFO[ListItem.Label]</label>
+								<textcolor>80FFFFFF</textcolor>
+							</control>
+						</itemlayout>
+
+						<!-- Focused Layout -->
+						<focusedlayout width="220" height="360">
+							<!-- Focus Glow -->
+							<control type="image">
+								<left>0</left>
+								<top>0</top>
+								<width>220</width>
+								<height>320</height>
+								<texture colordiffuse="button_focus">colors/white.png</texture>
+								<aspectratio>stretch</aspectratio>
+								<animation effect="fade" start="0" end="30" time="200">Focus</animation>
+								<animation effect="fade" start="30" end="0" time="200">UnFocus</animation>
+							</control>
+
+							<!-- Poster Image (Focused) -->
+							<control type="image">
+								<left>10</left>
+								<top>10</top>
+								<width>200</width>
+								<height>300</height>
+								<texture background="true">$INFO[ListItem.Art(poster)]</texture>
+								<aspectratio>scale</aspectratio>
+								<bordertexture border="5" colordiffuse="button_focus">colors/white.png</bordertexture>
+								<bordersize>3</bordersize>
+								<animation effect="zoom" start="100" end="105" time="200" tween="sine" easing="out">Focus</animation>
+								<animation effect="zoom" start="105" end="100" time="200" tween="sine" easing="out">UnFocus</animation>
+							</control>
+
+							<!-- Title Label (Focused) -->
+							<control type="label">
+								<left>10</left>
+								<top>320</top>
+								<width>200</width>
+								<height>30</height>
+								<font>font12</font>
+								<align>center</align>
+								<aligny>center</aligny>
+								<label>$INFO[ListItem.Label]</label>
+								<textcolor>FFFFFFFF</textcolor>
+								<animation effect="fade" start="80" end="100" time="200">Focus</animation>
+								<animation effect="fade" start="100" end="80" time="200">UnFocus</animation>
+							</control>
+						</focusedlayout>
+
+						<!-- Content: Movies from Library -->
+						<!-- Content: Movies from Library -->
+						<content target="videos">videodb://movies/titles/</content>
+					</control>
+					<!-- END Shadow Touch Vertical Grid -->
 				</control>
 				<!-- <include>osd_darkenBG</include> -->
 				<control type="group">
@@ -1294,7 +1389,7 @@
 				<movement>1</movement>
 				<focusposition>0</focusposition>
 				<orientation>horizontal</orientation>
-				<onup>2000</onup>
+				<onup>9300</onup> <!-- Shadow Touch: Navigate to Vertical Grid -->
 				<ondown>9201</ondown>
 				<scrolltime tween="sine" easing="out">200</scrolltime>
 
