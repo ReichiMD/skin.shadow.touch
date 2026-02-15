@@ -2,10 +2,20 @@
 <window>
 	<defaultcontrol always="true">9000</defaultcontrol>
 	<onload condition="!ListItem.Property(addon.isinstalled) + Window.IsActive(addonbrowser)">SetFocus(6)</onload>
-	<onload>SetProperty(infobackground,$ESCINFO[ListItem.Art(fanart)],home)</onload>
+	<!-- <onload>SetProperty(infobackground,$ESCINFO[ListItem.Art(fanart)],home)</onload> -->
 	<onunload>ClearProperty(infobackground,home)</onunload>
+	<onunload>ClearProperty(AddonNews,Home)</onunload>
+	<onunload>ClearProperty(TextViewer_Header,Home)</onunload>
+	<onunload>ClearProperty(AddonVersion,Home)</onunload>
 	<controls>
 		<control type="group">
+			<control type="image">
+				<depth>DepthBackground</depth>
+				<include>FullScreenDimensions</include>
+				<aspectratio>scale</aspectratio>
+				<texture colordiffuse="primary_background">special://skin/extras/backgrounds/primary.jpg</texture>
+				<visible>!Skin.HasSetting(Enable.BackgroundBlur)</visible>
+			</control>
 			<centertop>50%</centertop>
 			<height>1080</height>
 			<centerleft>50%</centerleft>
@@ -13,12 +23,13 @@
 			<control type="group">
 				<include>OpenClose_Right</include>
 				<control type="button" id="5000">
-					<left>605</left>
-					<top>400</top>
-					<width>755</width>
-					<height>435</height>
+					<left>625</left>
+					<top>430</top>
+					<width>695</width>
+					<height>375</height>
 					<label></label>
-					<texturenofocus border="21">dialogs/dialog-bg.png</texturenofocus>
+					<texturefocus colordiffuse="$VAR[FocusColorTheme]" >masks/big-landscape.png</texturefocus>
+					<texturenofocus colordiffuse="dialog_bg" >masks/big-landscape-unfocused.png</texturenofocus>
 					<onup>50</onup>
 					<ondown>9000</ondown>
 					<onclick>SetProperty(TextViewer_Header,$LOCALIZE[31141] $INFO[ListItem.AddonVersion],home)</onclick>
@@ -28,11 +39,23 @@
 				</control>
 				<control type="textbox">
 					<left>650</left>
-					<top>430</top>
-					<width>665</width>
-					<height>375</height>
+					<top>450</top>
+					<width>625</width>
+					<height>335</height>
 					<label>$INFO[ListItem.AddonSummary,[B],[/B][CR]]$INFO[ListItem.AddonDescription][CR]$VAR[AddonNewsVar,[I][CR][CR],[/I]]</label>
+					<textcolor>unfocused_text</textcolor>
 					<autoscroll delay="5000" repeat="7500" time="5000">true</autoscroll>
+					<visible>!Control.HasFocus(5000)</visible>
+				</control>
+				<control type="textbox">
+					<left>650</left>
+					<top>450</top>
+					<width>625</width>
+					<height>335</height>
+					<label>$INFO[ListItem.AddonSummary,[B],[/B][CR]]$INFO[ListItem.AddonDescription][CR]$VAR[AddonNewsVar,[I][CR][CR],[/I]]</label>
+					<textcolor>$VAR[FocusedTextColorVar]</textcolor>
+					<autoscroll delay="5000" repeat="7500" time="5000">true</autoscroll>
+					<visible>Control.HasFocus(5000)</visible>
 				</control>
 				<control type="group">
 					<left>606</left>
@@ -41,27 +64,24 @@
 					<control type="image">
 						<width>425</width>
 						<height>260</height>
-						<texture background="true">DefaultNoPreview.png</texture>
+						<texture diffuse="masks/landscape.png" background="true">DefaultNoPreview.png</texture>
 						<aspectratio>scale</aspectratio>
-						<bordertexture border="21">overlays/shadow.png</bordertexture>
 						<bordersize>20</bordersize>
 					</control>
 					<control type="image">
 						<left>405</left>
 						<width>425</width>
 						<height>260</height>
-						<texture background="true">DefaultNoPreview.png</texture>
+						<texture diffuse="masks/landscape.png" background="true">DefaultNoPreview.png</texture>
 						<aspectratio>scale</aspectratio>
-						<bordertexture border="21">overlays/shadow.png</bordertexture>
 						<bordersize>20</bordersize>
 					</control>
 					<control type="image">
 						<left>810</left>
 						<width>425</width>
 						<height>260</height>
-						<texture background="true">DefaultNoPreview.png</texture>
+						<texture diffuse="masks/landscape.png" background="true">DefaultNoPreview.png</texture>
 						<aspectratio>scale</aspectratio>
-						<bordertexture border="21">overlays/shadow.png</bordertexture>
 						<bordersize>20</bordersize>
 					</control>
 				</control>
@@ -78,46 +98,42 @@
 							<left>-12</left>
 							<width>425</width>
 							<height>260</height>
-							<texture background="true">DefaultNoPreview.png</texture>
+							<texture diffuse="masks/landscape.png" background="true">DefaultNoPreview.png</texture>
 							<aspectratio>scale</aspectratio>
-							<bordertexture border="21">overlays/shadow.png</bordertexture>
 							<bordersize>20</bordersize>
 						</control>
 						<control type="image">
 							<left>-12</left>
 							<width>425</width>
 							<height>260</height>
-							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<aspectratio>scale</aspectratio>
-							<bordertexture border="21">overlays/shadow.png</bordertexture>
+							<texture diffuse="masks/landscape.png" background="true">$INFO[ListItem.Icon]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
 							<bordersize>20</bordersize>
 						</control>
 					</itemlayout>
 					<focusedlayout height="225" width="405">
 						<control type="image">
-							<left>-12</left>
-							<width>425</width>
-							<height>260</height>
-							<texture background="true">DefaultNoPreview.png</texture>
-							<aspectratio>scale</aspectratio>
-							<bordertexture border="21">overlays/shadow.png</bordertexture>
-							<bordersize>20</bordersize>
-						</control>
-						<control type="image">
-							<left>-12</left>
-							<width>425</width>
-							<height>260</height>
-							<texture background="true">$INFO[ListItem.Icon]</texture>
-							<aspectratio>scale</aspectratio>
-							<bordertexture border="21">overlays/shadow.png</bordertexture>
-							<bordersize>20</bordersize>
-						</control>
-						<control type="image">
 							<left>4</left>
 							<top>16</top>
 							<width>393</width>
 							<height>228</height>
-							<texture border="8" colordiffuse="button_focus">buttons/thumbnail_focused.png</texture>
+							<texture colordiffuse="$VAR[FocusColorTheme]">masks/landscape.png</texture>
+						</control>
+						<control type="image">
+							<left>-12</left>
+							<width>425</width>
+							<height>260</height>
+							<texture diffuse="masks/landscape.png" background="true">DefaultNoPreview.png</texture>
+							<aspectratio>scale</aspectratio>
+							<bordersize>20</bordersize>
+						</control>
+						<control type="image">
+							<left>-12</left>
+							<width>425</width>
+							<height>260</height>
+							<texture diffuse="masks/landscape.png" background="true">$INFO[ListItem.Icon]</texture>
+							<aspectratio scalediffuse="false">scale</aspectratio>
+							<bordersize>20</bordersize>
 						</control>
 					</focusedlayout>
 				</control>
@@ -130,19 +146,19 @@
 				</include>
 				<control type="group">
 					<control type="image">
-						<left>1370</left>
-						<top>420</top>
-						<width>450</width>
-						<height>396</height>
-						<aspectratio>scale</aspectratio>
-						<texture colordiffuse="AAFFFFFF">colors/black.png</texture>
+						<left>1345</left>
+						<top>430</top>
+						<width>478</width>
+						<height>375</height>
+						<!-- <aspectratio>scale</aspectratio> -->
+						<texture colordiffuse="dialog_bg" border="21">masks/landscape-unfocused.png</texture>
 					</control>
 					<control type="group">
 						<left>1340</left>
 						<top>430</top>
 						<control type="list">
-							<left>42</left>
-							<top>0</top>
+							<left>22</left>
+							<top>20</top>
 							<width>446</width>
 							<height>385</height>
 							<pagecontrol/>
@@ -153,7 +169,8 @@
 									<width>410</width>
 									<height>30</height>
 									<font>font27_narrow</font>
-									<label>$INFO[ListItem.Label,[COLOR button_focus],[/COLOR]]</label>
+									<label>$INFO[ListItem.Label,[COLOR unfocused_text],[/COLOR]]</label>
+									<textcolor>unfocused_text</textcolor> 
 								</control>
 								<control type="label">
 									<left>10</left>
@@ -162,6 +179,7 @@
 									<height>30</height>
 									<font>font27_narrow</font>
 									<label>$INFO[ListItem.Label2]</label>
+									<textcolor>unfocused_text</textcolor>
 								</control>
 								<control type="image">
 									<right>25</right>
@@ -178,7 +196,8 @@
 									<width>410</width>
 									<height>30</height>
 									<font>font27_narrow</font>
-									<label>$INFO[ListItem.Label,[COLOR button_focus],[/COLOR]]</label>
+									<label>$INFO[ListItem.Label,[COLOR unfocused_text],[/COLOR]]</label>
+									<textcolor>unfocused_text</textcolor>
 									<scroll>false</scroll>
 								</control>
 								<control type="label">
@@ -188,6 +207,7 @@
 									<height>30</height>
 									<font>font27_narrow</font>
 									<label>$INFO[ListItem.Label2]</label>
+									<textcolor>unfocused_text</textcolor>
 									<scroll>false</scroll>
 								</control>
 								<control type="image">
@@ -239,7 +259,7 @@
 					<onup>5000</onup>
 					<ondown>9000</ondown>
 					<align>center</align>
-					<itemgap>-18</itemgap>
+					<itemgap>30</itemgap>
 					<orientation>horizontal</orientation>
 					<include content="InfoDialogButton">
 						<param name="id" value="12" />
@@ -252,13 +272,17 @@
 						<param name="label" value="$LOCALIZE[24020]" />
 					</include>
 					<control type="radiobutton" id="13">
-						<width>262</width>
-						<height>140</height>
+						<width>220</width>
+						<height>130</height>
 						<align>center</align>
 						<aligny>top</aligny>
+						<textcolor>unfocused_text</textcolor>
+						<focusedcolor>$VAR[FocusedTextColorVar]</focusedcolor>
+						<texturefocus colordiffuse="$VAR[FocusColorTheme]">masks/landscape.png</texturefocus>
+						<texturenofocus colordiffuse="dialog_bg">masks/landscape-unfocused.png</texturenofocus>
 						<textoffsetx>35</textoffsetx>
 						<textoffsety>76</textoffsety>
-						<radioposx>81</radioposx>
+						<radioposx>65</radioposx>
 						<radioposy>17</radioposy>
 						<radiowidth>100</radiowidth>
 						<font>font12</font>
@@ -299,14 +323,14 @@
 				<include>OpenClose_Left</include>
 				<top>158</top>
 				<left>80</left>
+				<!-- Image control -->
 				<control type="image">
 					<left>-6</left>
 					<top>4</top>
 					<width>540</width>
 					<height>540</height>
-					<aspectratio>scale</aspectratio>
-					<texture>dialogs/dialog-bg-nobo.png</texture>
-					<bordertexture border="21">overlays/shadow.png</bordertexture>
+					<!-- <aspectratio>scale</aspectratio> -->
+					<texture diffuse="masks/addons.png" colordiffuse="dialog_bg">dialogs/dialog-bg-nobo.png</texture>
 					<bordersize>20</bordersize>
 				</control>
 				<control type="image">
@@ -314,9 +338,9 @@
 					<top>24</top>
 					<width>500</width>
 					<height>500</height>
-					<aspectratio aligny="top">scale</aspectratio>
+					<!-- <aspectratio aligny="top">scale</aspectratio> -->
 					<fadetime>300</fadetime>
-					<texture fallback="DefaultAddon.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
+					<texture diffuse="masks/addons.png" fallback="DefaultAddon.png" background="true">$INFO[ListItem.Art(thumb)]</texture>
 				</control>
 				<control type="group">
 					<visible>String.IsEqual(ListItem.AddonLifecycleType,$LOCALIZE[24170]) | String.IsEqual(ListItem.AddonLifecycleType,$LOCALIZE[24171])</visible>
@@ -349,12 +373,12 @@
 				<animation effect="fade" start="0" end="100" time="300" delay="300">WindowOpen</animation>
 				<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
 				<label>[I]$INFO[ListItem.AddonDisclaimer][/I]</label>
-				<textcolor>88FFFFFF</textcolor>
+				<textcolor>unfocused_text</textcolor>
 				<autoscroll time="2000" delay="3000" repeat="5000">true</autoscroll>
 			</control>
 			<include content="InfoDialogTopBarInfo">
-				<param name="main_label" value="$INFO[ListItem.AddonName]" />
-				<param name="sub_label" value="$INFO[ListItem.AddonVersion,[COLOR grey],[/COLOR]]$INFO[ListItem.AddonCreator, $LOCALIZE[31071] ]" />
+				<param name="main_label" value="[COLOR unfocused_text]$INFO[ListItem.AddonName][/COLOR]" />
+				<param name="sub_label" value="[COLOR unfocused_text]$INFO[ListItem.AddonVersion][/COLOR]$INFO[ListItem.AddonCreator, $LOCALIZE[31071] ]" />
 			</include>
 		</control>
 		<include condition="Skin.HasSetting(touchmode)">TouchBackButton</include>

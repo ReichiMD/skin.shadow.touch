@@ -3,62 +3,60 @@
 	<defaultcontrol>996</defaultcontrol>
 	<include>Animation_DialogPopupOpenClose</include>
 	<coordinates>
-		<left>0</left>
-		<top>0</top>
+		<origin x="712" y="155"/>
 	</coordinates>
 	<controls>
-		<control type="image">
-			<left>-1920</left>
-			<top>-1080</top>
-			<width>5760</width>
-			<height>3240</height>
-			<animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
-			<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
-			<texture colordiffuse="B0FFFFFF">colors/black.png</texture>
-		</control>
-		<control type="button">
-			<left>-1920</left>
-			<top>-1080</top>
-			<width>5760</width>
-			<height>3240</height>
-			<texturefocus />
-			<texturenofocus />
-			<onclick>Action(close)</onclick>
-		</control>
+		<include>ContextFade</include>
 		<control type="group">
-			<animation effect="slide" end="0,175" time="0" condition="Window.IsActive(home)">conditional</animation>
-			<control type="image" id="999">
-				<description>background image</description>
-				<left>0</left>
-				<top>0</top>
-				<width>450</width>
-				<height>780</height>
-				<texture colordiffuse="dialog_tint">colors/white.png</texture>
+			<include content="CenterContext">
+				<param name="id" value="996" />
+			</include>
+			<control type="label">
+				<top>-70</top>
+				<left>-225</left>
+				<width>896</width>
+				<height>70</height>
+				<font>font36_title</font>
+				<textcolor>unfocused_text</textcolor>
+				<align>center</align>
+				<label>$VAR[ContextMenuTitleVar]</label>
+			</control>
+			<control type="button">
+				<left>-1920</left>
+				<top>-1080</top>
+				<width>5760</width>
+				<height>3240</height>
+				<texturefocus />
+				<texturenofocus />
+				<onclick>Action(close)</onclick>
 			</control>
 			<control type="grouplist" id="996">
 				<description>grouplist for context buttons</description>
 				<left>0</left>
 				<top>0</top>
-				<width>450</width>
+				<width>446</width>
 				<height max="780">auto</height>
 				<usecontrolcoords>true</usecontrolcoords>
 			</control>
 			<include content="UpDownArrows">
 				<param name="container_id" value="996" />
-				<param name="posx" value="201" />
-				<param name="up_posy" value="-40" />
-				<param name="down_posy" value="798" />
+				<param name="posx" value="199" />
+				<param name="up_posy" value="-130" />
+				<param name="down_posy" value="790" />
 			</include>
-		</control>
-		<control type="button" id="1000">
-			<description>button template</description>
-			<left>0</left>
-			<top></top>
-			<width>450</width>
-			<height>65</height>
-			<align>center</align>
-			<texturefocus colordiffuse="button_focus">lists/focus.png</texturefocus>
-			<texturenofocus />
+			<control type="button" id="1000">
+				<description>button template</description>
+				<left>0</left>
+				<top></top>
+				<width>446</width>
+				<height>70</height>
+				<align>center</align>
+				<font>font32</font>
+				<textcolor>darkgrey</textcolor>
+				<focusedcolor>$VAR[FocusedTextColorVar]</focusedcolor>
+				<texturefocus colordiffuse="$VAR[FocusColorTheme]">masks/focus.png</texturefocus>
+				<texturenofocus />
+			</control>
 		</control>
 	</controls>
 </window>

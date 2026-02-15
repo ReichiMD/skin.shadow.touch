@@ -2,214 +2,108 @@
 <window>
 	<defaultcontrol always="true">50</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
-	<views>50,51,52,54,55,501,509,510</views>
+	<views>50,51,52,54,55,56,500,501</views>
 	<menucontrol>9000</menucontrol>
+	<!-- <onunload condition="!String.IsEmpty(Skin.String(TrailerPlaying))">Skin.Reset(TrailerPlaying)</onunload> -->
 	<controls>
 		<include>DefaultBackground</include>
 		<control type="group">
-			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
-			<include>View_50_List</include>
-			<include>View_51_Poster</include>
-			<include>View_52_IconWall</include>
-			<include>View_54_InfoWall</include>
-			<include>View_55_WideList</include>
-			<include>View_501_MediaInfo</include>
-			<include>View_509_Flix_Landscape</include>
-			<include>View_510_Card</include>
-			<control type="group">
-				<depth>DepthContentPanel</depth>
-				<include>OpenClose_Left</include>
-				<visible>Control.IsVisible(55)</visible>
-				<include>Visible_Left</include>
-				<include>ListThumbInfoPanel</include>
+			<include>MediaMenuAnimations</include>
+			<visible>[![Player.HasVideo | [Player.HasAudio + Visualisation.Enabled + !String.IsEmpty(Visualisation.Name)]] | !String.IsEmpty(Window(Videos).Property(PlayingBackgroundMedia))]</visible>
+			<control type="image">
+				<include>NetflixScreenDimensions</include>
+				<aspectratio>stretch</aspectratio>
+				<fadetime>500</fadetime>
+				<include>ArtworkAnimations</include>
+				<texture background="true" diffuse="overlays/netflixfanartdiffuse.png" fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[MediaFanartVar]</texture>
+				<visible>
+					![Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | $EXP[infodialog_active]] + 
+					[
+						[!$EXP[isContent] + Skin.HasSetting(Enable.BackgroundBlur) + [Control.IsVisible(54) | Control.IsVisible(56)] + !String.IsEqual(Skin.String(HomeArtworkChoice),1)] | 
+						[[[Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),0)] | 
+						[Container.Content(tvshows) + String.IsEqual(Skin.String(ArtworkChoice.tvshows),0)] | 
+						[Container.Content(seasons) + String.IsEqual(Skin.String(ArtworkChoice.seasons),0)] | 
+						[Container.Content(episodes) + String.IsEqual(Skin.String(ArtworkChoice.episodes),0)]] + 
+						[Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56)]] | 
+						[!Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + 
+						[!Skin.HasSetting(Enable.BackgroundBlur) + String.IsEqual(Skin.String(HomeArtworkChoice),0)]]
+					]
+				</visible>
 			</control>
+			<control type="image">
+				<include>BigLandscapeScreenDimensions</include>
+				<fadetime>500</fadetime>
+				<texture colordiffuse="artwork_dim" diffuse="masks/giant-landscape.png" background="true" fallback="$VAR[NimbusCustomBackgroundImage]">$VAR[FlixLandscapeVar]</texture>
+				<bordersize>1</bordersize>
+				<aspectratio scalediffuse="false">scale</aspectratio>
+				<include>ArtworkAnimations</include>
+				<bordertexture colordiffuse="$VAR[BorderColorVar]" border="17" infill="false">masks/giant-border.png</bordertexture>
+				<visible>
+					!$EXP[infodialog_active] + 
+					[Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56)] + 
+					[
+							[$EXP[isContent] + [[Container.Content(movies) + String.IsEqual(Skin.String(ArtworkChoice.movies),1)] | 
+							[Container.Content(tvshows) + String.IsEqual(Skin.String(ArtworkChoice.tvshows),1)] | 
+							[Container.Content(seasons) + String.IsEqual(Skin.String(ArtworkChoice.seasons),1)] | 
+							[Container.Content(episodes) + String.IsEqual(Skin.String(ArtworkChoice.episodes),1)]]] | 
+							[!$EXP[isContent] + String.IsEqual(Skin.String(HomeArtworkChoice),1)]
+					]
+				</visible>
+			</control>
+		</control>
+		<control type="group">
 			<control type="group">
-				<depth>DepthContentPanel</depth>
-				<include>OpenClose_Left</include>
-				<visible>[Control.IsVisible(501) + String.IsEqual(Skin.AspectRatio,21:9)]</visible>
-				<include>Visible_Left</include>
-				<include content="ContentPanel">
-					<param name="width" value="656" />
-				</include>
+				<include>TrailerPlayingFade</include>
+				<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
+				<include>View_50_List</include>
+				<include>View_52_IconWall</include>
+				<include>View_54_Flix</include>
+				<include>View_55_FlixScape</include>
+				<include>View_56_FlixList</include>
+				<include>View_500_Wall</include>
+				<include>View_501_WallScape</include>
 				<control type="group">
-					<width>550</width>
-					<control type="textbox">
-						<top>120</top>
-						<left>30</left>
-						<width>550</width>
-						<aligny>center</aligny>
-						<height>110</height>
-						<font>font36_title</font>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="textbox">
-						<left>30</left>
-						<top>240</top>
-						<width>525</width>
-						<bottom>100</bottom>
-						<visible>![ListItem.IsCollection + String.IsEmpty(ListItem.Plot)]</visible>
-						<label>$INFO[ListItem.Tagline,[I],[/I][CR][CR]]$INFO[ListItem.Plot][CR][CR]</label>
-						<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-					</control>
-					<control type="textbox">
-						<left>30</left>
-						<top>240</top>
-						<width>525</width>
-						<bottom>100</bottom>
-						<visible>String.IsEqual(ListItem.DBtype,album) + !String.IsEmpty(ListItem.Property(album_description))</visible>
-						<label>$INFO[ListItem.Artist,[I],[/I][CR][CR]]$INFO[ListItem.Property(album_description)][CR][CR]</label>
-						<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-					</control>
-					<control type="textbox">
-						<left>30</left>
-						<top>360</top>
-						<width>530</width>
-						<height>413</height>
-						<align>center</align>
-						<aligny>center</aligny>
-						<font>font27</font>
-						<textcolor>80FFFFFF</textcolor>
-						<label>$LOCALIZE[19055]</label>
-						<visible>!String.IsEqual(ListItem.DBtype,album) + String.IsEmpty(Listitem.Plot) + String.IsEmpty(Listitem.Tagline) + !ListItem.IsCollection + !ListItem.IsParentFolder</visible>
-					</control>
-					<control type="group">
-						<left>20</left>
-						<top>245</top>
-						<visible>ListItem.IsCollection + String.IsEmpty(ListItem.Plot)</visible>
-						<include content="InfoList">
-							<param name="bottom" value="108" />
-							<param name="width" value="540" />
-							<param name="sortby" value="year" />
-							<param name="sortorder" value="ascending" />
-							<param name="font" value="font13" />
-						</include>
-					</control>
+					<depth>DepthContentPanel</depth>
+					<include>OpenClose_Left</include>
+					<visible>Control.IsVisible(56)</visible>
+					<include>Visible_Left</include>
+					<include>ListThumbInfoPanel</include>
 				</control>
-			</control>
-			
-			<control type="group">
-				<depth>DepthContentPanel</depth>
-				<include>OpenClose_Left</include>
-				<visible>Control.IsVisible(50) | Control.IsVisible(54)</visible>
-				<include>Visible_Left</include>
-				<include content="ContentPanel">
-					<param name="width" value="656" />
-				</include>
-				<include>List View Extras</include>
 				<control type="group">
-					<width>550</width>
-					<control type="textbox">
-					<visible>Container.Content(artists) | Container.Content(albums)</visible>
-						<top>120</top>
-						<left>30</left>
-						<width>550</width>
-						<aligny>center</aligny>
-						<height>110</height>
-						<font>font36_title</font>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="textbox">
-						<top>120</top>
-						<left>30</left>
-						<width>550</width>
-						<aligny>center</aligny>
-						<height>110</height>
-						<font>font36_title</font>
-						<label>$INFO[ListItem.Label]</label>
-						<visible>String.IsEqual(ListItem.DbType,seasons) | String.IsEqual(ListItem.DbType,episode) | String.IsEqual(ListItem.DbType,set)</visible>
-						<visible>String.IsEmpty(Listitem.Art(clearlogo))</visible>
-					</control>
-					<control type="textbox">
-					<visible>Container.Content(artists)</visible>
-						<left>30</left>
-						<top>240</top>
-						<width>525</width>
-						<bottom>100</bottom>
-						<visible>![ListItem.IsCollection + String.IsEmpty(ListItem.Plot)]</visible>
-						<label>$INFO[ListItem.Plot][CR]</label>
-						<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-					</control>
-					<control type="textbox">
-					<visible>Container.Content(albums)</visible>
-						<left>30</left>
-						<top>240</top>
-						<width>525</width>
-						<bottom>100</bottom>
-						<visible>![ListItem.IsCollection + String.IsEmpty(ListItem.Property(Album_Description))]</visible>
-						<label>$INFO[ListItem.Property(Album_Description)][CR]</label>
-						<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-					</control>
-					
-					<control type="textbox">
-						<left>30</left>
-						<top>530</top>
-						<height>490</height>
-						<width>525</width>
-						<bottom>80</bottom>
-						<visible>![ListItem.IsCollection + String.IsEmpty(ListItem.Plot)] + !String.IsEqual(ListItem.DbType,set)</visible>
-						<label>$INFO[ListItem.Plot][CR]</label>
-						<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-						<animation effect="slide" start="0,0" end="0,-200" condition="String.IsEqual(ListItem.DbType,season)">Conditional</animation>
-						<animation effect="slide" start="0,0" end="0,-290" condition="String.IsEqual(ListItem.DbType,episode)">Conditional</animation>
-						<visible>!Container.Content(artists)</visible>
-					</control>
-					<control type="group">	
-						<visible>String.IsEqual(ListItem.DbType,set)</visible>
-						<left>0</left>
-						<control type="image">
-							<top>70</top>
-							<left>100</left>
-							<height>150</height>
-							<aspectratio align="left" aligny="bottom">keep</aspectratio>
-							<texture fallback="$PARAM[fallback_image]" background="true">$INFO[Listitem.Art(clearlogo)]</texture>
-							<visible>!String.IsEmpty(Listitem.Art(clearlogo))</visible>
-						</control>	
-						<control type="grouplist">
-							<visible>String.IsEqual(ListItem.DbType,set)</visible>
-							<left>30</left>
-							<top>230</top>
-							<width>550</width>
-							<height>900</height>
-							<bottom>80</bottom>
-							<itemgap>10</itemgap>
-							<orientation>vertical</orientation>
-							<usecontrolcoords>true</usecontrolcoords>	
-							<control type="grouplist">
-								<itemgap>10</itemgap>
-								<orientation>vertical</orientation>
-								<usecontrolcoords>true</usecontrolcoords>	
-								<height>900</height>
-								<control type="textbox">
-									<height>405</height>
-									<visible>![ListItem.IsCollection + String.IsEmpty(ListItem.Plot)]</visible>
-									<label>$INFO[ListItem.Plot]</label>
-									<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-								</control>
-					
-								<control type="group">
-									<left>-10</left>
-									<height>450</height>
-									<autoscroll delay="10000" time="3000" repeat="10000">Skin.HasSetting(autoscroll)</autoscroll>
-									<visible>ListItem.IsCollection</visible>
-									<include content="InfoList">
-										
-										<param name="width" value="565" />
-										<param name="sortby" value="year" />
-										<param name="sortorder" value="ascending" />
-										<param name="font" value="font12" />
-									</include>
-								</control>
-							</control>
+					<include>MediaMenuAnimations</include>
+					<include>FlixPanel</include>
+					<depth>DepthContentPanel</depth>
+					<include>OpenClose_Left</include>
+					<visible>Control.IsVisible(50) | Control.IsVisible(54) | Control.IsVisible(55) | [Control.IsVisible(501) + String.IsEqual(Skin.AspectRatio,21:9)]</visible>
+					<include>Visible_Left</include>
+					<!-- <include content="ContentPanel">
+						<param name="width" value="1106" />
+					</include> -->
+					<control type="group">
+						<!-- <width>550</width> -->
+						<control type="group">
+							<left>20</left>
+							<top>245</top>
+							<visible>ListItem.IsCollection + String.IsEmpty(ListItem.Plot)</visible>
+							<include content="InfoList">
+								<param name="bottom" value="108" />
+								<param name="width" value="540" />
+								<param name="sortby" value="year" />
+								<param name="sortorder" value="ascending" />
+								<param name="font" value="font13" />
+							</include>
 						</control>
 					</control>
 				</control>
 			</control>
-			
+			<control type="group">
+				<include>View_51_PosterFlow</include>
+			</control>
 			<include content="TopBar">
 				<param name="breadcrumbs_label" value="$VAR[BreadcrumbsVideoVar]" />
 			</include>
 			<include content="BottomBar">
-				<param name="info_visible" value="true" />
+				<param name="info_visible" value="false" />
 			</include>
 			<control type="group">
 				<depth>DepthBars</depth>
@@ -224,7 +118,7 @@
 			<control type="group">
 				<include>MediaMenuCommon</include>
 				<control type="grouplist" id="9000">
-					<top>50</top>
+					<top>70</top>
 					<include>MediaMenuListCommon</include>
 					<control type="button" id="10">
 						<description>Watched Toggle</description>
@@ -250,14 +144,6 @@
 						<onclick>mastermode</onclick>
 						<selected>system.ismaster</selected>
 						<visible>system.haslocks</visible>
-					</control>
-					<control type="radiobutton" id="630">
-						<include>MediaMenuItemsCommon</include>
-						<font>font12</font>
-						<label>Display Small Poster Size</label>
-						<selected>Skin.HasSetting(Enable.Small.InfoWall.Posters)</selected>
-						<onclick>Skin.ToggleSetting(Enable.Small.InfoWall.Posters)</onclick>
-						<visible>Control.IsVisible(54) + !Container.Content(episodes) + !Container.Content(artists) + !Container.Content(albums) + !Container.Content(musicvideos)</visible>
 					</control>
 					<control type="togglebutton" id="619">
 						<description>Update library</description>

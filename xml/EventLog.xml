@@ -12,9 +12,9 @@
 				<include>OpenClose_Right</include>
 				<control type="fixedlist" id="50">
 					<left>490</left>
-					<top>list_y_offset</top>
+					<top>list_top_offset</top>
 					<right>0</right>
-					<bottom>list_y_offset</bottom>
+					<bottom>list_bottom</bottom>
 					<onleft>9000</onleft>
 					<onright>60</onright>
 					<onup>50</onup>
@@ -69,7 +69,7 @@
 							<top>0</top>
 							<right>0</right>
 							<bottom>0</bottom>
-							<texture colordiffuse="button_focus">lists/focus.png</texture>
+							<texture colordiffuse="button_focus">masks/focus.png</texture>
 							<visible>Control.HasFocus(50)</visible>
 						</control>
 						<control type="image">
@@ -133,9 +133,9 @@
 						<aligny>top</aligny>
 						<textoffsetx>40</textoffsetx>
 						<texturenofocus />
-						<texturefocus colordiffuse="button_focus">lists/focus.png</texturefocus>
+						<texturefocus colordiffuse="button_focus">masks/focus.png</texturefocus>
 						<alttexturenofocus></alttexturenofocus>
-						<alttexturefocus colordiffuse="button_focus">lists/focus.png</alttexturefocus>
+						<alttexturefocus colordiffuse="button_focus">masks/focus.png</alttexturefocus>
 						<textoffsety>35</textoffsety>
 						<label>$LOCALIZE[31032]: $LOCALIZE[584]</label>
 						<altlabel>$LOCALIZE[31032]: $LOCALIZE[585]</altlabel>
@@ -149,7 +149,7 @@
 						<height>110</height>
 						<aligny>top</aligny>
 						<texturenofocus />
-						<texturefocus colordiffuse="button_focus">lists/focus.png</texturefocus>
+						<texturefocus colordiffuse="button_focus">masks/focus.png</texturefocus>
 						<textoffsetx>40</textoffsetx>
 						<textoffsety>35</textoffsety>
 					</control>
@@ -172,15 +172,15 @@
 					<fadetime>300</fadetime>
 					<aspectratio aligny="bottom">keep</aspectratio>
 					<texture fallback="DefaultAddon.png">$INFO[ListItem.Icon]</texture>
-					<bordertexture border="21">overlays/shadow.png</bordertexture>
+					<bordertexture border="21" infill="false">overlays/shadow.png</bordertexture>
 					<bordersize>20</bordersize>
 				</control>
 			</control>
 			<control type="scrollbar" id="60">
 				<right>0</right>
-				<top>80</top>
+				<top>list_top_offset</top>
 				<width>12</width>
-				<bottom>80</bottom>
+				<bottom>list_bottom</bottom>
 				<onleft>50</onleft>
 				<onright>9000</onright>
 				<orientation>vertical</orientation>

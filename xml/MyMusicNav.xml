@@ -3,31 +3,24 @@
 	<defaultcontrol always="true">50</defaultcontrol>
 	<backgroundcolor>background</backgroundcolor>
 	<menucontrol>9000</menucontrol>
-	<views>50,51,52,54,55,501,509,510</views>
+	<views>50,51,52,54,56,500.501</views>
 	<controls>
 		<include>DefaultBackground</include>
 		<control type="group">
 			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
 			<include>View_50_List</include>
-			<include>View_51_Poster</include>
+			<include>View_51_PosterFlow</include>
 			<include>View_52_IconWall</include>
-			<include>View_54_InfoWall</include>
-			<include>View_55_WideList</include>
-			<include>View_501_MediaInfo</include>
-			<include>View_509_Flix_Landscape</include>
-			<include>View_510_Post_Card</include>
+			<include>View_54_Flix</include>
+			<include>View_56_FlixList</include>
+			<include>View_500_Wall</include>
+			<include>View_501_WallScape</include>
 			<include>CommonScrollbars</include>
 			<control type="group">
 				<include>OpenClose_Left</include>
-				<visible>Control.Isvisible(54) | Control.IsVisible(55)</visible>
+				<visible>Control.IsVisible(51) | Control.Isvisible(54) | Control.IsVisible(56)</visible>
 				<include>Visible_Left</include>
 				<include>ListThumbInfoPanel</include>
-			</control>
-			<control type="group">
-				<include>OpenClose_Left</include>
-				<visible>Control.Isvisible(50)</visible>
-				<include>Visible_Left</include>
-				<include>ListThumbInfoPanel_MusicArtist</include>
 			</control>
 			<include content="TopBar">
 				<param name="breadcrumbs_label" value="$LOCALIZE[2]" />

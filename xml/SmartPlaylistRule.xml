@@ -8,8 +8,6 @@
 			<width>960</width>
 			<top>330</top>
 			<include content="DialogBackgroundCommons">
-				<param name="width" value="960" />
-				<param name="height" value="500" />
 				<param name="header_label" value="$LOCALIZE[21421]" />
 				<param name="header_id" value="2" />
 			</include>
@@ -64,6 +62,7 @@
 				<align>center</align>
 				<onup>9002</onup>
 				<ondown>15</ondown>
+				<itemgap>dialogbuttons_itemgap</itemgap>
 				<include content="DefaultDialogButton">
 					<param name="id" value="18" />
 					<param name="label" value="$LOCALIZE[186]" />

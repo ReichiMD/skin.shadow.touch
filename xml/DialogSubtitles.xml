@@ -9,24 +9,22 @@
 			<width>1720</width>
 			<control type="group" id="250">
 				<include content="DialogBackgroundCommons">
-					<param name="width" value="1720" />
-					<param name="height" value="750" />
 					<param name="header_label" value="$LOCALIZE[24012]" />
 					<param name="header_id" value="100" />
 				</include>
 				<control type="group">
 					<left>1320</left>
 					<control type="grouplist">
-						<top>110</top>
-						<left>-20</left>
+						<top>125</top>
+						<left>5</left>
 						<onright>150</onright>
 						<onleft>73</onleft>
 						<orientation>vertical</orientation>
 						<include content="DefaultDialogButton">
 							<param name="id" value="160" />
 							<param name="label" value="$LOCALIZE[24120]" />
-							<param name="width" value="420" />
-							<param name="height" value="150" />
+							<param name="width" value="370" />
+							<param name="height" value="100" />
 						</include>
 					</control>
 					<control type="label" id="140">
@@ -48,13 +46,14 @@
 							<width>380</width>
 							<height>50</height>
 							<aspectratio align="center">keep</aspectratio>
-							<texture>DefaultIconInfo.png</texture>
+							<texture colordiffuse="$VAR[UnfcusedTextColor]">DefaultIconInfo.png</texture>
 						</control>
 						<control type="label">
 							<description>notification</description>
 							<width>380</width>
 							<height>30</height>
 							<label>$LOCALIZE[31096]</label>
+							<textcolor>unfocused_text</textcolor>
 							<align>center</align>
 							<aligny>center</aligny>
 						</control>
@@ -64,13 +63,6 @@
 			<control type="group">
 				<top>130</top>
 				<left>360</left>
-				<control type="image">
-					<left>-20</left>
-					<top>-20</top>
-					<width>960</width>
-					<height>640</height>
-					<texture border="40">buttons/dialogbutton-nofo.png</texture>
-				</control>
 				<control type="label">
 					<description>Video label</description>
 					<top>-45</top>
@@ -108,7 +100,7 @@
 							<width>100</width>
 							<height>100</height>
 							<font>font12</font>
-							<textcolor>grey</textcolor>
+							<textcolor>unfocused_text</textcolor>
 							<align>center</align>
 							<aligny>center</aligny>
 							<label>$INFO[ListItem.Label]</label>
@@ -118,7 +110,7 @@
 							<top>60</top>
 							<width>30</width>
 							<height>20</height>
-							<texture>windows/subtitles/icon_close_caption.png</texture>
+							<texture colordiffuse="unfocused_text">windows/subtitles/icon_close_caption.png</texture>
 							<visible>ListItem.property(hearing_imp)</visible>
 						</control>
 						<control type="image">
@@ -126,7 +118,7 @@
 							<top>60</top>
 							<width>60</width>
 							<height>20</height>
-							<texture>windows/subtitles/icon_sync.png</texture>
+							<texture colordiffuse="unfocused_text">windows/subtitles/icon_sync.png</texture>
 							<visible>ListItem.property(sync)</visible>
 						</control>
 						<control type="textbox">
@@ -136,13 +128,14 @@
 							<aligny>center</aligny>
 							<font>font12</font>
 							<label>$INFO[ListItem.Label2]</label>
+							<textcolor>unfocused_text</textcolor>
 						</control>
 						<control type="image">
 							<left>810</left>
 							<top>10</top>
 							<width>100</width>
 							<height>45</height>
-							<texture fallback="flags/starrating/rating0.png">$INFO[ListItem.ActualIcon,flags/starrating/rating,.png]</texture>
+							<texture colordiffuse="unfocused_text" fallback="flags/starrating/rating0.png">$INFO[ListItem.ActualIcon,flags/starrating/rating,.png]</texture>
 							<aspectratio>keep</aspectratio>
 						</control>
 					</itemlayout>
@@ -151,7 +144,7 @@
 							<left>0</left>
 							<right>0</right>
 							<bottom>0</bottom>
-							<texture colordiffuse="button_focus">lists/focus.png</texture>
+							<texture colordiffuse="button_focus">lists/rounded_corners.png</texture>
 							<visible>Control.HasFocus(120)</visible>
 						</control>
 						<control type="image">
@@ -168,7 +161,7 @@
 							<width>100</width>
 							<height>100</height>
 							<font>font12</font>
-							<textcolor>grey</textcolor>
+							<textcolor>focused_text</textcolor>
 							<align>center</align>
 							<aligny>center</aligny>
 							<label>$INFO[ListItem.Label]</label>
@@ -178,7 +171,7 @@
 							<top>60</top>
 							<width>30</width>
 							<height>20</height>
-							<texture>windows/subtitles/icon_close_caption.png</texture>
+							<texture colordiffuse="focused_text">windows/subtitles/icon_close_caption.png</texture>
 							<visible>ListItem.property(hearing_imp)</visible>
 						</control>
 						<control type="image">
@@ -186,7 +179,7 @@
 							<top>60</top>
 							<width>60</width>
 							<height>20</height>
-							<texture>windows/subtitles/icon_sync.png</texture>
+							<texture colordiffuse="focused_text">windows/subtitles/icon_sync.png</texture>
 							<visible>ListItem.property(sync)</visible>
 						</control>
 						<control type="textbox">
@@ -196,19 +189,20 @@
 							<aligny>center</aligny>
 							<font>font12</font>
 							<label>$INFO[ListItem.Label2]</label>
+							<textcolor>focused_text</textcolor>
 						</control>
 						<control type="image">
 							<left>810</left>
 							<top>10</top>
 							<width>100</width>
 							<height>45</height>
-							<texture fallback="flags/starrating/rating0.png">$INFO[ListItem.ActualIcon,flags/starrating/rating,.png]</texture>
+							<texture colordiffuse="focused_text" fallback="flags/starrating/rating0.png">$INFO[ListItem.ActualIcon,flags/starrating/rating,.png]</texture>
 							<aspectratio>keep</aspectratio>
 						</control>
 					</focusedlayout>
 				</control>
 				<control type="scrollbar" id="73">
-					<left>925</left>
+					<left>937</left>
 					<width>12</width>
 					<height>600</height>
 					<onleft>120</onleft>
@@ -221,13 +215,6 @@
 			<control type="group">
 				<left>20</left>
 				<top>130</top>
-				<control type="image">
-					<left>-20</left>
-					<top>-20</top>
-					<width>360</width>
-					<height>520</height>
-					<texture border="40">buttons/dialogbutton-nofo.png</texture>
-				</control>
 				<control type="label">
 					<left>0</left>
 					<top>-50</top>
@@ -237,7 +224,7 @@
 					<align>center</align>
 					<font>font30_title</font>
 					<aligny>top</aligny>
-					<textcolor>button_focus</textcolor>
+					<textcolor>unfocused_text</textcolor>
 					<shadowcolor>black</shadowcolor>
 					<wrapmultiline>true</wrapmultiline>
 				</control>
@@ -259,9 +246,10 @@
 					<scrolltime>200</scrolltime>
 					<include content="DefaultSimpleListLayout">
 						<param name="width" value="320" />
-						<param name="height" value="80" />
+						<param name="height" value="60" />
 						<param name="list_id" value="150" />
 						<param name="align" value="center" />
+						<param name="diffuse" value="masks/focus.png" />
 					</include>
 				</control>
 			</control>
