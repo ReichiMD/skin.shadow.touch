@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>9000</defaultcontrol>
+	<defaultcontrol>9201</defaultcontrol> <!-- Shadow Touch: Focus Bottom Nav instead of side menu -->
 	<backgroundcolor>background</backgroundcolor>
 	<include>NimbusSkinStringsInitialization</include>
 	<controls>
@@ -1016,6 +1016,7 @@
 					</include>
 					<!-- <visible>true</visible> -->
 					<control type="fixedlist" id="9000">
+						<visible>false</visible> <!-- Shadow Touch: Hide Nimbus side menu -->
 						<left>25</left>
 						<top>215</top>
             <width>825</width>
@@ -1262,5 +1263,160 @@
 				</control>
 			</control>
 		</control>
+
+		<!-- ========================================= -->
+		<!-- SHADOW TOUCH: Bottom Navigation Bar -->
+		<!-- ========================================= -->
+		<control type="group" id="9200">
+			<depth>DepthBars</depth>
+			<bottom>0</bottom>
+			<height>120</height>
+			<width>1920</width>
+			<animation effect="fade" start="0" end="100" time="300" delay="300">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+
+			<!-- Background -->
+			<control type="image">
+				<left>0</left>
+				<bottom>0</bottom>
+				<width>1920</width>
+				<height>120</height>
+				<texture colordiffuse="FF000000">colors/white.png</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+
+			<!-- Navigation Buttons -->
+			<control type="fixedlist" id="9201">
+				<left>360</left>
+				<bottom>10</bottom>
+				<width>1200</width>
+				<height>100</height>
+				<movement>1</movement>
+				<focusposition>0</focusposition>
+				<orientation>horizontal</orientation>
+				<onup>2000</onup>
+				<ondown>9201</ondown>
+				<scrolltime tween="sine" easing="out">200</scrolltime>
+
+				<itemlayout width="300" height="100">
+					<!-- Button Background -->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>300</width>
+						<height>100</height>
+						<texture colordiffuse="00FFFFFF">colors/white.png</texture>
+					</control>
+
+					<!-- Icon -->
+					<control type="image">
+						<left>110</left>
+						<top>10</top>
+						<width>80</width>
+						<height>60</height>
+						<texture>$INFO[ListItem.Icon]</texture>
+						<colordiffuse>80FFFFFF</colordiffuse>
+						<aspectratio>keep</aspectratio>
+					</control>
+
+					<!-- Label -->
+					<control type="label">
+						<left>0</left>
+						<bottom>10</bottom>
+						<width>300</width>
+						<height>20</height>
+						<font>font13</font>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+						<textcolor>80FFFFFF</textcolor>
+					</control>
+				</itemlayout>
+
+				<focusedlayout width="300" height="100">
+					<!-- Button Background (Focused) -->
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>300</width>
+						<height>100</height>
+						<texture colordiffuse="00FFFFFF">colors/white.png</texture>
+					</control>
+
+					<!-- Icon (Focused) -->
+					<control type="image">
+						<left>110</left>
+						<top>10</top>
+						<width>80</width>
+						<height>60</height>
+						<texture>$INFO[ListItem.Icon]</texture>
+						<colordiffuse>FFFFFFFF</colordiffuse>
+						<aspectratio>keep</aspectratio>
+						<animation effect="zoom" start="100" end="110" time="200" tween="sine" easing="out">Focus</animation>
+						<animation effect="zoom" start="110" end="100" time="200" tween="sine" easing="out">UnFocus</animation>
+					</control>
+
+					<!-- Label (Focused) -->
+					<control type="label">
+						<left>0</left>
+						<bottom>10</bottom>
+						<width>300</width>
+						<height>20</height>
+						<font>font13</font>
+						<align>center</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+						<textcolor>button_focus</textcolor>
+						<animation effect="fade" start="80" end="100" time="200">Focus</animation>
+						<animation effect="fade" start="100" end="80" time="200">UnFocus</animation>
+					</control>
+
+					<!-- Focus Indicator (Blue underline) -->
+					<control type="image">
+						<left>50</left>
+						<bottom>0</bottom>
+						<width>200</width>
+						<height>4</height>
+						<texture colordiffuse="button_focus">colors/white.png</texture>
+						<aspectratio>stretch</aspectratio>
+						<animation effect="fade" start="0" end="100" time="200">Focus</animation>
+						<animation effect="fade" start="100" end="0" time="200">UnFocus</animation>
+					</control>
+				</focusedlayout>
+
+				<content>
+					<!-- HOME Button -->
+					<item>
+						<label>Home</label>
+						<icon>icons/sidemenu/home.png</icon>
+						<onclick>ActivateWindow(Home)</onclick>
+					</item>
+
+					<!-- LIVE TV Button -->
+					<item>
+						<label>Live TV</label>
+						<icon>icons/sidemenu/livetv.png</icon>
+						<onclick>ActivateWindow(TVGuide)</onclick>
+						<visible>!Skin.HasSetting(HomeMenuNoTVButton)</visible>
+					</item>
+
+					<!-- LIBRARY Button -->
+					<item>
+						<label>Library</label>
+						<icon>icons/sidemenu/movies.png</icon>
+						<onclick>ActivateWindow(Videos,videodb://movies/titles/,return)</onclick>
+					</item>
+
+					<!-- SEARCH Button -->
+					<item>
+						<label>Search</label>
+						<icon>icons/sidemenu/search.png</icon>
+						<onclick>ActivateWindow(1103)</onclick>
+					</item>
+				</content>
+			</control>
+		</control>
+		<!-- END Shadow Touch Bottom Nav -->
+
 	</controls>
 </window>
