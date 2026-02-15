@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="skin.shadow.touch" version="0.0.1" name="Shadow Touch"
-	provider-name="ReichiMD"
+<addon id="skin.shadow.touch" version="0.0.1" name="Shadow Touch" provider-name="ReichiMD">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0" />
 		<import addon="script.nimbus.helper" version="0.0.50"/>
