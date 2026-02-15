@@ -11,14 +11,22 @@
 **Addon ID:** `skin.shadow.touch`
 **Based On:** Nimbus (Kodi 21 Omega)
 **Target Devices:**
-- Samsung S9 FE Tablet (Touch, Landscape 1080p)
-- Nvidia Shield (Remote, Landscape 1080p)
+- Google Pixel 7 (Primary testing device)
+- Samsung S9 FE Tablet (Secondary, when needed)
 
 **Design Philosophy:**
-- Touch-first interface (Netflix/Apple TV style)
-- Minimal/No static images (code-based rendering)
-- Dark theme, modern streaming app aesthetic
+- **Touch-FIRST** (100% focus, no TV compromises!)
+- Netflix/Apple TV/Disney+ style interface
+- Bottom Navigation Bar (thumb-reachable)
+- Vertical Poster Grid (no horizontal scrolling!)
+- Long-Press Overlay for quick actions
+- Dark theme, minimal, modern
 - Lightweight & performant
+
+**Design Reference:** See DESIGN.md for exact specifications!
+**Visual Target:** [Image from Session 3] - Bottom Nav + Grid + Long-Press Overlay
+
+**Later (Optional):** TV/Remote compatibility (but NOT primary focus!)
 
 ---
 
@@ -132,22 +140,34 @@ See **skin-structure.md** for detailed explanations.
 **Current Status:** Nimbus 0.1.38 installed as base - UNMODIFIED
 **Base Skin:** Pure Nimbus (no Shadow Touch modifications yet!)
 
+**DESIGN DECISION (Session 3):** ✅ CONFIRMED
+- **Option B: Full Touch Focus** (no TV/Remote optimization)
+- Design from image: Bottom Nav + Vertical Grid + Long-Press Overlay
+- Later optional: TV compatibility (but not primary goal)
+
 **IMPORTANT:** Nimbus already has:
 - ✅ Touch-first Netflix-style interface
 - ✅ Landscape/Portrait widgets
 - ✅ Full PVR support
 - ✅ Modern dark theme
 
-**Next Steps:**
-1. **USER TESTING:** Test current Nimbus on Samsung S9 FE Tablet
-2. **EVALUATION:** Compare Nimbus with Shadow Touch goals (DESIGN.md)
-3. **PLANNING:** Decide what ACTUALLY needs to be changed:
-   - Do we need bottom nav? (Nimbus has side menu)
-   - Is the grid already vertical? Or still horizontal?
-   - What's missing for touch optimization?
-4. **IMPLEMENTATION:** Only modify what doesn't match our requirements
+**What we WILL change:**
+1. ✅ Replace side menu with **Bottom Navigation Bar**
+2. ✅ Implement **Vertical Poster Grid** (no horizontal scrolling)
+3. ✅ Add **Long-Press Overlay** (quick actions on posters)
+4. ✅ Complete **German translation** (3 strings missing)
+5. ✅ Touch-optimize spacing & targets (60-120px)
 
-**Don't waste time rebuilding what Nimbus already has!**
+**What we KEEP from Nimbus:**
+- ✅ PVR features (Live TV, EPG, Recordings)
+- ✅ Dark theme & modern aesthetic
+- ✅ Helper script (script.nimbus.helper)
+
+**Testing Order:**
+1. **Primary:** Google Pixel 7 (first test on every change)
+2. **Secondary:** Samsung S9 FE Tablet (when needed)
+
+**For Design Questions:** Always check DESIGN.md first!
 
 ---
 
@@ -253,10 +273,24 @@ When starting a new session, DO THIS:
    - Removed misleading "IMPLEMENTED" claims
    - Clarified: Nimbus is UNMODIFIED base
 
+**MAJOR DESIGN DECISIONS:**
+4. ✅ **DECISION: Option B - Full Touch Focus!**
+   - No TV/Remote optimization (that's optional later)
+   - 100% focus on touch-first experience
+   - Design from user-provided image confirmed as target
+5. ✅ **Testing Strategy Defined:**
+   - Primary: Google Pixel 7 (test first!)
+   - Secondary: Samsung S9 FE Tablet (when needed)
+6. ✅ **Language: German**
+   - Complete all UI strings in German
+   - Fix 3 missing strings in language/resource.language.de_de/strings.po
+   - All skin settings menu in German
+
 **Next Priority:**
-- USER TESTING: Install & test Nimbus on Samsung S9 FE
-- EVALUATE: What Nimbus already provides vs. what we need
-- PLAN: Minimal changes to achieve Shadow Touch goals
+1. Complete German translation (3 missing strings)
+2. Implement Bottom Navigation Bar (replace Nimbus side menu)
+3. Implement Vertical Poster Grid
+4. Add Long-Press Overlay for quick actions
 
 ### Session N (add date):
 - [Future sessions add notes here]
