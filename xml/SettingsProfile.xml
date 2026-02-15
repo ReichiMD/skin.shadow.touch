@@ -4,32 +4,22 @@
 	<backgroundcolor>background</backgroundcolor>
 	<controls>
 		<include>DefaultBackground</include>
-		<control type="multiimage">
-			<depth>DepthBackground</depth>
-			<include>FullScreenDimensions</include>
-			<aspectratio>scale</aspectratio>
-			<fadetime>600</fadetime>
-			<animation effect="zoom" center="auto" end="102,102" time="0" condition="Integer.IsGreater(System.StereoscopicMode,0)">conditional</animation>
-			<animation effect="fade" start="0" end="100" time="400">WindowOpen</animation>
-			<animation effect="fade" start="100" end="0" time="300">WindowClose</animation>
-			<animation effect="fade" time="400">VisibleChange</animation>
-			<imagepath background="true" colordiffuse="bg_overlay">$INFO[Skin.String(HomeFanart.path)]settings$INFO[Skin.String(HomeFanart.ext)]</imagepath>
-			<visible>!Player.HasMedia + !String.IsEmpty(Skin.String(HomeFanart.path))</visible>
-		</control>
 		<control type="group" id="9100">
 			<include>OpenClose_Right</include>
 			<left>472</left>
 			<control type="image">
 				<top>130</top>
-				<right>0</right>
+				<left>25</left>
+				<right>25</right>
 				<height>3</height>
-				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+				<texture colordiffuse="$VAR[FocusColorTheme]" border="2">dialogs/separator-grey.png</texture>
 			</control>
 			<control type="image">
 				<bottom>134</bottom>
-				<right>0</right>
+				<left>25</left>
+				<right>25</right>
 				<height>3</height>
-				<texture colordiffuse="button_focus" border="2">dialogs/separator-grey.png</texture>
+				<texture colordiffuse="$VAR[FocusColorTheme]" border="2">dialogs/separator-grey.png</texture>
 			</control>
 			<control type="panel" id="2">
 				<top>148</top>
@@ -47,8 +37,8 @@
 						<top>5</top>
 						<width>320</width>
 						<height>380</height>
-						<texture>dialogs/dialog-bg-nobo.png</texture>
-						<bordertexture border="21">overlays/shadow.png</bordertexture>
+						<texture colordiffuse="dialog_bg">masks/addons.png</texture>
+						<!-- <bordertexture border="21" infill="false">overlays/shadow.png</bordertexture> -->
 						<bordersize>20</bordersize>
 					</control>
 					<control type="image">
@@ -56,8 +46,8 @@
 						<top>38</top>
 						<width>215</width>
 						<height>215</height>
-						<aspectratio>scale</aspectratio>
-						<texture fallback="DefaultUser.png">$INFO[Listitem.Icon]</texture>
+						<!-- <aspectratio>scale</aspectratio> -->
+						<texture diffuse="masks/addons.png" fallback="DefaultUser.png">$INFO[Listitem.Icon]</texture>
 					</control>
 					<control type="label">
 						<left>10</left>
@@ -67,6 +57,7 @@
 						<align>center</align>
 						<aligny>top</aligny>
 						<label>$INFO[ListItem.Label]</label>
+						<textcolor>unfocused_text</textcolor>
 					</control>
 					<control type="label">
 						<left>10</left>
@@ -77,6 +68,7 @@
 						<align>center</align>
 						<aligny>top</aligny>
 						<label>$LOCALIZE[31029]:</label>
+						<textcolor>unfocused_text</textcolor>
 						<visible>!String.IsEqual(Listitem.Label,$LOCALIZE[20058])</visible>
 					</control>
 					<control type="label">
@@ -88,26 +80,25 @@
 						<align>center</align>
 						<aligny>top</aligny>
 						<label fallback="13170">$INFO[ListItem.Label2]</label>
+						<textcolor>unfocused_text</textcolor>
 						<visible>!String.Contains(Listitem.Label,$LOCALIZE[20058])</visible>
 					</control>
 				</itemlayout>
 				<focusedlayout height="390" width="354">
 					<control type="group">
-						<animation effect="zoom" start="100" end="105" time="200" tween="sine" easing="inout" center="160,190">Focus</animation>
-						<animation effect="zoom" start="105" end="100" time="200" tween="sine" easing="inout" center="160,190">UnFocus</animation>
 						<control type="image">
 							<top>5</top>
 							<width>320</width>
 							<height>380</height>
-							<texture>dialogs/dialog-bg-nobo.png</texture>
-							<bordertexture border="21">overlays/shadow.png</bordertexture>
+							<texture colordiffuse="dialog_bg">masks/addons.png</texture>
+							<!-- <bordertexture border="21" infill="false">overlays/shadow.png</bordertexture> -->
 							<bordersize>20</bordersize>
 						</control>
 						<control type="image">
 							<top>5</top>
 							<width>320</width>
 							<height>380</height>
-							<texture colordiffuse="button_focus">colors/grey.png</texture>
+							<texture colordiffuse="$VAR[FocusColorTheme]">masks/addons.png</texture>
 							<bordersize>20</bordersize>
 							<include>Animation_FocusTextureFade</include>
 						</control>
@@ -116,8 +107,8 @@
 							<top>38</top>
 							<width>215</width>
 							<height>215</height>
-							<aspectratio>scale</aspectratio>
-							<texture fallback="DefaultUser.png">$INFO[Listitem.Icon]</texture>
+							<!-- <aspectratio>scale</aspectratio> -->
+							<texture diffuse="masks/addons.png" fallback="DefaultUser.png">$INFO[Listitem.Icon]</texture>
 						</control>
 						<control type="label">
 							<left>10</left>
@@ -127,6 +118,7 @@
 							<align>center</align>
 							<aligny>top</aligny>
 							<label>$INFO[ListItem.Label]</label>
+							<textcolor>$VAR[FocusedTextColorVar]</textcolor>
 						</control>
 						<control type="label">
 							<left>10</left>
@@ -137,6 +129,7 @@
 							<align>center</align>
 							<aligny>top</aligny>
 							<label>$LOCALIZE[31029]:</label>
+							<textcolor>$VAR[FocusedTextColorVar]</textcolor>
 							<visible>!String.Contains(Listitem.Label,$LOCALIZE[20058])</visible>
 						</control>
 						<control type="label">
@@ -148,6 +141,7 @@
 							<align>center</align>
 							<aligny>top</aligny>
 							<label fallback="13170">$INFO[ListItem.Label2]</label>
+							<textcolor>$VAR[FocusedTextColorVar]</textcolor>
 							<visible>!String.Contains(Listitem.Label,$LOCALIZE[20058])</visible>
 						</control>
 					</control>
@@ -168,7 +162,7 @@
 				</control>
 				<control type="button" id="5">
 					<label>$LOCALIZE[31058]</label>
-					<label2>[B]$INFO[System.ProfileAutoLogin][/B]</label2>
+					<label2>$INFO[System.ProfileAutoLogin]</label2>
 					<include>DefaultSettingButton</include>
 					<enable>!Window.IsVisible(ProfileSettings) + !System.HasLoginScreen</enable>
 				</control>
@@ -177,13 +171,13 @@
 		<control type="group">
 			<depth>DepthContentPanel</depth>
 			<include>OpenClose_Left</include>
-			<include content="ContentPanel">
+			<!-- <include content="ContentPanel">
 				<param name="width" value="530" />
-			</include>
+			</include> -->
 			<control type="list" id="9000">
-				<left>0</left>
+				<left>25</left>
 				<top>130</top>
-				<width>470</width>
+				<width>445</width>
 				<height>567</height>
 				<onleft>9100</onleft>
 				<onright>9100</onright>
@@ -196,15 +190,16 @@
 						<right>30</right>
 						<bottom>0</bottom>
 						<label>$INFO[ListItem.Label]</label>
+						<textcolor>unfocused_text</textcolor>
 						<font>font37</font>
 						<aligny>center</aligny>
 					</control>
 				</itemlayout>
 				<focusedlayout height="85" width="470">
 					<control type="image">
-						<right>0</right>
+						<right>50</right>
 						<bottom>0</bottom>
-						<texture colordiffuse="button_focus">lists/focus.png</texture>
+						<texture colordiffuse="$VAR[FocusColorTheme]">masks/focus.png</texture>
 						<animation effect="fade" start="100" end="50" time="40" condition="!Control.HasFocus(9000)">Conditional</animation>
 					</control>
 					<control type="label">
@@ -212,6 +207,7 @@
 						<right>30</right>
 						<bottom>0</bottom>
 						<label>$INFO[ListItem.Label]</label>
+						<textcolor>$VAR[FocusedTextColorVar]</textcolor>
 						<font>font37</font>
 						<aligny>center</aligny>
 					</control>
@@ -231,7 +227,7 @@
 			</control>
 		</control>
 		<include content="TopBar">
-			<param name="breadcrumbs_label" value="$LOCALIZE[10034]" />
+			<param name="breadcrumbs_label" value="[COLOR unfocused_text]$LOCALIZE[10034][/COLOR]" />
 		</include>
 		<include>BottomBar</include>
 	</controls>

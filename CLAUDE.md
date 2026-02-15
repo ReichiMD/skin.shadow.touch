@@ -9,7 +9,7 @@
 
 **Name:** Shadow Touch
 **Addon ID:** `skin.shadow.touch`
-**Based On:** EstuaryPVR+ Omega (Kodi 21.3)
+**Based On:** Nimbus (Kodi 21 Omega)
 **Target Devices:**
 - Samsung S9 FE Tablet (Touch, Landscape 1080p)
 - Nvidia Shield (Remote, Landscape 1080p)
@@ -29,7 +29,7 @@ Skin-Deep-Black/
 ├── CLAUDE.md           ← YOU ARE HERE (session context)
 ├── ROADMAP.md          ← Development phases & checkboxes
 ├── DESIGN.md           ← VISUAL DESIGN SPEC (exact measurements!)
-├── skin-structure.md   ← Kodi skin concepts reference
+├── NIMBUS-STRUCTURE.md ← Nimbus architecture reference (READ THIS!)
 ├── addon.xml           ← Skin metadata & dependencies
 ├── xml/                ← All UI definitions
 │   ├── Home.xml        ← Main home screen
@@ -66,9 +66,9 @@ Skin-Deep-Black/
 - **Implementation:** Custom DialogVideoInfo.xml variant
 
 ### 4. PVR/Live TV
-- **Keep:** EstuaryPVR+ logic (already optimized)
-- **Adapt:** Visual styling to dark/minimal theme
-- **Retain:** Now/Next, EPG, recordings features
+- **Keep:** Nimbus PVR features (already implemented)
+- **Adapt:** Visual styling to match our dark/minimal theme
+- **Retain:** EPG, recordings, channels features
 
 ---
 
@@ -142,7 +142,7 @@ See **skin-structure.md** for detailed explanations.
 
 ### DO NOT:
 - Delete PVR-related XML files (we need that logic!)
-- Remove EstuaryPVR+ attribution (GPL license!)
+- Remove Nimbus attribution (CC BY-SA 4.0 license!)
 - Commit without testing on target device
 - Use `ActivateWindow()` without checking window IDs in code
 
@@ -157,7 +157,7 @@ See **skin-structure.md** for detailed explanations.
 ## 🔗 Important Links
 
 **Base Skin:**
-- [EstuaryPVR+ Omega GitHub](https://github.com/SplitEnz/skin.estuary.pvr.plus.omega)
+- [Nimbus Skin GitHub](https://github.com/ivarbrandt/skin.nimbus)
 
 **Kodi Documentation:**
 - [Skin Development Docs](https://kodi.wiki/view/Skin_development)
@@ -176,10 +176,10 @@ See **skin-structure.md** for detailed explanations.
 When starting a new session, DO THIS:
 
 1. ✅ Read this file (CLAUDE.md)
-2. ✅ Read ROADMAP.md to see current phase
-3. ✅ **Read DESIGN.md** - EXACT visual specs (measurements, colors, layouts)
-4. ✅ Check last commit message for context
-5. ✅ Review skin-structure.md if working with unfamiliar XML
+2. ✅ Read NIMBUS-STRUCTURE.md - Nimbus architecture & XML guide
+3. ✅ Read ROADMAP.md to see current phase
+4. ✅ **Read DESIGN.md** - EXACT visual specs (measurements, colors, layouts)
+5. ✅ Check last commit message for context
 6. ✅ Ask user for device testing availability before major changes
 
 **CRITICAL:** DESIGN.md contains EXACT measurements and specs. Do NOT deviate!
@@ -189,60 +189,50 @@ When starting a new session, DO THIS:
 ## 📝 Notes for Future Sessions
 
 ### Session 1 (2025-02-14):
-- Cloned EstuaryPVR+ Omega as base
-- Created documentation structure (CLAUDE.md, ROADMAP.md, skin-structure.md, DESIGN.md)
+- Started with EstuaryPVR+ Omega as base
+- Created full documentation structure (CLAUDE.md, ROADMAP.md, DESIGN.md, KNOWN_ISSUES.md)
 - Chose name: Shadow Touch (`skin.shadow.touch`)
-- Base skin has extensive PVR features already (good!)
+- Implemented Phase 1 & 2 prototype (Bottom Nav + Grid)
+- Discovered critical issues during user testing
+- Realized EstuaryPVR+ not optimal for Netflix-style touch UI
 
-**Phase 1 COMPLETE:** Bottom Navigation Bar
-  - 4 buttons: Home, Live TV, Library, Search
-  - Fixed horizontal bar at bottom (120px height)
-  - Touch-optimized (300×100px buttons)
-  - Old side menu disabled (visible=false)
+### Session 2 (2025-02-15):
+**MAJOR DECISION:** Switched base skin from EstuaryPVR+ to Nimbus
 
-**Phase 2 PARTIAL:** Vertical Poster Grid
-  - Panel container created (ID 6100, 7×2 layout)
-  - Poster items: 240×360px with focus animations
-  - Content binding: library://video/movies/titles/
-  - Navigation: Grid ↔ Bottom Nav connected
+**Reasoning:**
+- Nimbus is touch-first, landscape-optimized (perfect for tablets!)
+- Netflix-style design already built-in (saves ~12h work)
+- Still has full PVR support (15+ PVR files like EstuaryPVR+)
+- Modern code-base, less legacy cleanup needed
+- Only lost ~15 minutes of code work (Phase 1+2 incomplete anyway)
 
-**Documentation Created:**
-  - DESIGN.md: Complete visual specification (colors, measurements, layouts)
-  - KNOWN_ISSUES.md: Critical bugs and solutions for v0.0.2
-  - .github/workflows/release.yml: GitHub Actions for ZIP releases
-  - .gitignore: Exclude ZIP packages from git
+**Migration Process:**
+1. ✅ Backed up all documentation (CLAUDE.md, DESIGN.md, ROADMAP.md, KNOWN_ISSUES.md)
+2. ✅ Deleted all EstuaryPVR+ files
+3. ✅ Cloned Nimbus (v0.1.38) as new base
+4. ✅ Restored documentation with updates
+5. ✅ Changed addon.xml (ID: skin.shadow.touch, version: 0.0.1)
+6. ✅ Created NIMBUS-STRUCTURE.md (architecture reference)
+7. ⏳ Implementing Bottom Nav in Nimbus context
+8. ⏳ Implementing Vertical Grid in Nimbus context
 
-**CRITICAL ISSUES DISCOVERED (User Testing):**
-  1. ❌ No Settings button in Bottom Nav → User locked out of settings!
-  2. ❌ Vertical Grid not showing → Home screen shows old widgets
-  3. ⚠️ Side menu disabled but no alternative navigation
+**What We Kept:**
+- All documentation (updated for Nimbus)
+- Design philosophy and goals
+- Target devices and requirements
+- GitHub workflows (.github/workflows/release.yml)
 
-**Root Causes Identified:**
-  - Missing 5th button (Settings) in Bottom Nav (only 4 buttons)
-  - No `<defaultcontrol>` set in Home.xml → Grid never gets focus
-  - Group 2000 (old widgets) may have conflicting visibility conditions
-  - User cannot access Kodi settings without side menu or Settings button
+**What Changed:**
+- Base skin: Nimbus instead of EstuaryPVR+
+- License: CC BY-SA 4.0 (Nimbus) + GPL v2 (code parts)
+- Starting fresh with Phase 1 (but much faster path to goal!)
 
-**Solutions Documented in KNOWN_ISSUES.md:**
-  - Fix 1: Add Settings button (5th button, 1500px width, 210px left offset)
-  - Fix 2: Set `<defaultcontrol always="true">6100</defaultcontrol>`
-  - Fix 3: Completely remove Group 2000 instead of just hiding it
-  - Workarounds: Use Kodi remote app, Android back button, or switch skins temporarily
-
-**Installation Issues Resolved:**
-  - GitHub repo ZIP has wrong folder name (Skin-Deep-Black-claude-...)
-  - Created proper Kodi addon ZIP with correct structure (skin.shadow.touch/)
-  - Added GitHub Actions workflow for automatic release ZIPs (triggered by tags)
-  - User successfully installed on Pixel 7 (Kodi 21.2)
-
-**Testing Platform:** Google Pixel 7 (Android, Kodi 21.2 Omega)
-
-**Status:** v0.0.1-alpha released, critical bugs prevent usage, fixes ready for v0.0.2
+**Status:** Fresh start with better foundation, documentation preserved
 
 ### Session N (add date):
 - [Future sessions add notes here]
 
 ---
 
-**Last Updated:** 2025-02-14
-**Project Status:** Initial Setup Phase
+**Last Updated:** 2025-02-15
+**Project Status:** Migrating to Nimbus Base

@@ -16,6 +16,18 @@ msgstr ""
 "Language: en_GB\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgctxt "Addon Summary"
+msgid "Estuary skin by phil65. (Kodi's default skin)"
+msgstr ""
+
+msgctxt "Addon Description"
+msgid "Estuary is the default skin for Kodi 17.0 and above. It attempts to be easy for first time Kodi users to understand and use."
+msgstr ""
+
+msgctxt "Addon Disclaimer"
+msgid "Estuary is the default skin for Kodi, removing it may cause issues"
+msgstr ""
+
 #: /xml/Home.xml /xml/DialogSeekBar.xml
 msgctxt "#31000"
 msgid "Now playing"
@@ -48,17 +60,17 @@ msgstr ""
 
 #: /xml/Home.xml
 msgctxt "#31006"
-msgid "Random Movies"
+msgid "Random movies"
 msgstr ""
 
 #: /xml/Home.xml
 msgctxt "#31007"
-msgid "Unwatched Movies"
+msgid "Unwatched movies"
 msgstr ""
 
 #: /xml/SkinSettings.xml
 msgctxt "#31008"
-msgid "Enable Category Widgets"
+msgid "Enable category widgets"
 msgstr ""
 
 #: /xml/MyVideoNav.xml
@@ -68,39 +80,39 @@ msgstr ""
 
 #: /xml/Home.xml
 msgctxt "#31010"
-msgid "Continue Watching"
+msgid "In progress movies"
 msgstr ""
 
 #: /xml/Home.xml
 msgctxt "#31011"
-msgid "Most Played Albums"
+msgid "Most played albums"
 msgstr ""
 
 #: /xml/Home.xml
 msgctxt "#31012"
-msgid "Random Albums"
+msgid "Random albums"
 msgstr ""
 
 #: /xml/Home.xml
 msgctxt "#31013"
-msgid "Random Artists"
+msgid "Random artists"
 msgstr ""
 
 #: /xml/Home.xml
 msgctxt "#31014"
-msgid "Unplayed Albums"
+msgid "Unplayed albums"
 msgstr ""
 
 #. home screen recordings widget: recent tv / radio recordings
 #: /xml/Home.xml
 msgctxt "#31015"
-msgid "Recent Recordings"
+msgid "Recent recordings"
 msgstr ""
 
 #. home screen channel widget: recently played tv channels. (please note that in some non-english languages #31018 and #31016 might not be equal)
 #: /xml/Home.xml
 msgctxt "#31016"
-msgid "Playing Now on Recently Watched Channels"
+msgid "Recently played channels"
 msgstr ""
 
 #: /xml/DialogVideoInfo.xml
@@ -111,7 +123,7 @@ msgstr ""
 #. home screen channel widget: recently played radio channels. (please note that in some non-english languages #31018 and #31016 might not be equal)
 #: /xml/Home.xml
 msgctxt "#31018"
-msgid "Recently Played Radio Channels"
+msgid "Recently played channels"
 msgstr ""
 
 #: /xml/Home.xml /xml/MyWeather.xml
@@ -169,6 +181,8 @@ msgid "Last logged in"
 msgstr ""
 
 #: /xml/SettingsSystemInfo.xml
+#: /xml/DialogPlayerProcessInfo.xml
+#. Label to show the system memory usage
 msgctxt "#31030"
 msgid "System memory usage"
 msgstr ""
@@ -370,7 +384,7 @@ msgstr ""
 
 #: /xml/Home.xml
 msgctxt "#31075"
-msgid "Movie Sets"
+msgid "Movie sets"
 msgstr ""
 
 #empty strings from id 31076 to 31078
@@ -444,6 +458,12 @@ msgid "Select your Kodi user profile[CR]to login and continue"
 msgstr ""
 
 #. viewtype name
+#: /xml/View_51_PosterFlow.xml
+msgctxt "#310981"
+msgid "PosterFlow"
+msgstr ""
+
+#. viewtype name
 #: /xml/View_52_IconWall.xml
 msgctxt "#31099"
 msgid "IconWall"
@@ -456,15 +476,27 @@ msgid "Shift"
 msgstr ""
 
 #. viewtype name
-#: /xml/View_54_InfoWall.xml
+#: /xml/View_54_Flix.xml
 msgctxt "#31101"
-msgid "InfoWall"
+msgid "Flix"
+msgstr ""
+
+#. viewtype name
+#: /xml/View_55_FlixScape.xml
+msgctxt "#311011"
+msgid "FlixScape"
 msgstr ""
 
 #. viewtype name
 #: /xml/View_500_Wall.xml
 msgctxt "#31102"
 msgid "Wall"
+msgstr ""
+
+#. viewtype name
+#: /xml/View_501_WallScape.xml
+msgctxt "#311021"
+msgid "WallScape"
 msgstr ""
 
 #: /xml/SmartPlaylistRule.xml
@@ -488,9 +520,9 @@ msgid "Teletext"
 msgstr ""
 
 #. viewtype name
-#: /xml/View_55_WideList.xml
+#: /xml/View_56_FlixList.xml
 msgctxt "#31107"
-msgid "WideList"
+msgid "FlixList"
 msgstr ""
 
 #empty strings from id 31108 to 31109
@@ -562,7 +594,7 @@ msgstr ""
 
 #: /xml/DialogVideoInfo.xml
 msgctxt "#31123"
-msgid "Same Director"
+msgid "Same director"
 msgstr ""
 
 #empty string with id 31124
@@ -628,21 +660,25 @@ msgid "Click here to see latest changes..."
 msgstr ""
 
 #: /xml/DialogPlayerProcessInfo.xml
+#. Label to show PVR info page
 msgctxt "#31137"
 msgid "PVR"
 msgstr ""
 
 #: /xml/DialogPlayerProcessInfo.xml
+#. Label to show player info page
 msgctxt "#31138"
 msgid "Player"
 msgstr ""
 
 #: /xml/DialogPlayerProcessInfo.xml
+#. Label to show video decoder name
 msgctxt "#31139"
 msgid "Video decoder"
 msgstr ""
 
 #: /xml/DialogPlayerProcessInfo.xml
+#. Label to show the video pixel format
 msgctxt "#31140"
 msgid "Pixel format"
 msgstr ""
@@ -697,12 +733,12 @@ msgstr ""
 
 #: /xml/Home.xml
 msgctxt "#31151"
-msgid "Unwatched Music Videos"
+msgid "Unwatched music videos"
 msgstr ""
 
 #: /xml/Home.xml
 msgctxt "#31152"
-msgid "Random Music Videos"
+msgid "Random music videos"
 msgstr ""
 
 #: /xml/Includes.xml
@@ -787,7 +823,7 @@ msgstr ""
 #. Label of a setting
 #: /xml/SkinSettings.xml
 msgctxt "#31168"
-msgid "Show Posters Instead of Thumbs For Music Videos"
+msgid "Show posters instead of thumbs for musicvideos"
 msgstr ""
 
 #. Description label for skin settings area
@@ -796,632 +832,49 @@ msgctxt "#31169"
 msgid "Artwork related settings."
 msgstr ""
 
+#: /xml/SkinSettings.xml
+#. Label for OSD settings category
 msgctxt "#31170"
-msgid "Genre"
+msgid "On screen display"
 msgstr ""
 
+#: /xml/SkinSettings.xml
+#. Helper text for the label of OSD settings category
 msgctxt "#31171"
-msgid "Elapsed"
+msgid "On screen display (OSD) related settings"
 msgstr ""
 
+#: /xml/SkinSettings.xml
+#. Setting Automatically close video OSD
 msgctxt "#31172"
-msgid "Remaining"
-msgstr ""
-
-msgctxt "#31173"
-msgid "Duration"
-msgstr ""
-
-msgctxt "#31174
-msgid "Airing Now"
-msgstr ""
-
-msgctxt "#31175"
-msgid "Up Next" 
-msgstr ""
-
-msgctxt "#31176"
-msgid "Recorded On"
-msgstr ""
-
-msgctxt "#31177"
-msgid "Recording Time"
-msgstr ""
-
-msgctxt "#31178"
-msgid "Parental Guidance Rating"
-msgstr ""
-
-msgctxt "#31179"
-msgid "Recording Space Available"
-msgstr ""
-
-msgctxt "#31180"
-msgid "Premiered"
-msgstr ""
-
-msgctxt "#31181"
-msgid "Current View"
-msgstr ""
-
-msgctxt "#31182"
-msgid "PVR Artwork On"
-msgstr ""
-
-msgctxt "#31183"
-msgid "Enable Next Up for Live TV"
-msgstr ""
-
-msgctxt "#31184"
-msgid "Track"
-msgstr ""
-
-msgctxt "#31185"
-msgid "Album"
-msgstr ""
-
-msgctxt "#31186"
-msgid "Latest Movies"
-msgstr ""
-
-msgctxt "#31187"
-msgid "Latest Episodes"
-msgstr ""
-
-msgctxt "#31188"
-msgid "TV Box Sets"
-msgstr ""
-
-msgctxt "#31189"
-msgid "Amazon Instant"
-msgstr ""
-
-msgctxt "#31190"
-msgid "Netflix"
-msgstr ""
-
-msgctxt "#31191"
-msgid "Plex"
-msgstr ""
-
-msgctxt "#31192"
-msgid "USTV Now"
-msgstr ""
-
-msgctxt "#31193"
-msgid "iplayer"
-msgstr ""
-
-msgctxt "#31194"
-msgid "Show Plot"
-msgstr ""
-
-msgctxt "#31195"
-msgid "Display Actors"
-msgstr ""
-
-msgctxt "#31196"
-msgid "Press OK to Start Instant Record"
-msgstr ""
-
-msgctxt "#31197"
-msgid "Display OSD Guide"
-msgstr ""
-
-msgctxt "#31198"
-msgid "Display OSD Channel Guide"
-msgstr ""
-
-msgctxt "#31199"
-msgid "Switch Back to Last Channel"
-msgstr ""
-
-msgctxt "#31200"
-msgid "Press OK to Stop Instant Record" 
-msgstr ""
-
-msgctxt "#31201"
-msgid "Display TV Guide Information"
-msgstr ""
-
-msgctxt "#31202"
-msgid "Stop Playback"
-msgstr ""
-
-msgctxt "#31203"
-msgid "Fast Forward"
-msgstr ""
-
-msgctxt "#31204"
-msgid "Home Menu"
-msgstr ""
-
-msgctxt "#31205"
-msgid "Enable Subtitles"
-msgstr ""
-
-msgctxt "#31206"
-msgid "Teletext"
-msgstr ""
-
-msgctxt "#31207"
-msgid "Display PVR Info & Processinfo"
-msgstr ""
-
-msgctxt "#31208"
-msgid "Play/Pause Current Programme"
-msgstr ""
-
-msgctxt "#31209"
-msgid "Enable PVR Settings"
-msgstr ""
-
-msgctxt "#31210"
-msgid "Display Plot Information"
-msgstr ""
-
-msgctxt "#31211"
-msgid "Pause/Play"
-msgstr ""
-
-msgctxt "#31212"
-msgid "Processinfo"
-msgstr ""
-
-msgctxt "#31213"
-msgid "Display Bookmarks"
-msgstr ""
-
-msgctxt "#31214"
-msgid "Display Artist Biography"
-msgstr ""
-
-msgctxt "#31215"
-msgid "Enlarge Bio"
-msgstr ""
-
-msgctxt "#31216"
-msgid "PVR Settings"
-msgstr ""
-
-msgctxt "#31217"
-msgid "PVR Artwork related settings exclusive to the EstuaryPVR+ Skin"
-msgstr ""
-
-msgctxt "#31218"
-msgid "Display End Time Media Flag"
-msgstr ""
-
-msgctxt "#31219"
-msgid "Director"
-msgstr ""
-
-msgctxt "#31220"
-msgid "Writer"
-msgstr ""
-
-msgctxt "#31221" 
-msgid "Hrs"
-msgstr ""
-
-msgctxt "#31222"
-msgid "mins"
-msgstr ""
-
-msgctxt "#31223"
-msgid "Hr"
-msgstr ""
-
-msgctxt "#31224"
-msgid "h"
-msgstr ""
-
-msgctxt "#31225"
-msgid "m"
-msgstr ""
-
-msgctxt "#31226"
-msgid "00"
-msgstr ""
-
-msgctxt "#31227"
-msgid "TV"
-msgstr ""
-
-msgctxt "#31228"
-msgid "Season"
-msgstr ""
-
-msgctxt "#31229"
-msgid "Première"
-msgstr ""
-
-msgctxt "#31230"
-msgid "Secs"
-msgstr ""
-
-msgctxt "#31231"
-msgid "Skin Default (5 Seconds)"
-msgstr ""
-
-msgctxt "#31232"
-msgid "3 Seconds"
-msgstr ""
-
-msgctxt "#31233"
-msgid "10 Seconds"
-msgstr ""
-
-msgctxt "#31234"
-msgid "15 Seconds"
-msgstr ""
-
-msgctxt "#31235"
-msgid "30 Seconds"
-msgstr ""
-
-msgctxt "#31236"
-msgid "Select Time Required to Auto Close Video OSD" 
-msgstr ""
-
-msgctxt "#31237"
-msgid "Use Backend Artwork" 
-msgstr ""
-
-msgctxt "#31238"
-msgid "Use Skin Helper Artwork" 
-msgstr ""
-
-msgctxt "#31239"
-msgid "Use Local PVR Artwork" 
-msgstr ""
-
-msgctxt "#31240"
-msgid "Display Channel Groups" 
-msgstr ""
-
-msgctxt "#31241"
-msgid "Display PVR Genre Colours" 
-msgstr ""
-
-msgctxt "#31242"
-msgid "Enable 'Next-Up' TV Banner" 
-msgstr "" 
-
-msgctxt "#31243"
-msgid "General PVR settings exclusive to the EstuaryPVR+ Skin"
-msgstr "" 
-
-msgctxt "#31244"
-msgid "OSD related settings"
-msgstr "" 
-
-# 31245 to 31499 are Empty and available strings
-
-msgctxt "#31500"
-msgid "Close Video OSD automatically after"
-msgstr ""
-
-msgctxt "#31501"
-msgid "Disabled"
-msgstr ""
-
-msgctxt "#31502"
-msgid "3 Seconds"
-msgstr ""
-
-msgctxt "#31503"
-msgid "5 Seconds"
-msgstr ""
-
-msgctxt "#31504"
-msgid "7 Seconds"
-msgstr ""
-
-msgctxt "#31505"
-msgid "10 Seconds"
-msgstr ""
-
-msgctxt "#31506"
-msgid "15 Seconds"
-msgstr ""
-
-msgctxt "#31507"
-msgid "Continue Watching"
-msgstr ""
-
-msgctxt "#31508"
-msgid "Display Top-Bar Breadcrumb Labels (Left-Hand Side)"
-msgstr ""
-
-msgctxt "#31509"
-msgid "Display Weather Info on Top-Bar"
-msgstr ""
-
-msgctxt "#31510"
-msgid "Display Media Flags"
-msgstr ""
-
-msgctxt "#31511"
-msgid "TV Channel Groups"
-msgstr ""
-
-msgctxt "#31512"
-msgid "Recently Added Movies"
-msgstr ""
-
-msgctxt "#31513"
-msgid "Watched"
-msgstr ""
-
-msgctxt "#31514"
-msgid "4K Movies"
-msgstr ""
-
-msgctxt "#31515"
-msgid "My Watchlist"
-msgstr ""
-
-msgctxt "#31516"
-msgid "Recently Added Episodes"
-msgstr ""
-
-msgctxt "#31517"
-msgid "In Progress TV Shows"
-msgstr ""
-
-msgctxt "#31518"
-msgid "Unwatched Episodes Available"
-msgstr ""
-
-msgctxt "#31519"
-msgid "Recently Played Albums"
-msgstr ""
-
-msgctxt "#31520"
-msgid "Recently Added Albums"
-msgstr ""
-
-msgctxt "#31521"
-msgid "Recently Added Music Videos"
-msgstr ""
-
-msgctxt "#31522"
-msgid "Radio Channel Groups"
-msgstr ""
-
-# 31523 is an empty and available string
-
-msgctxt "#31524"
-msgid "Set Number of Hours to Display on EPG Timeline" 
-msgstr ""
-
-msgctxt "#31525"
-msgid "Skin Default (2 Hours)"
-msgstr ""
-
-msgctxt "#31526"
-msgid "1 Hour"
-msgstr ""
-
-msgctxt "#31527"
-msgid "1.5 Hours"
-msgstr ""
-
-msgctxt "#31528"
-msgid "Skin Default (2 Hours)"
-msgstr ""
-
-msgctxt "#31529"
-msgid "2.5 Hours"
-msgstr ""
-
-msgctxt "#31530"
-msgid "3 Hours"
-msgstr ""
-
-msgctxt "#31531"
-msgid "4 Hours"
-msgstr ""
-
-msgctxt "#31532"
-msgid "Set Number of Hours to Display on EPG Timeline" 
-msgstr ""
-
-msgctxt "#31533"
-msgid "Feature Film"
-msgstr ""
-
-msgctxt "#40410"
-msgid "Not Listed"
-msgstr ""
-
-
-msgctxt "#31535"
 msgid "Automatically close video OSD"
 msgstr ""
 
-msgctxt "#31536"
+#: /xml/SkinSettings.xml
+#. Setting auto close time for video osd
+msgctxt "#31173"
 msgid "Video OSD autoclose time (seconds)"
 msgstr ""
 
-msgctxt "#31537"
+#: /xml/SkinSettings.xml
+#. Setting to control what happens when clicking a music album on the home screen
+msgctxt "#31174"
 msgid "Default select action for albums on the home screen"
 msgstr ""
 
-msgctxt "#31538"
-msgid "Timers Set"
+#: /xml/SkinSettings.xml
+#. Setting to control what happens when clicking a TV show on the home screen
+msgctxt "#31175"
+msgid "Default select action for TV shows on the home screen"
 msgstr ""
 
-# 31539 is an empty and available string
-
-msgctxt "#31540"
-msgid "Skin Default (United Kingdom) [B][COLOR yellow](UK)[/COLOR][/B]"
+#: /xml/SkinSettings.xml
+#. Setting to control what happens when clicking a movie set on the home screen
+msgctxt "#31176"
+msgid "Default select action for movie sets on the home screen"
 msgstr ""
 
-msgctxt "#31541"
-msgid "Argentina [B][COLOR gray](AR)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31542"
-msgid "Australia [B][COLOR gray](AU)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31543"
-msgid "Belgium [B][COLOR gray](BE)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31544"
-msgid "Skin Default (United Kingdom)"
-msgstr ""
-
-msgctxt "#31545"
-msgid "Brazil [B][COLOR gray](BR)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31546"
-msgid "Canada [B][COLOR gray](CA)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31547"
-msgid "Canada (Quebec) [B][COLOR gray](QC)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31548"
-msgid "Denmark [B][COLOR gray](DK)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31549"
-msgid "Finland [B][COLOR gray](FI)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31550"
-msgid "France [B][COLOR gray](FR)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31551"
-msgid "Germany [B][COLOR gray](DE)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31552"
-msgid "Greece [B][COLOR gray](GR)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31553"
-msgid "Hong Kong [B][COLOR gray](HK)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31554"
-msgid "Hungry [B][COLOR gray](HU)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31555"
-msgid "Iceland [B][COLOR gray](IS)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31556"
-msgid "India [B][COLOR gray](IN)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31557"
-msgid "Ireland [B][COLOR gray](IE)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31558"
-msgid "Italy [B][COLOR gray](IT)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31559"
-msgid "Japan [B][COLOR gray](JP)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31560"
-msgid "Kenya [B][COLOR gray](KE)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31561"
-msgid "Kuwait [B][COLOR gray](KW)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31562"
-msgid "Malaysia [B][COLOR gray](MY)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31563"
-msgid "Maldives [B][COLOR gray](MV)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31564"
-msgid "Netherlands [B][COLOR gray](NL)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31565"
-msgid "New Zealand [B][COLOR gray](NZ)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31566"
-msgid "Nigeria [B][COLOR gray](NG)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31567"
-msgid "Norway [B][COLOR gray](NO)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31568"
-msgid "Philippines [B][COLOR gray](PH)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31569"
-msgid "Portugal [B][COLOR gray](PT)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31570"
-msgid "Russia [B][COLOR gray](RU)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31571"
-msgid "Saudi Arabia [B][COLOR gray](SA)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31572"
-msgid "Singapore [B][COLOR gray](SG)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31573"
-msgid "Slovakia [B][COLOR gray](SK)[/COLOR][/B]"
-sgstr ""
-
-msgctxt "#31574"
-msgid "South Africa [B][COLOR gray](ZA)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31575"
-msgid "South Korea [B][COLOR gray](KR)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31576"
-msgid "Spain [B][COLOR gray](ES)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31577"
-msgid "Switzerland [B][COLOR gray](CH)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31578"
-msgid "Taiwan [B][COLOR gray](TW)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31579"
-msgid "United States [B][COLOR gray](US)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31580"
-msgid "Vietnam [B][COLOR gray](VN)[/COLOR][/B]"
-msgstr ""
-
-msgctxt "#31581"
-msgid "Select country for parental ratings (Movies / TV Shows)"
-msgstr ""
+#empty strings from id 31177 to 31599
 
 #: /xml/DialogPlayerProcessInfo.xml
 #. Label to show the video codec name
@@ -1493,32 +946,4 @@ msgstr ""
 #. Label to show the system info page
 msgctxt "#31611"
 msgid "System"
-msgstr ""
-
-msgctxt "#40461"
-msgid "Default select action for TV shows on the home screen"
-msgstr ""
-
-msgctxt "#40462"
-msgid "Default select action for movie sets on the home screen"
-msgstr ""
-
-msgctxt "#40463"
-msgid "Select default action for Recommended Songs on the home screen"
-msgstr ""
-
-msgctxt "#40464"
-msgid "Browse"
-msgstr ""
-
-msgctxt "#40465"
-msgid "Play Selected Song"
-msgstr ""
-
-msgctxt "#40466"
-msgid "play playlist"
-msgstr ""
-
-msgctxt "#40467"
-msgid "Browse"
 msgstr ""

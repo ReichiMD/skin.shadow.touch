@@ -2,6 +2,8 @@
 <window type="dialog" id="1101">
 	<defaultcontrol always="true">11000</defaultcontrol>
 	<include>Animation_DialogPopupOpenClose</include>
+	<onunload>ClearProperty(settingslist_header,Home)</onunload>
+	<onunload>ClearProperty(settingslist_content,Home)</onunload>
 	<controls>
 		<control type="group">
 			<centerleft>50%</centerleft>
@@ -10,19 +12,20 @@
 			<width>700</width>
 			<visible>!Window.IsActive(DialogSettings.xml) + !Window.IsActive(DialogSlider.xml) + !Window.IsActive(GameVideoFilter) + !Window.IsActive(GameStretchMode) + !Window.IsActive(GameControllers) + !Window.IsActive(GameVideoRotation)</visible>
 			<animation effect="fade" time="200">VisibleChange</animation>
-			<include content="DialogBackgroundCommons">
-				<param name="width" value="700" />
-				<param name="height" value="80" />
-				<param name="header_label" value="$INFO[Window(home).Property(settingslist_Header)]" />
-				<param name="header_id" value="1" />
-			</include>
+			<control type="group">
+				<left>50</left>
+				<include content="DialogBackgroundCommons">
+					<param name="header_label" value="$INFO[Window(home).Property(settingslist_Header)]" />
+					<param name="header_id" value="1" />
+				</include>
+			</control>
 			<control type="group" id="11000">
-				<left>0</left>
-				<top>80</top>
+				<left>25</left>
+				<top>100</top>
 				<control type="grouplist" id="11100">
 					<visible>String.IsEqual(window(home).Property(settingslist_content),osd)</visible>
 					<width>700</width>
-					<height>630</height>
+					<height>350</height>
 					<itemgap>0</itemgap>
 					<onup>11100</onup>
 					<ondown>11100</ondown>
@@ -51,15 +54,6 @@
 						<label>$LOCALIZE[36560]</label>
 						<onclick>ActivateWindow(osdcmssettings)</onclick>
 						<visible>System.HasCMS</visible>
-					</control>
-					<control type="radiobutton" id="11115">
-						<width>700</width>
-						<include>DialogSettingButton</include>
-						<label>Show Clear Art</label>
-						<selected>Skin.HasSetting(enable_clearart)</selected>
-						<onclick>Skin.ToggleSetting(enable_clearart)</onclick>
-						<visible>![Pvr.IsPlayingRadio | VideoPlayer.Content(LiveTV) | Pvr.IsPlayingRecording | VideoPlayer.Content(musicvideos) | Player.IsInternetStream]</visible>
-					
 					</control>
 					<control type="button" id="11104">
 						<width>700</width>
@@ -136,7 +130,7 @@
 					<defaultcontrol always="true">14101</defaultcontrol>
 					<visible>String.IsEqual(window(home).Property(settingslist_content),games)</visible>
 					<width>700</width>
-					<height>430</height>
+					<height>500</height>
 					<itemgap>0</itemgap>
 					<onup>14100</onup>
 					<ondown>14100</ondown>
@@ -177,6 +171,13 @@
 						<label>$LOCALIZE[35234]</label>
 						<onclick>ActivateWindow(GameControllers)</onclick>
 					</control>
+					<control type="button" id="14107">
+						<description>Controller port configuration</description>
+						<width>700</width>
+						<include>DialogSettingButton</include>
+						<label>$LOCALIZE[35110]</label>
+						<onclick>ActivateWindow(GamePorts)</onclick>
+					</control>
 					<control type="button" id="14105">
 						<description>Advanced settings</description>
 						<width>700</width>
@@ -185,6 +186,12 @@
 						<onclick>ActivateWindow(GameAdvancedSettings)</onclick>
 					</control>
 				</control>
+				<include content="UpDownArrows">
+					<param name="container_id" value="11100" />
+					<param name="posx" value="326" />
+					<param name="up_posy" value="-135" />
+					<param name="down_posy" value="360" />
+				</include>
 			</control>
 		</control>
 	</controls>

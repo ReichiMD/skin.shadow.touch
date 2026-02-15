@@ -8,8 +8,6 @@
 			<centerleft>50%</centerleft>
 			<width>1700</width>
 			<include content="DialogBackgroundCommons">
-				<param name="width" value="1700" />
-				<param name="height" value="790" />
 				<param name="header_label" value="" />
 				<param name="header_id" value="2" />
 			</include>
@@ -88,6 +86,7 @@
 				<include content="DefaultSimpleListLayout">
 					<param name="width" value="600" />
 					<param name="list_id" value="10" />
+					<param name="diffuse" value="masks/focus-long.png" />
 				</include>
 			</control>
 			<control type="textbox">

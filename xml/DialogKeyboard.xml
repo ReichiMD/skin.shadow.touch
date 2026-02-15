@@ -15,15 +15,22 @@
 				<bottom>0</bottom>
 				<width>100%</width>
 				<height>300%</height>
-				<texture flipy="true">frame/osdfade.png</texture>
+				<texture colordiffuse="$VAR[DialogBackgroundColorVar]">$VAR[DialogBackgroundTextureVar]</texture>
+			</control>
+			<!-- <control type="image">
+				<left>-35</left>
+				<bottom>0</bottom>
+				<width>1992</width>
+				<height>472</height>
+				<texture diffuse="masks/keyboard.png" colordiffuse="$VAR[FocusColorTheme]">colors/white.png</texture>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>-35</left>
 				<bottom>0</bottom>
-				<width>100%</width>
+				<width>1990</width>
 				<height>470</height>
-				<texture colordiffuse="dialog_tint">colors/white.png</texture>
-			</control>
+				<texture diffuse="masks/keyboard.png" colordiffuse="dialog_bg2">colors/white.png</texture>
+			</control> -->
 			<control type="label" id="311">
 				<centerleft>50%</centerleft>
 				<top>50</top>
@@ -31,38 +38,40 @@
 				<height>100</height>
 				<font>font45</font>
 				<label>$PARAM[header_label]</label>
+				<textcolor>darkgrey</textcolor>
 				<align>center</align>
 				<aligny>center</aligny>
 				<shadowcolor>black</shadowcolor>
 			</control>
-			<control type="image">
+			<!-- <control type="image">
+				<centerleft>50%</centerleft>
+				<top>182</top>
+				<width>1546</width>
+				<height>104</height>
+				<texture diffuse="masks/focus-long.png" colordiffuse="$VAR[FocusColorTheme]">colors/white.png</texture>
+			</control> -->
+			<!-- <control type="image">
 				<centerleft>50%</centerleft>
 				<top>184</top>
 				<width>1542</width>
 				<height>100</height>
-				<texture colordiffuse="dialog_tint">colors/white.png</texture>
-			</control>
-			<control type="image">
-				<centerleft>50%</centerleft>
-				<top>184</top>
-				<width>1542</width>
-				<height>100</height>
-				<texture border="40">buttons/button-alt-nofo.png</texture>
-			</control>
+				<texture diffuse="masks/focus-long.png" colordiffuse="dialog_bg2">colors/white.png</texture>
+			</control> -->
 			<control type="edit" id="312">
 				<centerleft>50%</centerleft>
 				<top>183</top>
 				<width>1510</width>
 				<height>100</height>
-				<font>font37</font>
+				<font>font45</font>
 				<align>center</align>
 				<aligny>center</aligny>
+				<textcolor>$VAR[FocusColorTheme]</textcolor>
 				<texturefocus />
 				<texturenofocus />
 			</control>
 			<control type="group" id="78500">
-				<centerleft>59%</centerleft>
-				<bottom>0</bottom>
+				<centerleft>61%</centerleft>
+				<bottom>100</bottom>
 				<height>480</height>
 				<width>1920</width>
 				<animation effect="slide" end="-60,0" time="200" tween="sine" easing="inout" condition="Control.IsVisible(110) | Control.IsVisible(130) | Control.IsVisible(150) | Control.IsVisible(170)">conditional</animation>
@@ -436,12 +445,12 @@
 						<height>120</height>
 						<onup>160</onup>
 						<ondown>100</ondown>
-						<texturefocus colordiffuse="button_focus">buttons/roundbutton-fo.png</texturefocus>
+						<texturefocus colordiffuse="$VAR[FocusColorTheme]">buttons/roundbutton-fo.png</texturefocus>
 						<texturenofocus />
-						<textureradioonfocus colordiffuse="FFFFFFFF">icons/keyboard/letters.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="FFFFFFFF">icons/keyboard/letters.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="FFFFFFFF">icons/keyboard/accents.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="FFFFFFFF">icons/keyboard/accents.png</textureradiooffnofocus>
+						<textureradioonfocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/letters.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="darkgrey">icons/keyboard/letters.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/accents.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="darkgrey">icons/keyboard/accents.png</textureradiooffnofocus>
 						<radioposx>32l</radioposx>
 						<radiowidth>56</radiowidth>
 						<radioheight>36</radioheight>
@@ -452,12 +461,12 @@
 						<height>120</height>
 						<onup>161</onup>
 						<ondown>101</ondown>
-						<texturefocus colordiffuse="button_focus">buttons/roundbutton-fo.png</texturefocus>
+						<texturefocus colordiffuse="$VAR[FocusColorTheme]">buttons/roundbutton-fo.png</texturefocus>
 						<texturenofocus />
-						<textureradioonfocus colordiffuse="FFFFFFFF">icons/keyboard/capslock.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="button_focus">icons/keyboard/capslock.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="FFFFFFFF">icons/keyboard/capslock.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="FFFFFFFF">icons/keyboard/capslock.png</textureradiooffnofocus>
+						<textureradioonfocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/capslock.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="$VAR[FocusColorTheme]">icons/keyboard/capslock.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/capslock.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="darkgrey">icons/keyboard/capslock.png</textureradiooffnofocus>
 						<radioposx>40</radioposx>
 						<radioposy>42</radioposy>
 						<radiowidth>42</radiowidth>
@@ -469,12 +478,12 @@
 						<height>120</height>
 						<onup>162</onup>
 						<ondown>102</ondown>
-						<texturefocus colordiffuse="button_focus">buttons/roundbutton-fo.png</texturefocus>
+						<texturefocus colordiffuse="$VAR[FocusColorTheme]">buttons/roundbutton-fo.png</texturefocus>
 						<texturenofocus />
-						<textureradioonfocus colordiffuse="FFFFFFFF">icons/keyboard/shift.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="button_focus">icons/keyboard/shift.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="FFFFFFFF">icons/keyboard/shift.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="FFFFFFFF">icons/keyboard/shift.png</textureradiooffnofocus>
+						<textureradioonfocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/shift.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="$VAR[FocusColorTheme]">icons/keyboard/shift.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/shift.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="darkgrey">icons/keyboard/shift.png</textureradiooffnofocus>
 						<radioposx>42</radioposx>
 						<radiowidth>36</radiowidth>
 						<radioheight>36</radioheight>
@@ -487,10 +496,10 @@
 						<ondown>104</ondown>
 						<texturefocus />
 						<texturenofocus />
-						<textureradioonfocus colordiffuse="button_focus">icons/keyboard/spacebar.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="FFFFFFFF">icons/keyboard/spacebar.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="button_focus">icons/keyboard/spacebar.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="FFFFFFFF">icons/keyboard/spacebar.png</textureradiooffnofocus>
+						<textureradioonfocus colordiffuse="$VAR[FocusColorTheme]">icons/keyboard/spacebar.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="darkgrey">icons/keyboard/spacebar.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[FocusColorTheme]">icons/keyboard/spacebar.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="darkgrey">icons/keyboard/spacebar.png</textureradiooffnofocus>
 						<radioposx>34</radioposx>
 						<radiowidth>328</radiowidth>
 						<radioheight>36</radioheight>
@@ -501,12 +510,12 @@
 						<height>120</height>
 						<ondown>107</ondown>
 						<onup>167</onup>
-						<texturefocus colordiffuse="button_focus">buttons/roundbutton-fo.png</texturefocus>
+						<texturefocus colordiffuse="$VAR[FocusColorTheme]">buttons/roundbutton-fo.png</texturefocus>
 						<texturenofocus />
-						<textureradioonfocus colordiffuse="FFFFFFFF">icons/keyboard/arrowleft.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="FFFFFFFF">icons/keyboard/arrowleft.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="FFFFFFFF">icons/keyboard/arrowleft.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="FFFFFFFF">icons/keyboard/arrowleft.png</textureradiooffnofocus>
+						<textureradioonfocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/arrowleft.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="darkgrey">icons/keyboard/arrowleft.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/arrowleft.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="darkgrey">icons/keyboard/arrowleft.png</textureradiooffnofocus>
 						<radioposx>38</radioposx>
 						<radiowidth>36</radiowidth>
 						<radioheight>36</radioheight>
@@ -517,12 +526,12 @@
 						<height>120</height>
 						<ondown>108</ondown>
 						<onup>168</onup>
-						<texturefocus colordiffuse="button_focus">buttons/roundbutton-fo.png</texturefocus>
+						<texturefocus colordiffuse="$VAR[FocusColorTheme]">buttons/roundbutton-fo.png</texturefocus>
 						<texturenofocus />
-						<textureradioonfocus colordiffuse="FFFFFFFF">icons/keyboard/arrowright.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="FFFFFFFF">icons/keyboard/arrowright.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="FFFFFFFF">icons/keyboard/arrowright.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="FFFFFFFF">icons/keyboard/arrowright.png</textureradiooffnofocus>
+						<textureradioonfocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/arrowright.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="darkgrey">icons/keyboard/arrowright.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/arrowright.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="darkgrey">icons/keyboard/arrowright.png</textureradiooffnofocus>
 						<radioposx>45</radioposx>
 						<radiowidth>36</radiowidth>
 						<radioheight>36</radioheight>
@@ -533,55 +542,24 @@
 						<height>120</height>
 						<onup>169</onup>
 						<ondown>109</ondown>
-						<texturefocus colordiffuse="button_focus">buttons/roundbutton-fo.png</texturefocus>
+						<texturefocus colordiffuse="$VAR[FocusColorTheme]">buttons/roundbutton-fo.png</texturefocus>
 						<texturenofocus />
-						<textureradioonfocus colordiffuse="FFFFFFFF">icons/keyboard/backspace.png</textureradioonfocus>
-						<textureradioonnofocus colordiffuse="FFFFFFFF">icons/keyboard/backspace.png</textureradioonnofocus>
-						<textureradioofffocus colordiffuse="FFFFFFFF">icons/keyboard/backspace.png</textureradioofffocus>
-						<textureradiooffnofocus colordiffuse="FFFFFFFF">icons/keyboard/backspace.png</textureradiooffnofocus>
+						<textureradioonfocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/backspace.png</textureradioonfocus>
+						<textureradioonnofocus colordiffuse="darkgrey">icons/keyboard/backspace.png</textureradioonnofocus>
+						<textureradioofffocus colordiffuse="$VAR[FocusedTextColorVar]">icons/keyboard/backspace.png</textureradioofffocus>
+						<textureradiooffnofocus colordiffuse="darkgrey">icons/keyboard/backspace.png</textureradiooffnofocus>
 						<radioposx>31</radioposx>
 						<radiowidth>51</radiowidth>
 						<radioheight>36</radioheight>
 					</control>
 				</control>
 			</control>
-			<control type="grouplist" id="95200">
-				<bottom>0</bottom>
-				<height>460</height>
-				<centerleft>88%</centerleft>
-				<itemgap>dialogbuttons_itemgap</itemgap>
-				<onup condition="!Integer.IsGreater(Container(9010).NumItems,0)">95200</onup>
-				<onup condition="Integer.IsGreater(Container(9010).NumItems,0)">9010</onup>
-				<ondown>95200</ondown>
-				<onleft>78500</onleft>
-				<onright>140</onright>
-				<width>350</width>
-				<orientation>vertical</orientation>
-				<include content="DefaultDialogButton">
-					<param name="id" value="300" />
-					<param name="label" value="$LOCALIZE[12321]" />
-					<param name="width" value="350" />
-				</include>
-				<include content="DefaultDialogButton">
-					<param name="id" value="301" />
-					<param name="label" value="$LOCALIZE[222]" />
-					<param name="width" value="350" />
-				</include>
-				<include content="DefaultDialogButton">
-					<param name="id" value="309" />
-					<param name="width" value="350" />
-				</include>
-				<include content="DefaultDialogButton">
-					<param name="id" value="307" />
-					<param name="label" value="$LOCALIZE[1006]" />
-					<param name="width" value="350" />
-				</include>
-			</control>
+			
 			<control type="panel" id="9010">
 				<centerleft>50%</centerleft>
-				<bottom>490</bottom>
-				<width>1500</width>
-				<height>200</height>
+				<bottom>570</bottom>
+				<width>1200</width>
+				<height>180</height>
 				<scrolltime tween="cubic" easing="out">500</scrolltime>
 				<orientation>vertical</orientation>
 				<onleft>9010</onleft>
@@ -589,50 +567,63 @@
 				<onup>noop</onup>
 				<ondown>105</ondown>
 				<visible>!Control.IsVisible(313)</visible>
-				<itemlayout width="500" height="60">
+				<itemlayout width="400" height="82">
+					<!-- <control type="image">
+						<left>10</left>
+						<top>0</top>
+						<width>480</width>
+						<height>60</height>
+						<texture diffuse="masks/focus.png" colordiffuse="$VAR[FocusColorTheme]">colors/white.png</texture>
+					</control>
 					<control type="image">
 						<left>10</left>
 						<top>0</top>
 						<width>480</width>
-						<height>50</height>
-						<texture colordiffuse="dialog_tint">colors/white.png</texture>
-					</control>
+						<height>60</height>
+						<texture diffuse="masks/focus.png" colordiffuse="dialog_bg">colors/white.png</texture>
+					</control> -->
 					<control type="label">
 						<textoffsetx>30</textoffsetx>
-						<top>0</top>
-						<width>500</width>
-						<height>50</height>
+						<top>-3</top>
+						<width>400</width>
+						<height>60</height>
 						<label>$INFO[ListItem.Label]</label>
-						<font>font12</font>
+						<textcolor>darkgrey</textcolor>
+						<font>font14</font>
+						<align>center</align>
 						<shadowcolor>text_shadow</shadowcolor>
 						<aligny>center</aligny>
 					</control>
 				</itemlayout>
-				<focusedlayout width="500" height="60">
+				<focusedlayout width="400" height="82">
 					<control type="group">
-						<control type="image">
+						<!-- <control type="image">
 							<left>10</left>
 							<top>0</top>
 							<width>480</width>
-							<height>50</height>
-							<texture colordiffuse="dialog_tint">colors/white.png</texture>
-						</control>
+							<height>60</height>
+							<texture diffuse="masks/focus.png" colordiffuse="dialog_bg">colors/white.png</texture>
+						</control> -->
 						<control type="image">
 							<left>10</left>
-							<width>480</width>
-							<height>50</height>
-							<texture colordiffuse="button_focus">colors/grey.png</texture>
+							<width>380</width>
+							<height>60</height>
+							<texture colordiffuse="$VAR[FocusColorTheme]">masks/focus.png</texture>
 							<include>Animation_FocusTextureFade</include>
 						</control>
 						<control type="label">
 							<textoffsetx>30</textoffsetx>
-							<top>0</top>
-							<width>500</width>
-							<height>50</height>
+							<top>-3</top>
+							<width>400</width>
+							<height>60</height>
 							<label>$INFO[ListItem.Label]</label>
-							<font>font12</font>
+							<textcolor>$VAR[FocusedTextColorVar]</textcolor>
+							<font>font14</font>
 							<shadowcolor>text_shadow</shadowcolor>
+							<align>center</align>
 							<aligny>center</aligny>
+							<scroll>true</scroll>
+							<scrollspeed>100</scrollspeed>
 						</control>
 					</control>
 				</focusedlayout>
@@ -673,6 +664,47 @@
 					<aligny>center</aligny>
 				</control>
 			</control>
+		</control>
+		<control type="grouplist" id="95200">
+			<top>540</top>
+			<bottom>0</bottom>
+			<height>460</height>
+			<centerleft>90%</centerleft>
+			<itemgap>dialogbuttons_itemgap</itemgap>
+			<onup condition="!Integer.IsGreater(Container(9010).NumItems,0)">95200</onup>
+			<onup condition="Integer.IsGreater(Container(9010).NumItems,0)">9010</onup>
+			<ondown>95200</ondown>
+			<onleft>78500</onleft>
+			<onright>140</onright>
+			<width>350</width>
+			<orientation>vertical</orientation>
+			<!-- <animation condition="ControlGroup(78500).HasFocus | Control.HasFocus(9010)">
+				<effect type="fade" start="100" end="0" time="300" tween="cubic" easing="in"/>
+				<effect type="slide" start="0,0" end="200,0" time="300" tween="cubic" easing="in" />
+			</animation> -->
+			<include content="DefaultDialogButton">
+				<param name="id" value="300" />
+				<param name="label" value="$LOCALIZE[12321]" />
+				<param name="width" value="300" />
+			</include>
+			<include content="DefaultDialogButton">
+				<param name="id" value="301" />
+				<param name="label" value="$LOCALIZE[222]" />
+				<param name="width" value="300" />
+			</include>
+			<include content="DefaultDialogButton">
+				<param name="id" value="310" />
+				<param name="width" value="300" />
+			</include>
+			<include content="DefaultDialogButton">
+				<param name="id" value="309" />
+				<param name="width" value="300" />
+			</include>
+			<include content="DefaultDialogButton">
+				<param name="id" value="307" />
+				<param name="label" value="$LOCALIZE[1006]" />
+				<param name="width" value="300" />
+			</include>
 		</control>
 	</controls>
 </window>
