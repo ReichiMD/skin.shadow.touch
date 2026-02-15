@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>9201</defaultcontrol> <!-- Shadow Touch: Focus Bottom Nav instead of side menu -->
+	<defaultcontrol>9300</defaultcontrol> <!-- Shadow Touch: Focus Vertical Grid on startup -->
 	<backgroundcolor>background</backgroundcolor>
 	<include>NimbusSkinStringsInitialization</include>
 	<controls>
@@ -999,7 +999,7 @@
 			<control type="group">
 				<depth>DepthContentPanel</depth>
 				<control type="group">
-					<visible>$EXP[isContent]</visible>
+					<visible>true</visible> <!-- Shadow Touch: Always visible (was: $EXP[isContent]) -->
 					<include>OpenClose_Left</include>
 					<include>HomeFlixPanelAnimations</include>
 					<!-- <include>FlixPanel</include> --> <!-- Shadow Touch: Replaced with Vertical Grid -->
