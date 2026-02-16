@@ -19,11 +19,7 @@
 			<scrolltime tween="cubic" easing="out">300</scrolltime>
 			<orientation>vertical</orientation>
 			<preloaditems>2</preloaditems>
-
-			<!-- Long-Press Event: Show Movie Info Dialog -->
-			<onlongclick>RunScript(skin.shadow.touch,action=show_movie_info,tmdb_id=$INFO[ListItem.UniqueID(tmdb)],title=$INFO[ListItem.Label],year=$INFO[ListItem.Year])</onlongclick>
-			<onclick>noop</onclick>
-			<!-- Disable context menu so long-press works -->
+			<!-- Override context menu with our custom dialog -->
 			<oninfo>RunScript(skin.shadow.touch,action=show_movie_info,tmdb_id=$INFO[ListItem.UniqueID(tmdb)],title=$INFO[ListItem.Label],year=$INFO[ListItem.Year])</oninfo>
 
 			<!-- Item Layout (Unfocused) -->
