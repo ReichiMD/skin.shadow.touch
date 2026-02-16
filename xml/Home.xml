@@ -4,6 +4,23 @@
 	<backgroundcolor>background</backgroundcolor>
 	<include>NimbusSkinStringsInitialization</include>
 	<controls>
+		<!-- Shadow Touch: TEST BUTTON (zum Testen des Scripts) -->
+		<control type="button" id="9999">
+			<left>1600</left>
+			<top>20</top>
+			<width>280</width>
+			<height>100</height>
+			<label>TEST: Dialog öffnen</label>
+			<font>font13</font>
+			<textcolor>FFFFFFFF</textcolor>
+			<focusedcolor>FF000000</focusedcolor>
+			<align>center</align>
+			<aligny>center</aligny>
+			<texturefocus colordiffuse="FFFF0000">colors/white.png</texturefocus>
+			<texturenofocus colordiffuse="80FF0000">colors/white.png</texturenofocus>
+			<onclick>RunScript(skin.shadow.touch,action=show_movie_info,tmdb_id=550)</onclick>
+		</control>
+
 		<!-- Shadow Touch: Vertical Grid (clean include!) -->
 		<include>ShadowTouchVerticalGrid</include>
 
