@@ -471,11 +471,53 @@ When starting a new session, DO THIS:
 - "kannst du dann auf diesen branch weiter arbeiten"
 - Confirmed: Can continue working after merge via git pull
 
+### Session 6 (2026-02-16):
+**PHASE 3 COMPLETE - TAP-TO-INFO WORKING! 🎉**
+
+**Problem Solved:** Long-press not working!
+- User reported: Long-press shows Kodi context menu, not our dialog
+- Root cause: Kodi hardcodes context menu on Panel items with plugin content
+- Solutions tried:
+  1. ❌ `<oninfo>` at Panel level (didn't work)
+  2. ❌ Invisible button overlay in FocusedLayout (not supported)
+  3. ✅ **Changed to OnClick (tap) instead!**
+
+**Final Implementation:**
+- Added `<onclick>` to Panel (id=9300) in Includes_ShadowTouch.xml
+- Removed `<oninfo>` (didn't work anyway)
+- Tap on poster → RunScript → Dialog opens!
+- Tested on Google Pixel 7 → **WORKS PERFECTLY!**
+
+**Design Decision:**
+- Tap is better UX than long-press anyway!
+- Netflix, Disney+, etc. all use tap for info screens
+- Long-press still shows context menu (Kodi default) - that's fine!
+
+**API Key Issue Solved:**
+- User manually added API key to config.py line 19
+- Settings.xml exists but not accessible in Kodi (bug, not critical)
+- Direct file edit works perfectly!
+
+**Current Status:**
+- ✅ Phase 1: Bottom Navigation Bar → **COMPLETE!**
+- ✅ Phase 2: Vertical Poster Grid → **COMPLETE!**
+- ✅ Phase 3: Tap-to-Info Dialog → **COMPLETE!**
+- 📋 Phase 4: PVR/Live TV Integration → **NEXT!**
+
+**Files Modified:**
+- xml/Includes_ShadowTouch.xml (added onclick event)
+- ROADMAP.md (updated Phase 3 status)
+- CLAUDE.md (this file!)
+
+**MVP ACHIEVED!** 🎉
+- Bottom Nav + Vertical Grid + Tap-to-Info Dialog all working!
+- Ready for Phase 4: PVR/Live TV integration!
+
 ### Session N (add date):
 - [Future sessions add notes here]
 
 ---
 
 **Last Updated:** 2026-02-16
-**Project Status:** Phase 3 Dialog WORKING! Long-Press on posters NEXT!
-**Next:** Implement OnLongClick on grid items
+**Project Status:** MVP COMPLETE! Phase 1 + 2 + 3 done!
+**Next:** Phase 4 - PVR/Live TV Integration (touch-optimize PVR screens)

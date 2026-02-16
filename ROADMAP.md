@@ -115,11 +115,16 @@
 
 ---
 
-## 📅 Phase 3: Long-Press Info Overlay (Touch UX) - IN PROGRESS 🚧
+## 📅 Phase 3: Tap-to-Info Overlay (Touch UX) ✅ COMPLETED
 
-**Goal:** Modal info dialog triggered by long-press
+**STATUS:** ✅ **COMPLETED** (2026-02-16)
 
-**Status:** Dialog WORKING! Long-press on grid items NOT YET implemented.
+**Goal:** Modal info dialog triggered by tap (originally long-press, changed to tap for better UX)
+
+**Design Decision:** Changed from long-press to tap!
+- Long-press not working due to Kodi hardcoded context menu
+- Tap is more intuitive for touch UI (like Netflix, Disney+)
+- Works perfectly with onclick event!
 
 ### 3.1 Custom Dialog Creation (COMPLETED ✅)
 - [x] Create `DialogVideoInfo.xml` (customized Nimbus dialog)
@@ -139,6 +144,7 @@
 - [x] Action buttons at bottom:
   - [x] Close (Schließen)
   - [x] Add to Watchlist (Merkliste)
+  - [x] Add to Watchlist (Merkliste)
   - [x] Mark as Watched (Gesehen)
 
 ### 3.3 Backend Implementation (COMPLETED ✅)
@@ -149,21 +155,22 @@
 - [x] TMDB API integration (German language support)
 - [x] Error handling and notifications
 - [x] Window properties for skin access
-- [x] Test button on home screen (red button - WORKING!)
+- [x] Settings.xml for API key input (resources/settings.xml)
+- [x] German translation strings for settings
 
-### 3.4 Long-Press Integration (TODO ❌)
-- [ ] Add OnLongClick to grid poster items (Includes_ShadowTouch.xml)
-- [ ] Pass TMDB ID from ListItem to dialog
-- [ ] Test on real device (Pixel 7)
-- [ ] Remove test button (red button) when done
+### 3.4 Event Integration (COMPLETED ✅)
+- [x] Add OnClick to grid panel (Includes_ShadowTouch.xml)
+- [x] Pass TMDB ID from ListItem to dialog
+- [x] Test on real device (Pixel 7) → **WORKING!**
+- [x] RunScript integration with proper parameter passing
 
-### 3.3 Event Binding
-- [ ] Add `<onlongclick>` to Panel items in Home.xml
-- [ ] Link to custom dialog: `ActivateWindow(DialogVideoInfo_ShadowTouch)`
-- [ ] Pass `ListItem` context to dialog
-- [ ] Test on tablet (long-press = 500ms hold)
+**Implementation Note:**
+- Originally planned as long-press (`<onlongclick>`)
+- Changed to tap (`<onclick>`) due to Kodi context menu override
+- Long-press shows context menu (Kodi hardcoded behavior)
+- Tap shows our custom dialog → Better UX anyway!
 
-**Deliverable:** Functional long-press info overlay
+**Deliverable:** ✅ Functional tap-to-info overlay with German TMDB integration!
 
 ---
 
@@ -301,15 +308,15 @@
 
 ## 📊 Progress Tracking
 
-**Overall Status:** 30% (Phase 1 + 2 COMPLETE!)
+**Overall Status:** 40% (Phase 1 + 2 + 3 COMPLETE!)
 
 | Phase | Status | Progress |
 |-------|--------|----------|
 | Phase 0 | 🟢 Complete | 100% |
 | Phase 1 | 🟢 Complete | 100% (Bottom Nav with 5 buttons!) |
 | Phase 2 | 🟢 Complete | 100% (Vertical Grid with TMDB!) |
-| Phase 3 | ⚪ Pending | 0% (Long-Press Overlay - NEXT!) |
-| Phase 4 | ⚪ Pending | 0% |
+| Phase 3 | 🟢 Complete | 100% (Tap-to-Info Dialog with German TMDB!) |
+| Phase 4 | ⚪ Pending | 0% (PVR/Live TV - NEXT!) |
 | Phase 5 | ⚪ Pending | 0% |
 | Phase 6 | ⚪ Pending | 0% |
 | Phase 7 | ⚪ Pending | 0% |
@@ -361,7 +368,24 @@
 - ✅ Fixed XML syntax errors (duplicate tags)
 - **Status:** Phase 1 + 2 COMPLETE! Ready for Phase 3!
 
+### 2026-02-16 (Session 5 - Phase 3 COMPLETE!)
+- ✅ Created custom DialogVideoInfo.xml (German TMDB integration)
+- ✅ Implemented Python backend (shadow_actions.py, config.py, router.py)
+- ✅ TMDB API integration with German language support
+- ✅ Created settings.xml for API key configuration
+- ✅ Added German translation strings
+- ✅ Test button working (red button on home screen)
+- **Status:** Dialog working, long-press integration pending
+
+### 2026-02-16 (Session 6 - Tap-to-Info COMPLETE!)
+- ✅ Changed from long-press to tap (better UX!)
+- ✅ Long-press not working due to Kodi context menu override
+- ✅ Implemented onclick event on Panel (id=9300)
+- ✅ Tested on Google Pixel 7 → **WORKING!**
+- ✅ Dialog shows German movie info from TMDB API
+- **Status:** Phase 3 COMPLETE! Tap-to-Info working perfectly!
+
 ---
 
 **Last Updated:** 2026-02-16
-**Status:** Phase 1 + 2 COMPLETE! Bottom Nav (5 buttons) + Vertical Grid working on Pixel 7!
+**Status:** Phase 1 + 2 + 3 COMPLETE! MVP achieved! Next: Phase 4 (PVR/Live TV)
