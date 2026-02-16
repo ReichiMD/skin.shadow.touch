@@ -287,15 +287,88 @@ When starting a new session, DO THIS:
    - All skin settings menu in German
 
 **Next Priority:**
-1. Complete German translation (3 missing strings)
-2. Implement Bottom Navigation Bar (replace Nimbus side menu)
-3. Implement Vertical Poster Grid
-4. Add Long-Press Overlay for quick actions
+1. ~~Complete German translation (3 missing strings)~~ → Later
+2. ✅ Implement Bottom Navigation Bar (DONE!)
+3. ✅ Implement Vertical Poster Grid (DONE!)
+4. Add Long-Press Overlay for quick actions → Phase 3
+
+### Session 4 (2026-02-16):
+**BREAKTHROUGH SESSION - Phase 1 + 2 COMPLETED! 🎉**
+
+**Tasks completed:**
+1. ✅ **Implemented Bottom Navigation Bar** (Phase 1)
+   - Initial attempt: FixedList (scrollable - problem!)
+   - Final solution: Individual buttons (static, no scroll!)
+   - 4 buttons: Home, Live TV, Library, Search
+   - Created ShadowTouchBottomNav Include
+
+2. ✅ **Implemented Vertical Poster Grid** (Phase 2)
+   - Replaced Nimbus horizontal widgets completely
+   - Panel-Container with vertical orientation
+   - TMDB Helper integration (popular movies)
+   - Touch-optimized: 300x450px posters, 20px spacing
+   - Created ShadowTouchVerticalGrid Include
+
+3. ✅ **Major Debugging Marathon!** (Critical learnings!)
+   - **Problem 1:** Panel "control type 7" error
+     - **Cause:** Panel nested in too many Groups with animations
+     - **Solution:** Created clean Include at correct hierarchy level
+
+   - **Problem 2:** Include not found by Kodi
+     - **Cause:** Includes_ShadowTouch.xml not registered
+     - **Solution:** Added to Includes.xml
+
+   - **Problem 3:** Grid invisible despite loading
+     - **Cause:** Multiple issues (visibility conditions, position, DEBUG)
+     - **Solution:** Clean Include + proper registration
+
+4. ✅ **Cleanup completed:**
+   - Removed DEBUG colors (red/green → final blue/gray)
+   - Fixed Bottom Nav (not scrollable anymore!)
+   - Final design polished and working
+
+**Critical Technical Insights:**
+- **Panel Hierarchy:** Panels CANNOT be nested in Groups with complex animations
+  - Kodi throws "unsupported control type 7" error
+  - Solution: Place Panel at clean hierarchy level (directly under `<controls>` or simple Group)
+
+- **Include Registration:** Custom Include files MUST be registered in Includes.xml
+  - Just creating the file is NOT enough!
+  - Add: `<include file="YourFile.xml" />` to Includes.xml
+
+- **Testing on Hardware:** Essential! Emulator/desktop testing not sufficient
+  - User tested on Google Pixel 7 (primary device)
+  - Real device revealed actual functionality
+
+**File Changes:**
+- Created: `xml/Includes_ShadowTouch.xml` (Grid + Bottom Nav)
+- Modified: `xml/Includes.xml` (registered new Include)
+- Modified: `xml/Home.xml` (removed Nimbus widgets, added Includes)
+- Hidden: Nimbus id="2000" widgets (visible=false)
+- Hidden: Nimbus id="9000" side menu (visible=false)
+
+**Current Status:**
+- ✅ Phase 1: Bottom Navigation Bar → **COMPLETE!**
+- ✅ Phase 2: Vertical Poster Grid → **COMPLETE!**
+- 📋 Phase 3: Long-Press Overlay → **NEXT!**
+- Grid shows TMDB Helper popular movies
+- Bottom Nav functional (4 static buttons)
+- Touch navigation works (Grid ↔ Bottom Nav)
+- Tested and working on Pixel 7!
+
+**Known Issues:**
+- ⚠️ Log warning: "control type 7" (Nimbus Panel id="14100" - non-critical)
+- Can be cleaned up later (not affecting functionality)
+
+**Next Session Priorities:**
+1. Phase 3: Long-Press Overlay implementation
+2. German translation (3 missing strings)
+3. Optional: Remove remaining Nimbus code bloat
 
 ### Session N (add date):
 - [Future sessions add notes here]
 
 ---
 
-**Last Updated:** 2026-02-15
-**Project Status:** Nimbus installed & working - Ready for user testing & evaluation
+**Last Updated:** 2026-02-16
+**Project Status:** Phase 1 + 2 COMPLETE! Grid visible + Bottom Nav working! 🎉

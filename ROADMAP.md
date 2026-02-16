@@ -1,7 +1,8 @@
 # Shadow Touch - Development Roadmap
 
-**Project:** Touch-optimized Kodi skin for Samsung S9 FE & Nvidia Shield
+**Project:** Touch-optimized Kodi skin for Google Pixel 7 (primary) & Samsung S9 FE Tablet
 **Timeline:** Iterative development (MVP → Full Features)
+**Last Updated:** 2026-02-16
 
 ---
 
@@ -22,62 +23,65 @@
 
 ---
 
-## 📅 Phase 1: Bottom Navigation Bar (MVP Core)
+## 📅 Phase 1: Bottom Navigation Bar ✅ COMPLETED
 
-**STATUS:** ⚠️ UNDER EVALUATION
-**Current Nimbus:** Has vertical side menu (Netflix-style) on LEFT side
+**STATUS:** ✅ **COMPLETED** (2026-02-16)
 
-**Goal:** Decide if we replace side menu with bottom-fixed navigation
+**Goal:** Replace Nimbus side menu with bottom-fixed navigation
 
-**IMPORTANT:** Nimbus already has a working touch-optimized side menu!
-- Test it first before deciding to replace it
-- Bottom nav might not be necessary if side menu works well
+**Decision Made:** Bottom Navigation Bar (touch-first design!)
+- Side menu hidden (id="9000" - visible=false)
+- Bottom Nav implemented with 4 static buttons
 
-### 1.1 FIRST: Evaluate Nimbus Side Menu
-- [ ] Test Nimbus side menu on Samsung S9 FE tablet
-- [ ] Check if it's thumb-reachable in landscape
-- [ ] Evaluate touch responsiveness
-- [ ] Compare with bottom nav design goals
-- [ ] **DECIDE:** Keep side menu OR implement bottom nav?
+### Implementation Details:
+- [x] Hidden Nimbus side menu (vertical FixedList id="9000")
+- [x] Created ShadowTouchBottomNav Include (xml/Includes_ShadowTouch.xml)
+- [x] 4 individual buttons (NOT scrollable FixedList!):
+  - Home (id=9201) → Focus Grid
+  - Live TV (id=9202) → TVGuide
+  - Library (id=9203) → Videos Library
+  - Search (id=9204) → Search Window
+- [x] Styling: Text labels, focus feedback (blue background 20% opacity)
+- [x] Navigation: Circular onleft/onright, onup to Grid (9300)
+- [x] Touch-optimized: 240x100px buttons, thumb-reachable
+- [x] Tested on Google Pixel 7 → **Works!**
 
-### 1.2 IF Bottom Nav Needed: Home.xml Modification
-- [ ] Remove Nimbus side menu (vertical FixedList id="9000")
-- [ ] Create bottom FixedList (horizontal, y=1020)
-- [ ] Define 4 main buttons: Home, TV, Library, Search
-- [ ] Style buttons: icon + label (minimalist)
-- [ ] Test navigation (left/right works, onclick activates)
-
-### 1.3 IF Bottom Nav Needed: Icon Integration
-- [ ] Research icon font options (Font Awesome / Material Icons)
-- [ ] Add icon font to `fonts/` directory
-- [ ] Define font in `Font.xml`
-- [ ] Map icons to labels in `Variables.xml`
-
-### 1.4 IF Bottom Nav Needed: Focus & Animation
-- [ ] Create focus texture (subtle glow or underline)
-- [ ] Add smooth transitions (FadeTime=200)
-- [ ] Test touch response (tap switches focus → activates)
-
-**Deliverable:** Working navigation (bottom OR keep Nimbus side menu)
+**Deliverable:** ✅ Bottom Nav working, not scrollable, touch-friendly!
 
 ---
 
-## 📅 Phase 2: Grid Layout (Home Content)
+## 📅 Phase 2: Vertical Poster Grid ✅ COMPLETED
 
-**STATUS:** ⚠️ UNDER EVALUATION
-**Current Nimbus:** Has landscape + portrait widgets (Netflix-style)
+**STATUS:** ✅ **COMPLETED** (2026-02-16)
 
-**Goal:** Decide if Nimbus widget layout needs modification
+**Goal:** Replace Nimbus horizontal widgets with vertical poster grid
 
-**IMPORTANT:** Nimbus already has poster grids!
-- Landscape widgets (horizontal posters, 16:9)
-- Portrait widgets (vertical posters, 2:3)
-- Test them first before rebuilding!
+**Decision Made:** Full replacement with custom Vertical Grid!
+- Nimbus widgets hidden (id="2000" - visible=false)
+- Custom Panel with TMDB Helper integration
 
-### 2.1 FIRST: Evaluate Nimbus Widgets
-- [ ] Test Nimbus widget layouts on Samsung S9 FE
-- [ ] Check if widgets scroll vertically or horizontally
-- [ ] Measure poster sizes and spacing
+### Implementation Details:
+- [x] Hidden Nimbus horizontal widgets (id="2000")
+- [x] Created ShadowTouchVerticalGrid Include (xml/Includes_ShadowTouch.xml)
+- [x] Panel-Container (id=9300):
+  - Vertical orientation (no horizontal scrolling!)
+  - Position: 100x100, Size: 1720x850px
+  - Touch-optimized spacing: 20px padding
+- [x] Poster tiles: 300x450px (portrait 2:3 ratio)
+- [x] Item layout: 320x480px (includes spacing)
+- [x] TMDB Helper content: `plugin://plugin.video.themoviedb.helper/?info=popular&type=movie`
+- [x] Focus effects:
+  - Unfocused: Gray border (40% opacity), white text
+  - Focused: Blue border (button_focus), blue text, 105% zoom
+- [x] Navigation: ondown to Bottom Nav (9201), wraps internally
+- [x] Tested on Google Pixel 7 → **Visible & functional!**
+
+**Critical Debugging:**
+- Panel hierarchy issue solved (control type 7 error)
+- Include registration required in Includes.xml
+- Clean hierarchy: Panel at correct level (not nested in complex Groups)
+
+**Deliverable:** ✅ Vertical Grid working, TMDB movies visible, touch-friendly!
 - [ ] Test touch targets (too small? accidental taps?)
 - [ ] **DECIDE:** Keep Nimbus widgets OR create custom grid?
 
