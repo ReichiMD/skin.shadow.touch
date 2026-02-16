@@ -77,12 +77,23 @@ def get_tmdb_api_key():
     Returns:
         str: TMDB API key
     """
-    # Try to get from addon settings first
+    # Try to get from our addon settings first
     api_key = get_setting('tmdb_api_key')
     if api_key:
         return api_key
 
+    # Try to get from TMDB Helper addon (if installed)
+    try:
+        tmdb_helper = xbmcaddon.Addon('plugin.video.themoviedb.helper')
+        api_key = tmdb_helper.getSetting('tmdb_apikey')
+        if api_key:
+            log_info(f"Using TMDB API key from TMDB Helper addon")
+            return api_key
+    except Exception as e:
+        log_debug(f"Could not get API key from TMDB Helper: {str(e)}")
+
     # Fall back to hardcoded key
+    log_error("No valid TMDB API key found! Please configure one in addon settings.")
     return TMDB_API_KEY
 
 
