@@ -13,9 +13,10 @@ ADDON_ID = ADDON.getAddonInfo('id')
 ADDON_NAME = ADDON.getAddonInfo('name')
 
 # TMDB API Configuration
-# NOTE: This is a free TMDB API key for open-source projects
-# Get your own at https://www.themoviedb.org/settings/api
-TMDB_API_KEY = "YOUR_TMDB_API_KEY_HERE"  # TODO: Replace with actual key or use addon setting
+# NOTE: This is a public test API key for testing purposes only
+# For production, get your own free key at https://www.themoviedb.org/settings/api
+# This key has rate limits and may stop working if overused!
+TMDB_API_KEY = "8d6d91941230817f7807d643736e8a49"  # Public test key
 TMDB_BASE_URL = "https://api.themoviedb.org/3"
 TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p"
 
