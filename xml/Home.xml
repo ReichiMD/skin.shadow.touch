@@ -1022,73 +1022,73 @@
 						<orientation>vertical</orientation>
 						<preloaditems>2</preloaditems>
 
-						<!-- Item Layout (Unfocused) -->
-						<itemlayout width="220" height="360">
-							<!-- Poster Image -->
+						<!-- Item Layout (Unfocused - DEBUG: larger) -->
+						<itemlayout width="320" height="530">
+							<!-- Poster Image (DEBUG: larger + red border) -->
 							<control type="image">
 								<left>10</left>
 								<top>10</top>
-								<width>200</width>
-								<height>300</height>
-								<texture background="true">$INFO[ListItem.Art(poster)]</texture>
+								<width>300</width>
+								<height>450</height>
+								<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 								<aspectratio>scale</aspectratio>
-								<bordertexture border="5" colordiffuse="40FFFFFF">colors/white.png</bordertexture>
-								<bordersize>2</bordersize>
+								<bordertexture border="10" colordiffuse="FFFF0000">colors/white.png</bordertexture>
+								<bordersize>10</bordersize>
 							</control>
 
-							<!-- Title Label -->
+							<!-- Title Label (DEBUG: larger + red text) -->
 							<control type="label">
 								<left>10</left>
-								<top>320</top>
-								<width>200</width>
-								<height>30</height>
-								<font>font12</font>
+								<top>470</top>
+								<width>300</width>
+								<height>50</height>
+								<font>font25</font>
 								<align>center</align>
 								<aligny>center</aligny>
 								<label>$INFO[ListItem.Label]</label>
-								<textcolor>80FFFFFF</textcolor>
+								<textcolor>FFFF0000</textcolor>
 							</control>
 						</itemlayout>
 
-						<!-- Focused Layout -->
-						<focusedlayout width="220" height="360">
-							<!-- Focus Glow -->
+						<!-- Focused Layout (DEBUG: larger) -->
+						<focusedlayout width="320" height="530">
+							<!-- Focus Glow (DEBUG: larger + brighter) -->
 							<control type="image">
 								<left>0</left>
 								<top>0</top>
-								<width>220</width>
-								<height>320</height>
+								<width>320</width>
+								<height>480</height>
 								<texture colordiffuse="button_focus">colors/white.png</texture>
 								<aspectratio>stretch</aspectratio>
-								<animation effect="fade" start="0" end="30" time="200">Focus</animation>
-								<animation effect="fade" start="30" end="0" time="200">UnFocus</animation>
+								<animation effect="fade" start="0" end="60" time="200">Focus</animation>
+								<animation effect="fade" start="60" end="0" time="200">UnFocus</animation>
 							</control>
 
-							<!-- Poster Image (Focused) -->
+							<!-- Poster Image (Focused - DEBUG: larger + green border) -->
 							<control type="image">
 								<left>10</left>
 								<top>10</top>
-								<width>200</width>
-								<height>300</height>
-								<texture background="true">$INFO[ListItem.Art(poster)]</texture>
+								<width>300</width>
+								<height>450</height>
+								<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 								<aspectratio>scale</aspectratio>
-								<bordertexture border="5" colordiffuse="button_focus">colors/white.png</bordertexture>
-								<bordersize>3</bordersize>
-								<animation effect="zoom" start="100" end="105" time="200" tween="sine" easing="out">Focus</animation>
-								<animation effect="zoom" start="105" end="100" time="200" tween="sine" easing="out">UnFocus</animation>
+								<bordertexture border="10" colordiffuse="FF00FF00">colors/white.png</bordertexture>
+								<bordersize>10</bordersize>
+								<animation effect="zoom" start="100" end="110" time="200" tween="sine" easing="out">Focus</animation>
+								<animation effect="zoom" start="110" end="100" time="200" tween="sine" easing="out">UnFocus</animation>
 							</control>
 
-							<!-- Title Label (Focused) -->
+							<!-- Title Label (Focused - DEBUG: larger + yellow text) -->
 							<control type="label">
 								<left>10</left>
-								<top>320</top>
-								<width>200</width>
-								<height>30</height>
-								<font>font12</font>
+								<top>470</top>
+								<width>300</width>
+								<height>50</height>
+								<font>font25</font>
 								<align>center</align>
 								<aligny>center</aligny>
 								<label>$INFO[ListItem.Label]</label>
-								<textcolor>FFFFFFFF</textcolor>
+								<textcolor>FFFFFF00</textcolor>
 								<animation effect="fade" start="80" end="100" time="200">Focus</animation>
 								<animation effect="fade" start="100" end="80" time="200">UnFocus</animation>
 							</control>
