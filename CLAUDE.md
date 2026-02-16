@@ -137,8 +137,8 @@ See **skin-structure.md** for detailed explanations.
 
 **Check ROADMAP.md for detailed status!**
 
-**Current Status:** Nimbus 0.1.38 installed as base - UNMODIFIED
-**Base Skin:** Pure Nimbus (no Shadow Touch modifications yet!)
+**Current Status:** Phase 1 + 2 COMPLETE! Bottom Nav + Grid working!
+**Base Skin:** Nimbus 0.1.38 with Shadow Touch modifications (Phase 1 + 2 done!)
 
 **DESIGN DECISION (Session 3):** ✅ CONFIRMED
 - **Option B: Full Touch Focus** (no TV/Remote optimization)
@@ -151,12 +151,12 @@ See **skin-structure.md** for detailed explanations.
 - ✅ Full PVR support
 - ✅ Modern dark theme
 
-**What we WILL change:**
-1. ✅ Replace side menu with **Bottom Navigation Bar**
-2. ✅ Implement **Vertical Poster Grid** (no horizontal scrolling)
-3. ✅ Add **Long-Press Overlay** (quick actions on posters)
-4. ✅ Complete **German translation** (3 strings missing)
-5. ✅ Touch-optimize spacing & targets (60-120px)
+**What we CHANGED:**
+1. ✅ Replaced side menu with **Bottom Navigation Bar** (5 buttons)
+2. ✅ Implemented **Vertical Poster Grid** (no horizontal scrolling)
+3. ❌ Add **Long-Press Overlay** (quick actions on posters) → Phase 3
+4. ❌ Complete **German translation** (3 strings missing) → Later
+5. ✅ Touch-optimized spacing & targets (240px buttons, 20px grid padding)
 
 **What we KEEP from Nimbus:**
 - ✅ PVR features (Live TV, EPG, Recordings)
@@ -365,10 +365,68 @@ When starting a new session, DO THIS:
 2. German translation (3 missing strings)
 3. Optional: Remove remaining Nimbus code bloat
 
+### Session 4 Continuation (2026-02-16):
+**CLEANUP PHASE - Phase 1 + 2 FULLY COMPLETED! 🎉**
+
+**Tasks completed:**
+1. ✅ **Removed Side Menu Background**
+   - User reported: Side menu buttons hidden but background still visible
+   - Solution: Added `<visible>false</visible>` to entire side menu group (left=-540)
+   - Result: Grid now has full width, no wasted space on left side
+
+2. ✅ **Added Settings Button to Bottom Nav**
+   - User requested: "einstellungssymbol wo ich zu den Einstellungen von KODI komme"
+   - Expanded Bottom Nav from 4 to 5 buttons
+   - Settings button (id=9205) opens Kodi Settings
+   - All buttons repositioned with proper spacing
+
+3. ✅ **Fixed XML Syntax Errors** (Critical debugging!)
+   - **Problem 1:** Missing closing tags (</controls> and </window>)
+     - Cause: `sed` command accidentally deleted closing tags
+     - Symptom: Kodi stuck at splash screen
+     - Fix: Rebuilt proper XML structure with closing tags
+
+   - **Problem 2:** Settings button not visible
+     - Cause: Duplicate navigation tags from `sed` commands
+     - Lines 138-139: Duplicate `<onleft>` tags
+     - Lines 203-205: Duplicate `<onright>` tags
+     - Fix: Complete rewrite of Includes_ShadowTouch.xml using `Write` tool
+
+4. ✅ **Final Bottom Nav Layout (5 buttons):**
+   - Home (id=9201) @ 360px → Focus Grid
+   - Live TV (id=9202) @ 600px → TVGuide
+   - Library (id=9203) @ 840px → Videos Library
+   - Search (id=9204) @ 1080px → Search Window
+   - Settings (id=9205) @ 1320px → Kodi Settings
+   - All buttons: 240px width, circular navigation
+
+**Critical Technical Learnings:**
+- ✅ Avoid `sed` for complex XML - use `Write` tool instead
+- ✅ Duplicate tags cause invisible controls (no error, just not rendered)
+- ✅ Always test on real hardware after changes
+
+**File Changes:**
+- Modified: `xml/Home.xml` (hid side menu group)
+- Rewrote: `xml/Includes_ShadowTouch.xml` (fixed Settings button)
+
+**Current Status:**
+- ✅ Phase 1: Bottom Navigation Bar → **COMPLETE & CLEAN!**
+- ✅ Phase 2: Vertical Poster Grid → **COMPLETE & CLEAN!**
+- ✅ Side menu fully hidden (background removed)
+- ✅ Bottom Nav: 5 buttons, all functional
+- ✅ Grid: Full width, TMDB movies visible
+- 📋 Phase 3: Long-Press Overlay → **NEXT!**
+
+**User Feedback:**
+- "das seitenmenü ist weg und es sieht alles sehr gut aus"
+- Confirmed Settings button now visible after fix
+- Ready for Phase 3 implementation!
+
 ### Session N (add date):
 - [Future sessions add notes here]
 
 ---
 
 **Last Updated:** 2026-02-16
-**Project Status:** Phase 1 + 2 COMPLETE! Grid visible + Bottom Nav working! 🎉
+**Project Status:** Phase 1 + 2 COMPLETE + CLEANUP DONE! 🎉
+**Next:** Phase 3 - Long-Press Overlay implementation

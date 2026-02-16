@@ -30,23 +30,25 @@
 **Goal:** Replace Nimbus side menu with bottom-fixed navigation
 
 **Decision Made:** Bottom Navigation Bar (touch-first design!)
-- Side menu hidden (id="9000" - visible=false)
-- Bottom Nav implemented with 4 static buttons
+- Side menu hidden (entire group with visible=false)
+- Bottom Nav implemented with 5 static buttons
 
 ### Implementation Details:
-- [x] Hidden Nimbus side menu (vertical FixedList id="9000")
+- [x] Hidden Nimbus side menu (entire group at left=-540)
 - [x] Created ShadowTouchBottomNav Include (xml/Includes_ShadowTouch.xml)
-- [x] 4 individual buttons (NOT scrollable FixedList!):
-  - Home (id=9201) → Focus Grid
-  - Live TV (id=9202) → TVGuide
-  - Library (id=9203) → Videos Library
-  - Search (id=9204) → Search Window
+- [x] 5 individual buttons (NOT scrollable FixedList!):
+  - Home (id=9201) @ 360px → Focus Grid
+  - Live TV (id=9202) @ 600px → TVGuide
+  - Library (id=9203) @ 840px → Videos Library
+  - Search (id=9204) @ 1080px → Search Window
+  - Settings (id=9205) @ 1320px → Kodi Settings
 - [x] Styling: Text labels, focus feedback (blue background 20% opacity)
 - [x] Navigation: Circular onleft/onright, onup to Grid (9300)
-- [x] Touch-optimized: 240x100px buttons, thumb-reachable
+- [x] Touch-optimized: 240px width buttons, thumb-reachable
 - [x] Tested on Google Pixel 7 → **Works!**
+- [x] Cleanup: Side menu background fully removed
 
-**Deliverable:** ✅ Bottom Nav working, not scrollable, touch-friendly!
+**Deliverable:** ✅ Bottom Nav working, 5 buttons, not scrollable, touch-friendly!
 
 ---
 
@@ -82,10 +84,14 @@
 - Clean hierarchy: Panel at correct level (not nested in complex Groups)
 
 **Deliverable:** ✅ Vertical Grid working, TMDB movies visible, touch-friendly!
-- [ ] Test touch targets (too small? accidental taps?)
-- [ ] **DECIDE:** Keep Nimbus widgets OR create custom grid?
 
-### 2.2 IF Custom Grid Needed: Panel Container Setup
+### 2.2 Additional Details (Completed):
+- [x] Cleanup: Hidden Nimbus horizontal widgets (id=2000)
+- [x] Grid has full width (side menu background removed)
+- [x] Touch targets tested on Pixel 7 → Confirmed working!
+- [x] Custom grid implemented (replaced Nimbus widgets)
+
+### 2.3 IF Custom Grid Needed: Panel Container Setup (ARCHIVED - Already Implemented Above)
 - [ ] Replace Nimbus widget containers in Home.xml
 - [ ] Create Panel container (vertical scrolling)
 - [ ] Set poster size: 240x360px (2:3 ratio, per DESIGN.md)
@@ -276,14 +282,14 @@
 
 ## 📊 Progress Tracking
 
-**Overall Status:** 10% (Nimbus installed, ready for evaluation!)
+**Overall Status:** 30% (Phase 1 + 2 COMPLETE!)
 
 | Phase | Status | Progress |
 |-------|--------|----------|
 | Phase 0 | 🟢 Complete | 100% |
-| Phase 1 | 🟡 Evaluation | 10% (Nimbus has side menu - testing needed) |
-| Phase 2 | 🟡 Evaluation | 10% (Nimbus has widgets - testing needed) |
-| Phase 3 | ⚪ Pending | 0% |
+| Phase 1 | 🟢 Complete | 100% (Bottom Nav with 5 buttons!) |
+| Phase 2 | 🟢 Complete | 100% (Vertical Grid with TMDB!) |
+| Phase 3 | ⚪ Pending | 0% (Long-Press Overlay - NEXT!) |
 | Phase 4 | ⚪ Pending | 0% |
 | Phase 5 | ⚪ Pending | 0% |
 | Phase 6 | ⚪ Pending | 0% |
@@ -327,7 +333,16 @@
   - Next step: User testing & evaluation
 - **Status:** Nimbus installed & working, ready for testing
 
+### 2026-02-16 (Session 4 - Phase 1 + 2 COMPLETE!)
+- ✅ Implemented Bottom Navigation Bar (5 buttons)
+- ✅ Implemented Vertical Poster Grid (TMDB integration)
+- ✅ Major debugging: Panel hierarchy, Include registration
+- ✅ Cleanup: Removed side menu background
+- ✅ Added Settings button to Bottom Nav
+- ✅ Fixed XML syntax errors (duplicate tags)
+- **Status:** Phase 1 + 2 COMPLETE! Ready for Phase 3!
+
 ---
 
-**Last Updated:** 2026-02-15
-**Status:** Nimbus 0.1.38 base installed - Ready for user testing to evaluate what needs modification
+**Last Updated:** 2026-02-16
+**Status:** Phase 1 + 2 COMPLETE! Bottom Nav (5 buttons) + Vertical Grid working on Pixel 7!

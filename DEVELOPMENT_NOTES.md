@@ -179,12 +179,48 @@ skin.shadow.touch/
 - **9202** - Live TV Button
 - **9203** - Library Button
 - **9204** - Search Button
+- **9205** - Settings Button
 - **9300** - Vertical Poster Grid (Panel)
 
 ### Content Source:
 ```xml
 <content target="videos">plugin://plugin.video.themoviedb.helper/?info=popular&amp;type=movie</content>
 ```
+
+---
+
+## 🚨 CRITICAL: XML Editing Best Practices
+
+### **6. Avoid `sed` for Complex XML Changes**
+
+**Problem:** Duplicate tags or missing closing tags
+
+**Cause:** `sed` doesn't understand XML structure!
+
+#### ❌ WRONG - Using sed for complex changes:
+```bash
+sed -i 's/<onleft>9204<\/onleft>/<onleft>9205<\/onleft>/' file.xml
+# Risk: Creates duplicate tags if pattern repeats!
+```
+
+#### ✅ CORRECT - Use Write tool for complete rewrites:
+```
+Use Write tool to rewrite entire file with proper structure
+- Guarantees valid XML
+- No duplicate tags
+- Proper indentation
+- All closing tags present
+```
+
+**Real Example from Session 4:**
+- Used `sed` to add Settings button navigation
+- Created duplicate `<onleft>` and `<onright>` tags
+- Settings button defined but INVISIBLE (no error!)
+- Solution: Complete rewrite with Write tool
+
+**Rule of Thumb:**
+- Simple line deletions → `sed` OK
+- Complex XML modifications → Use `Write` tool!
 
 ---
 
@@ -231,6 +267,12 @@ grep "Includes_ShadowTouch" xml/Includes.xml
    - Not affecting functionality
    - Can be cleaned up in future phases
 
+3. **Invisible Controls Due to Duplicate Tags:**
+   - **Problem:** Control defined but not visible (no error in log)
+   - **Cause:** Duplicate navigation tags (`<onleft>`, `<onright>`)
+   - **Detection:** Hard to spot! Check XML manually or use validator
+   - **Prevention:** Use `Write` tool for complex XML changes
+
 ---
 
 ## 🎯 Strategy for Next Session
@@ -258,5 +300,6 @@ grep "Includes_ShadowTouch" xml/Includes.xml
 ---
 
 **Last Updated:** 2026-02-16
-**Session:** 4
-**Status:** Phase 1 + 2 Complete! 🎉
+**Session:** 4 (+ Cleanup)
+**Status:** Phase 1 + 2 Complete + Cleanup Done! 🎉
+**Next:** Phase 3 - Long-Press Overlay
