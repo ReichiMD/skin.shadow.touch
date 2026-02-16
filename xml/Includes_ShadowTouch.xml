@@ -20,8 +20,8 @@
 			<orientation>vertical</orientation>
 			<preloaditems>2</preloaditems>
 
-			<!-- Item Layout (Unfocused - DEBUG: large + red) -->
-			<itemlayout width="320" height="530">
+			<!-- Item Layout (Unfocused) -->
+			<itemlayout width="320" height="480">
 				<!-- Poster Image -->
 				<control type="image">
 					<left>10</left>
@@ -30,36 +30,36 @@
 					<height>450</height>
 					<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>scale</aspectratio>
-					<bordertexture border="10" colordiffuse="FFFF0000">colors/white.png</bordertexture>
-					<bordersize>10</bordersize>
+					<bordertexture border="3" colordiffuse="40FFFFFF">colors/white.png</bordertexture>
+					<bordersize>3</bordersize>
 				</control>
 
 				<!-- Title Label -->
 				<control type="label">
 					<left>10</left>
-					<top>470</top>
+					<top>465</top>
 					<width>300</width>
-					<height>50</height>
-					<font>font25</font>
+					<height>30</height>
+					<font>font13</font>
 					<align>center</align>
 					<aligny>center</aligny>
 					<label>$INFO[ListItem.Label]</label>
-					<textcolor>FFFF0000</textcolor>
+					<textcolor>FFFFFFFF</textcolor>
 				</control>
 			</itemlayout>
 
-			<!-- Focused Layout (DEBUG: large + green) -->
-			<focusedlayout width="320" height="530">
+			<!-- Focused Layout -->
+			<focusedlayout width="320" height="480">
 				<!-- Focus Glow -->
 				<control type="image">
 					<left>0</left>
 					<top>0</top>
 					<width>320</width>
-					<height>480</height>
+					<height>460</height>
 					<texture colordiffuse="button_focus">colors/white.png</texture>
 					<aspectratio>stretch</aspectratio>
-					<animation effect="fade" start="0" end="60" time="200">Focus</animation>
-					<animation effect="fade" start="60" end="0" time="200">UnFocus</animation>
+					<animation effect="fade" start="0" end="40" time="200">Focus</animation>
+					<animation effect="fade" start="40" end="0" time="200">UnFocus</animation>
 				</control>
 
 				<!-- Poster Image (Focused) -->
@@ -70,23 +70,23 @@
 					<height>450</height>
 					<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>scale</aspectratio>
-					<bordertexture border="10" colordiffuse="FF00FF00">colors/white.png</bordertexture>
-					<bordersize>10</bordersize>
-					<animation effect="zoom" start="100" end="110" time="200" tween="sine" easing="out">Focus</animation>
-					<animation effect="zoom" start="110" end="100" time="200" tween="sine" easing="out">UnFocus</animation>
+					<bordertexture border="5" colordiffuse="button_focus">colors/white.png</bordertexture>
+					<bordersize>5</bordersize>
+					<animation effect="zoom" start="100" end="105" time="200" tween="sine" easing="out">Focus</animation>
+					<animation effect="zoom" start="105" end="100" time="200" tween="sine" easing="out">UnFocus</animation>
 				</control>
 
 				<!-- Title Label (Focused) -->
 				<control type="label">
 					<left>10</left>
-					<top>470</top>
+					<top>465</top>
 					<width>300</width>
-					<height>50</height>
-					<font>font25</font>
+					<height>30</height>
+					<font>font13</font>
 					<align>center</align>
 					<aligny>center</aligny>
 					<label>$INFO[ListItem.Label]</label>
-					<textcolor>FFFFFF00</textcolor>
+					<textcolor>button_focus</textcolor>
 					<animation effect="fade" start="80" end="100" time="200">Focus</animation>
 					<animation effect="fade" start="100" end="80" time="200">UnFocus</animation>
 				</control>
@@ -94,6 +94,115 @@
 
 			<!-- Content: Popular Movies from TMDB Helper -->
 			<content target="videos">plugin://plugin.video.themoviedb.helper/?info=popular&amp;type=movie</content>
+		</control>
+	</include>
+
+	<!-- ============================================ -->
+	<!-- SHADOW TOUCH: Bottom Navigation Bar Include -->
+	<!-- ============================================ -->
+	<include name="ShadowTouchBottomNav">
+		<control type="group" id="9200">
+			<depth>DepthBars</depth>
+			<bottom>0</bottom>
+			<height>120</height>
+			<width>1920</width>
+			<animation effect="fade" start="0" end="100" time="300" delay="300">WindowOpen</animation>
+			<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+
+			<!-- Background -->
+			<control type="image">
+				<left>0</left>
+				<bottom>0</bottom>
+				<width>1920</width>
+				<height>120</height>
+				<texture colordiffuse="FF000000">colors/white.png</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+
+			<!-- HOME Button -->
+			<control type="button" id="9201">
+				<left>480</left>
+				<bottom>10</bottom>
+				<width>240</width>
+				<height>100</height>
+				<label>Home</label>
+				<font>font13</font>
+				<textcolor>80FFFFFF</textcolor>
+				<focusedcolor>button_focus</focusedcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+				<texturenofocus>-</texturenofocus>
+				<onup>9300</onup>
+				<ondown>9201</ondown>
+				<onleft>9204</onleft>
+				<onright>9202</onright>
+				<onclick>SetFocus(9300)</onclick>
+			</control>
+
+			<!-- LIVE TV Button -->
+			<control type="button" id="9202">
+				<left>720</left>
+				<bottom>10</bottom>
+				<width>240</width>
+				<height>100</height>
+				<label>Live TV</label>
+				<font>font13</font>
+				<textcolor>80FFFFFF</textcolor>
+				<focusedcolor>button_focus</focusedcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+				<texturenofocus>-</texturenofocus>
+				<onup>9300</onup>
+				<ondown>9202</ondown>
+				<onleft>9201</onleft>
+				<onright>9203</onright>
+				<onclick>ActivateWindow(TVGuide)</onclick>
+				<visible>!Skin.HasSetting(HomeMenuNoTVButton)</visible>
+			</control>
+
+			<!-- LIBRARY Button -->
+			<control type="button" id="9203">
+				<left>960</left>
+				<bottom>10</bottom>
+				<width>240</width>
+				<height>100</height>
+				<label>Library</label>
+				<font>font13</font>
+				<textcolor>80FFFFFF</textcolor>
+				<focusedcolor>button_focus</focusedcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+				<texturenofocus>-</texturenofocus>
+				<onup>9300</onup>
+				<ondown>9203</ondown>
+				<onleft>9202</onleft>
+				<onright>9204</onright>
+				<onclick>ActivateWindow(Videos,videodb://movies/titles/,return)</onclick>
+			</control>
+
+			<!-- SEARCH Button -->
+			<control type="button" id="9204">
+				<left>1200</left>
+				<bottom>10</bottom>
+				<width>240</width>
+				<height>100</height>
+				<label>Search</label>
+				<font>font13</font>
+				<textcolor>80FFFFFF</textcolor>
+				<focusedcolor>button_focus</focusedcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+				<texturenofocus>-</texturenofocus>
+				<onup>9300</onup>
+				<ondown>9204</ondown>
+				<onleft>9203</onleft>
+				<onright>9201</onright>
+				<onclick>ActivateWindow(1103)</onclick>
+			</control>
 		</control>
 	</include>
 </includes>
