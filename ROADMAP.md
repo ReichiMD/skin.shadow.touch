@@ -115,28 +115,47 @@
 
 ---
 
-## 📅 Phase 3: Long-Press Info Overlay (Touch UX)
+## 📅 Phase 3: Long-Press Info Overlay (Touch UX) - IN PROGRESS 🚧
 
 **Goal:** Modal info dialog triggered by long-press
 
-### 3.1 Custom Dialog Creation
-- [ ] Create `DialogVideoInfo_ShadowTouch.xml`
-- [ ] Design layout: centered 600x800px modal
-- [ ] Add background blur effect
-- [ ] Semi-transparent black background (80% opacity)
+**Status:** Dialog WORKING! Long-press on grid items NOT YET implemented.
 
-### 3.2 Content Layout
-- [ ] Large poster on left (300x450px)
-- [ ] Metadata panel on right:
-  - Title
-  - Year, Rating, Duration
-  - Plot (scrollable text)
-  - Genre tags
-- [ ] Action buttons at bottom:
-  - Play
-  - Add to Watchlist
-  - Mark as Watched
-  - Close
+### 3.1 Custom Dialog Creation (COMPLETED ✅)
+- [x] Create `DialogVideoInfo.xml` (customized Nimbus dialog)
+- [x] Design layout: full-screen modal with centered content
+- [x] Add background blur effect (beautiful!)
+- [x] Semi-transparent black background (works perfectly)
+
+### 3.2 Content Layout (COMPLETED ✅)
+- [x] Large poster on left (500px width)
+- [x] Metadata panel on right:
+  - [x] Title (German language)
+  - [x] Year, Rating (⭐), Runtime
+  - [x] Plot (scrollable text, German)
+  - [x] Genre tags (Drama, Thriller, etc.)
+  - [x] Cast (first 5 actors)
+  - [x] Director
+- [x] Action buttons at bottom:
+  - [x] Close (Schließen)
+  - [x] Add to Watchlist (Merkliste)
+  - [x] Mark as Watched (Gesehen)
+
+### 3.3 Backend Implementation (COMPLETED ✅)
+- [x] Python backend (resources/lib/modules/)
+  - [x] shadow_actions.py (TMDB API integration)
+  - [x] config.py (API key management)
+  - [x] router.py (RunScript handler)
+- [x] TMDB API integration (German language support)
+- [x] Error handling and notifications
+- [x] Window properties for skin access
+- [x] Test button on home screen (red button - WORKING!)
+
+### 3.4 Long-Press Integration (TODO ❌)
+- [ ] Add OnLongClick to grid poster items (Includes_ShadowTouch.xml)
+- [ ] Pass TMDB ID from ListItem to dialog
+- [ ] Test on real device (Pixel 7)
+- [ ] Remove test button (red button) when done
 
 ### 3.3 Event Binding
 - [ ] Add `<onlongclick>` to Panel items in Home.xml
