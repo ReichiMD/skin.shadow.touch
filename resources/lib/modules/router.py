@@ -26,20 +26,28 @@ def routing():
     """
     try:
         # Parse arguments from sys.argv
-        # sys.argv[0] = plugin://skin.shadow.touch/
-        # sys.argv[1] = handle (not used for skins)
-        # sys.argv[2] = ?action=show_info&tmdb_id=12345
+        # RunScript(skin.shadow.touch,action=show_movie_info,tmdb_id=12345)
+        # sys.argv[0] = script path
+        # sys.argv[1] = "action=show_movie_info"
+        # sys.argv[2] = "tmdb_id=12345"
 
-        if len(sys.argv) < 3:
-            log_debug("No arguments provided to router")
+        if len(sys.argv) < 2:
+            log_error("No arguments provided to router")
             return
 
-        # Parse query string
-        params = parse_qs(sys.argv[2].lstrip('?'))
-        log_debug(f"Router params: {params}")
+        # Parse key=value pairs from sys.argv[1:]
+        params = {}
+        for arg in sys.argv[1:]:
+            if '=' in arg:
+                key, value = arg.split('=', 1)
+                params[key] = value
+            else:
+                log_error(f"Invalid argument format (expected key=value): {arg}")
+
+        log_info(f"Router params: {params}")
 
         # Get action
-        action = params.get('action', [None])[0]
+        action = params.get('action')
 
         if not action:
             log_error("No action specified in router")
@@ -48,9 +56,9 @@ def routing():
         # Route to appropriate handler
         if action == 'show_movie_info':
             # Show movie info dialog
-            tmdb_id = params.get('tmdb_id', [None])[0]
-            title = params.get('title', [None])[0]
-            year = params.get('year', [None])[0]
+            tmdb_id = params.get('tmdb_id')
+            title = params.get('title')
+            year = params.get('year')
 
             log_info(f"Showing movie info: ID={tmdb_id}, Title={title}, Year={year}")
             show_movie_info_dialog(tmdb_id=tmdb_id, title=title, year=year)
@@ -62,7 +70,7 @@ def routing():
 
         elif action == 'add_to_watchlist':
             # Add to watchlist
-            tmdb_id = params.get('tmdb_id', [None])[0]
+            tmdb_id = params.get('tmdb_id')
             if tmdb_id:
                 log_info(f"Adding to watchlist: {tmdb_id}")
                 add_to_watchlist(tmdb_id)
@@ -71,7 +79,7 @@ def routing():
 
         elif action == 'mark_as_watched':
             # Mark as watched
-            tmdb_id = params.get('tmdb_id', [None])[0]
+            tmdb_id = params.get('tmdb_id')
             if tmdb_id:
                 log_info(f"Marking as watched: {tmdb_id}")
                 mark_as_watched(tmdb_id)

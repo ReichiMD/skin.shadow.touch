@@ -422,11 +422,60 @@ When starting a new session, DO THIS:
 - Confirmed Settings button now visible after fix
 - Ready for Phase 3 implementation!
 
+### Session 5 (2026-02-16):
+**BREAKTHROUGH - Phase 3 PARTIALLY COMPLETE! 🎉**
+
+**Tasks completed:**
+1. ✅ **Created Long-Press Info Dialog** (DialogVideoInfo.xml custom)
+   - Beautiful dialog with poster, plot, rating, cast, director
+   - 3 action buttons: Close, Watchlist, Mark Watched
+   - German translations working perfectly
+   - Blur background effect
+
+2. ✅ **Implemented Python Backend** (resources/lib/)
+   - Created shadow_actions.py (TMDB API integration)
+   - Created config.py (API key management)
+   - Created router.py (RunScript handler)
+   - Full German language support (de-DE)
+
+3. ✅ **Added Red Test Button to Home Screen**
+   - Quick access for testing dialog functionality
+   - Shows movie info for TMDB ID 550 (Fight Club)
+   - Confirmed working by user!
+
+4. ⚠️ **TMDB API Key Issue**
+   - Initial hardcoded key expired (401 Unauthorized)
+   - Created settings.xml for user API key input (not used yet)
+   - User manually updated config.py line 19 with own key
+   - Dialog now works perfectly!
+
+**Current Status:**
+- ✅ Dialog functionality: **WORKING!** (tested with red button)
+- ✅ TMDB API integration: **WORKING!** (German data loading)
+- ✅ Visual design: **PERFECT!** (user confirmed)
+- ❌ Long-Press on grid posters: **NOT YET IMPLEMENTED!**
+
+**Technical Details:**
+- Dialog shows: Title, Year, Rating, Genres, Runtime, Plot, Cast, Director
+- API fetches German language data (de-DE)
+- Proper error handling and notifications
+- Window properties for skin access (ShadowTouch.Movie*)
+
+**Next Priority:**
+1. Implement OnLongClick on grid poster items
+2. Pass TMDB ID from grid item to dialog
+3. Test on real device (Pixel 7)
+4. Merge and continue work on same branch
+
+**User Request:**
+- "kannst du dann auf diesen branch weiter arbeiten"
+- Confirmed: Can continue working after merge via git pull
+
 ### Session N (add date):
 - [Future sessions add notes here]
 
 ---
 
 **Last Updated:** 2026-02-16
-**Project Status:** Phase 1 + 2 COMPLETE + CLEANUP DONE! 🎉
-**Next:** Phase 3 - Long-Press Overlay implementation
+**Project Status:** Phase 3 Dialog WORKING! Long-Press on posters NEXT!
+**Next:** Implement OnLongClick on grid items

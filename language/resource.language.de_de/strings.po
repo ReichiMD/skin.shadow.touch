@@ -762,3 +762,20 @@ msgstr "System"
 #~ msgctxt "#31138"
 #~ msgid "Player process info"
 #~ msgstr "Player-Informationen"
+
+# Shadow Touch Skin Settings
+msgctxt "#32001"
+msgid "General"
+msgstr "Allgemein"
+
+msgctxt "#32010"
+msgid "API Settings"
+msgstr "API-Einstellungen"
+
+msgctxt "#32011"
+msgid "TMDB API Key"
+msgstr "TMDB API-Schlüssel"
+
+msgctxt "#32012"
+msgid "Enter your TMDB API key from https://www.themoviedb.org/settings/api (free registration required)"
+msgstr "Gib deinen TMDB API-Schlüssel ein von https://www.themoviedb.org/settings/api (kostenlose Registrierung erforderlich)"

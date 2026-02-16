@@ -947,3 +947,20 @@ msgstr ""
 msgctxt "#31611"
 msgid "System"
 msgstr ""
+
+# Shadow Touch Skin Settings
+msgctxt "#32001"
+msgid "General"
+msgstr ""
+
+msgctxt "#32010"
+msgid "API Settings"
+msgstr ""
+
+msgctxt "#32011"
+msgid "TMDB API Key"
+msgstr ""
+
+msgctxt "#32012"
+msgid "Enter your TMDB API key from https://www.themoviedb.org/settings/api (free registration required)"
+msgstr ""

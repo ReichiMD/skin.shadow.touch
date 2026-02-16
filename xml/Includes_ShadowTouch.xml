@@ -20,6 +20,10 @@
 			<orientation>vertical</orientation>
 			<preloaditems>2</preloaditems>
 
+			<!-- Long-Press Event: Show Movie Info Dialog -->
+			<onlongclick>RunScript(skin.shadow.touch,action=show_movie_info,tmdb_id=$INFO[ListItem.Property(tmdb_id)])</onlongclick>
+			<onclick>noop</onclick>
+
 			<!-- Item Layout (Unfocused) -->
 			<itemlayout width="320" height="480">
 				<!-- Poster Image -->
