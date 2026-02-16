@@ -121,7 +121,7 @@
 
 			<!-- HOME Button -->
 			<control type="button" id="9201">
-				<left>480</left>
+				<left>360</left>
 				<bottom>10</bottom>
 				<width>240</width>
 				<height>100</height>
@@ -135,15 +135,14 @@
 				<texturenofocus>-</texturenofocus>
 				<onup>9300</onup>
 				<ondown>9201</ondown>
-				<onleft>9204</onleft>
-		<onleft>9205</onleft>
+				<onleft>9205</onleft>
 				<onright>9202</onright>
 				<onclick>SetFocus(9300)</onclick>
 			</control>
 
 			<!-- LIVE TV Button -->
 			<control type="button" id="9202">
-				<left>720</left>
+				<left>600</left>
 				<bottom>10</bottom>
 				<width>240</width>
 				<height>100</height>
@@ -165,7 +164,7 @@
 
 			<!-- LIBRARY Button -->
 			<control type="button" id="9203">
-				<left>960</left>
+				<left>840</left>
 				<bottom>10</bottom>
 				<width>240</width>
 				<height>100</height>
@@ -186,7 +185,7 @@
 
 			<!-- SEARCH Button -->
 			<control type="button" id="9204">
-				<left>1200</left>
+				<left>1080</left>
 				<bottom>10</bottom>
 				<width>240</width>
 				<height>100</height>
@@ -201,30 +200,29 @@
 				<onup>9300</onup>
 				<ondown>9204</ondown>
 				<onleft>9203</onleft>
-				<onright>9201</onright>
-		<onright>9205</onright>
+				<onright>9205</onright>
 				<onclick>ActivateWindow(1103)</onclick>
+			</control>
 
-		<!-- SETTINGS Button -->
-		<control type="button" id="9205">
-			<left>1440</left>
-			<bottom>10</bottom>
-			<width>200</width>
-			<height>100</height>
-			<label>Settings</label>
-			<font>font13</font>
-			<textcolor>80FFFFFF</textcolor>
-			<focusedcolor>button_focus</focusedcolor>
-			<align>center</align>
-			<aligny>center</aligny>
-			<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
-			<texturenofocus>-</texturenofocus>
-			<onup>9300</onup>
-			<ondown>9205</ondown>
-			<onleft>9204</onleft>
-			<onright>9201</onright>
-			<onclick>ActivateWindow(Settings)</onclick>
-		</control>
+			<!-- SETTINGS Button -->
+			<control type="button" id="9205">
+				<left>1320</left>
+				<bottom>10</bottom>
+				<width>240</width>
+				<height>100</height>
+				<label>Settings</label>
+				<font>font13</font>
+				<textcolor>80FFFFFF</textcolor>
+				<focusedcolor>button_focus</focusedcolor>
+				<align>center</align>
+				<aligny>center</aligny>
+				<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+				<texturenofocus>-</texturenofocus>
+				<onup>9300</onup>
+				<ondown>9205</ondown>
+				<onleft>9204</onleft>
+				<onright>9201</onright>
+				<onclick>ActivateWindow(Settings)</onclick>
 			</control>
 		</control>
 	</include>
