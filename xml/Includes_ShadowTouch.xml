@@ -19,10 +19,8 @@
 			<scrolltime tween="cubic" easing="out">300</scrolltime>
 			<orientation>vertical</orientation>
 			<preloaditems>2</preloaditems>
-
-			<!-- Long-Press Event: Show Movie Info Dialog -->
-			<onlongclick>RunScript(skin.shadow.touch,action=show_movie_info,tmdb_id=$INFO[ListItem.Property(tmdb_id)])</onlongclick>
-			<onclick>noop</onclick>
+			<!-- Tap on poster: Show movie info dialog -->
+			<onclick>RunScript(skin.shadow.touch,action=show_movie_info,tmdb_id=$INFO[ListItem.UniqueID(tmdb)],title=$INFO[ListItem.Label],year=$INFO[ListItem.Year])</onclick>
 
 			<!-- Item Layout (Unfocused) -->
 			<itemlayout width="320" height="480">
