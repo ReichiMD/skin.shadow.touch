@@ -1011,6 +1011,7 @@
 				</control>
 				<!-- <include>osd_darkenBG</include> -->
 				<control type="group">
+				<visible>false</visible> <!-- Shadow Touch: Hide entire side menu group (background + content) -->
 					<left>-540</left>
 					<animation type="Conditional" condition="!ControlGroup(2000).HasFocus + !Control.IsVisible(20000) + !Control.IsVisible(20001)" reversible="true">
 						<effect type="slide" start="0" end="540" time="500" tween="cubic" easing="inout" />

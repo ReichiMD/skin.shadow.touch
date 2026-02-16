@@ -136,6 +136,7 @@
 				<onup>9300</onup>
 				<ondown>9201</ondown>
 				<onleft>9204</onleft>
+		<onleft>9205</onleft>
 				<onright>9202</onright>
 				<onclick>SetFocus(9300)</onclick>
 			</control>
@@ -201,7 +202,29 @@
 				<ondown>9204</ondown>
 				<onleft>9203</onleft>
 				<onright>9201</onright>
+		<onright>9205</onright>
 				<onclick>ActivateWindow(1103)</onclick>
+
+		<!-- SETTINGS Button -->
+		<control type="button" id="9205">
+			<left>1440</left>
+			<bottom>10</bottom>
+			<width>200</width>
+			<height>100</height>
+			<label>Settings</label>
+			<font>font13</font>
+			<textcolor>80FFFFFF</textcolor>
+			<focusedcolor>button_focus</focusedcolor>
+			<align>center</align>
+			<aligny>center</aligny>
+			<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+			<texturenofocus>-</texturenofocus>
+			<onup>9300</onup>
+			<ondown>9205</ondown>
+			<onleft>9204</onleft>
+			<onright>9201</onright>
+			<onclick>ActivateWindow(Settings)</onclick>
+		</control>
 			</control>
 		</control>
 	</include>
