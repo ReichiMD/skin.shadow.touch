@@ -1269,5 +1269,9 @@
 			</control>
 		</control>
 
+
 	<!-- Shadow Touch: Bottom Navigation Bar (Include) -->
 	<include>ShadowTouchBottomNav</include>
+
+	</controls>
+</window>
