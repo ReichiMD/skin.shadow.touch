@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<!-- Shadow Touch: Custom includes -->
+	<include file="Includes_ShadowTouch.xml" />
+
 	<include file="Defaults.xml" />
 	<include file="Expressions.xml" />
 	<include file="Includes_Home.xml" />
