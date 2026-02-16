@@ -4,6 +4,9 @@
 	<backgroundcolor>background</backgroundcolor>
 	<include>NimbusSkinStringsInitialization</include>
 	<controls>
+		<!-- Shadow Touch: Vertical Grid (clean include!) -->
+		<include>ShadowTouchVerticalGrid</include>
+
 		<control type="button" id="20000">
 			<include>HiddenObject</include>
 			<animation effect="fade" time="300" start="100" end="0">Focus</animation>
