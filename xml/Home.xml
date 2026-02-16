@@ -124,6 +124,7 @@
 			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
 			<!-- WIDGETS GROUP -->
 			<control type="group" id="2000">
+				<visible>false</visible> <!-- Shadow Touch: Hide Nimbus horizontal widgets -->
 				<animation condition="Skin.HasSetting(Enable.MainMenuWidgetDimming) + !ControlGroup(2000).HasFocus" reversible="true">
 					<effect type="fade" start="100" end="80" time="500" tween="sine" easing="inout" />
 					<effect type="fadediffuse" start="FFE9E9E9" end="FF777777" time="500" />
@@ -1093,9 +1094,8 @@
 							</control>
 						</focusedlayout>
 
-						<!-- Content: Movies from Library -->
-						<!-- Content: Movies from Library -->
-						<content target="videos">videodb://movies/titles/</content>
+						<!-- Content: Popular Movies from TMDB Helper (for testing) -->
+						<content target="videos">plugin://plugin.video.themoviedb.helper/?info=popular&amp;type=movie</content>
 					</control>
 					<!-- END Shadow Touch Vertical Grid -->
 				</control>
@@ -1484,7 +1484,7 @@
 					<item>
 						<label>Home</label>
 						<icon>icons/sidemenu/home.png</icon>
-						<onclick>ActivateWindow(Home)</onclick>
+						<onclick>SetFocus(9300)</onclick> <!-- Shadow Touch: Focus Grid instead of activating Home -->
 					</item>
 
 					<!-- LIVE TV Button -->
