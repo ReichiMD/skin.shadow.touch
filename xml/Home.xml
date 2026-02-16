@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>9000</defaultcontrol>
+	<defaultcontrol>9300</defaultcontrol> <!-- Shadow Touch: Focus Vertical Grid on startup -->
 	<backgroundcolor>background</backgroundcolor>
 	<include>NimbusSkinStringsInitialization</include>
 	<controls>
+		<!-- Shadow Touch: Vertical Grid (clean include!) -->
+		<include>ShadowTouchVerticalGrid</include>
+
 		<control type="button" id="20000">
 			<include>HiddenObject</include>
 			<animation effect="fade" time="300" start="100" end="0">Focus</animation>
@@ -124,6 +127,7 @@
 			<animation effect="fade" start="100" end="0" time="200" tween="sine" condition="$EXP[infodialog_active]">Conditional</animation>
 			<!-- WIDGETS GROUP -->
 			<control type="group" id="2000">
+				<visible>false</visible> <!-- Shadow Touch: Hide Nimbus horizontal widgets -->
 				<animation condition="Skin.HasSetting(Enable.MainMenuWidgetDimming) + !ControlGroup(2000).HasFocus" reversible="true">
 					<effect type="fade" start="100" end="80" time="500" tween="sine" easing="inout" />
 					<effect type="fadediffuse" start="FFE9E9E9" end="FF777777" time="500" />
@@ -999,13 +1003,15 @@
 			<control type="group">
 				<depth>DepthContentPanel</depth>
 				<control type="group">
-					<visible>$EXP[isContent]</visible>
+					<visible>true</visible> <!-- Shadow Touch: Always visible (was: $EXP[isContent]) -->
 					<include>OpenClose_Left</include>
 					<include>HomeFlixPanelAnimations</include>
-					<include>FlixPanel</include>
+					<!-- <include>FlixPanel</include> --> <!-- Shadow Touch: Replaced with Vertical Grid -->
+
 				</control>
 				<!-- <include>osd_darkenBG</include> -->
 				<control type="group">
+				<visible>false</visible> <!-- Shadow Touch: Hide entire side menu group (background + content) -->
 					<left>-540</left>
 					<animation type="Conditional" condition="!ControlGroup(2000).HasFocus + !Control.IsVisible(20000) + !Control.IsVisible(20001)" reversible="true">
 						<effect type="slide" start="0" end="540" time="500" tween="cubic" easing="inout" />
@@ -1016,6 +1022,7 @@
 					</include>
 					<!-- <visible>true</visible> -->
 					<control type="fixedlist" id="9000">
+						<visible>false</visible> <!-- Shadow Touch: Hide Nimbus side menu -->
 						<left>25</left>
 						<top>215</top>
             <width>825</width>
@@ -1262,5 +1269,10 @@
 				</control>
 			</control>
 		</control>
+
+
+	<!-- Shadow Touch: Bottom Navigation Bar (Include) -->
+	<include>ShadowTouchBottomNav</include>
+
 	</controls>
 </window>

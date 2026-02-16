@@ -11,14 +11,22 @@
 **Addon ID:** `skin.shadow.touch`
 **Based On:** Nimbus (Kodi 21 Omega)
 **Target Devices:**
-- Samsung S9 FE Tablet (Touch, Landscape 1080p)
-- Nvidia Shield (Remote, Landscape 1080p)
+- Google Pixel 7 (Primary testing device)
+- Samsung S9 FE Tablet (Secondary, when needed)
 
 **Design Philosophy:**
-- Touch-first interface (Netflix/Apple TV style)
-- Minimal/No static images (code-based rendering)
-- Dark theme, modern streaming app aesthetic
+- **Touch-FIRST** (100% focus, no TV compromises!)
+- Netflix/Apple TV/Disney+ style interface
+- Bottom Navigation Bar (thumb-reachable)
+- Vertical Poster Grid (no horizontal scrolling!)
+- Long-Press Overlay for quick actions
+- Dark theme, minimal, modern
 - Lightweight & performant
+
+**Design Reference:** See DESIGN.md for exact specifications!
+**Visual Target:** [Image from Session 3] - Bottom Nav + Grid + Long-Press Overlay
+
+**Later (Optional):** TV/Remote compatibility (but NOT primary focus!)
 
 ---
 
@@ -129,12 +137,37 @@ See **skin-structure.md** for detailed explanations.
 
 **Check ROADMAP.md for detailed status!**
 
-**Last Session:** Initial setup (EstuaryPVR+ cloned, docs created)
+**Current Status:** Phase 1 + 2 COMPLETE! Bottom Nav + Grid working!
+**Base Skin:** Nimbus 0.1.38 with Shadow Touch modifications (Phase 1 + 2 done!)
 
-**Next Priority:**
-1. Rename addon.xml to `skin.shadow.touch`
-2. Clean up EstuaryPVR+ README (create Shadow Touch specific)
-3. Start Phase 1 - Bottom Nav Bar prototype
+**DESIGN DECISION (Session 3):** ✅ CONFIRMED
+- **Option B: Full Touch Focus** (no TV/Remote optimization)
+- Design from image: Bottom Nav + Vertical Grid + Long-Press Overlay
+- Later optional: TV compatibility (but not primary goal)
+
+**IMPORTANT:** Nimbus already has:
+- ✅ Touch-first Netflix-style interface
+- ✅ Landscape/Portrait widgets
+- ✅ Full PVR support
+- ✅ Modern dark theme
+
+**What we CHANGED:**
+1. ✅ Replaced side menu with **Bottom Navigation Bar** (5 buttons)
+2. ✅ Implemented **Vertical Poster Grid** (no horizontal scrolling)
+3. ❌ Add **Long-Press Overlay** (quick actions on posters) → Phase 3
+4. ❌ Complete **German translation** (3 strings missing) → Later
+5. ✅ Touch-optimized spacing & targets (240px buttons, 20px grid padding)
+
+**What we KEEP from Nimbus:**
+- ✅ PVR features (Live TV, EPG, Recordings)
+- ✅ Dark theme & modern aesthetic
+- ✅ Helper script (script.nimbus.helper)
+
+**Testing Order:**
+1. **Primary:** Google Pixel 7 (first test on every change)
+2. **Secondary:** Samsung S9 FE Tablet (when needed)
+
+**For Design Questions:** Always check DESIGN.md first!
 
 ---
 
@@ -213,8 +246,6 @@ When starting a new session, DO THIS:
 4. ✅ Restored documentation with updates
 5. ✅ Changed addon.xml (ID: skin.shadow.touch, version: 0.0.1)
 6. ✅ Created NIMBUS-STRUCTURE.md (architecture reference)
-7. ⏳ Implementing Bottom Nav in Nimbus context
-8. ⏳ Implementing Vertical Grid in Nimbus context
 
 **What We Kept:**
 - All documentation (updated for Nimbus)
@@ -225,14 +256,177 @@ When starting a new session, DO THIS:
 **What Changed:**
 - Base skin: Nimbus instead of EstuaryPVR+
 - License: CC BY-SA 4.0 (Nimbus) + GPL v2 (code parts)
-- Starting fresh with Phase 1 (but much faster path to goal!)
+- Starting fresh with better foundation!
 
-**Status:** Fresh start with better foundation, documentation preserved
+**Status:** Nimbus installed as-is, NO modifications yet
+
+### Session 3 (2026-02-15):
+**Tasks completed:**
+1. ✅ Fixed addon.xml syntax error preventing Kodi installation
+   - Missing closing `>` on `<addon>` tag line 2
+   - Skin now installs correctly via ZIP or manual copy
+2. ✅ Clarified script.nimbus.helper dependency
+   - Handles widget management, API keys, menu customization
+   - Keeping it for now (provides important functionality)
+3. ✅ Updated documentation to reflect TRUE current status
+   - Corrected CLAUDE.md, DESIGN.md, ROADMAP.md
+   - Removed misleading "IMPLEMENTED" claims
+   - Clarified: Nimbus is UNMODIFIED base
+
+**MAJOR DESIGN DECISIONS:**
+4. ✅ **DECISION: Option B - Full Touch Focus!**
+   - No TV/Remote optimization (that's optional later)
+   - 100% focus on touch-first experience
+   - Design from user-provided image confirmed as target
+5. ✅ **Testing Strategy Defined:**
+   - Primary: Google Pixel 7 (test first!)
+   - Secondary: Samsung S9 FE Tablet (when needed)
+6. ✅ **Language: German**
+   - Complete all UI strings in German
+   - Fix 3 missing strings in language/resource.language.de_de/strings.po
+   - All skin settings menu in German
+
+**Next Priority:**
+1. ~~Complete German translation (3 missing strings)~~ → Later
+2. ✅ Implement Bottom Navigation Bar (DONE!)
+3. ✅ Implement Vertical Poster Grid (DONE!)
+4. Add Long-Press Overlay for quick actions → Phase 3
+
+### Session 4 (2026-02-16):
+**BREAKTHROUGH SESSION - Phase 1 + 2 COMPLETED! 🎉**
+
+**Tasks completed:**
+1. ✅ **Implemented Bottom Navigation Bar** (Phase 1)
+   - Initial attempt: FixedList (scrollable - problem!)
+   - Final solution: Individual buttons (static, no scroll!)
+   - 4 buttons: Home, Live TV, Library, Search
+   - Created ShadowTouchBottomNav Include
+
+2. ✅ **Implemented Vertical Poster Grid** (Phase 2)
+   - Replaced Nimbus horizontal widgets completely
+   - Panel-Container with vertical orientation
+   - TMDB Helper integration (popular movies)
+   - Touch-optimized: 300x450px posters, 20px spacing
+   - Created ShadowTouchVerticalGrid Include
+
+3. ✅ **Major Debugging Marathon!** (Critical learnings!)
+   - **Problem 1:** Panel "control type 7" error
+     - **Cause:** Panel nested in too many Groups with animations
+     - **Solution:** Created clean Include at correct hierarchy level
+
+   - **Problem 2:** Include not found by Kodi
+     - **Cause:** Includes_ShadowTouch.xml not registered
+     - **Solution:** Added to Includes.xml
+
+   - **Problem 3:** Grid invisible despite loading
+     - **Cause:** Multiple issues (visibility conditions, position, DEBUG)
+     - **Solution:** Clean Include + proper registration
+
+4. ✅ **Cleanup completed:**
+   - Removed DEBUG colors (red/green → final blue/gray)
+   - Fixed Bottom Nav (not scrollable anymore!)
+   - Final design polished and working
+
+**Critical Technical Insights:**
+- **Panel Hierarchy:** Panels CANNOT be nested in Groups with complex animations
+  - Kodi throws "unsupported control type 7" error
+  - Solution: Place Panel at clean hierarchy level (directly under `<controls>` or simple Group)
+
+- **Include Registration:** Custom Include files MUST be registered in Includes.xml
+  - Just creating the file is NOT enough!
+  - Add: `<include file="YourFile.xml" />` to Includes.xml
+
+- **Testing on Hardware:** Essential! Emulator/desktop testing not sufficient
+  - User tested on Google Pixel 7 (primary device)
+  - Real device revealed actual functionality
+
+**File Changes:**
+- Created: `xml/Includes_ShadowTouch.xml` (Grid + Bottom Nav)
+- Modified: `xml/Includes.xml` (registered new Include)
+- Modified: `xml/Home.xml` (removed Nimbus widgets, added Includes)
+- Hidden: Nimbus id="2000" widgets (visible=false)
+- Hidden: Nimbus id="9000" side menu (visible=false)
+
+**Current Status:**
+- ✅ Phase 1: Bottom Navigation Bar → **COMPLETE!**
+- ✅ Phase 2: Vertical Poster Grid → **COMPLETE!**
+- 📋 Phase 3: Long-Press Overlay → **NEXT!**
+- Grid shows TMDB Helper popular movies
+- Bottom Nav functional (4 static buttons)
+- Touch navigation works (Grid ↔ Bottom Nav)
+- Tested and working on Pixel 7!
+
+**Known Issues:**
+- ⚠️ Log warning: "control type 7" (Nimbus Panel id="14100" - non-critical)
+- Can be cleaned up later (not affecting functionality)
+
+**Next Session Priorities:**
+1. Phase 3: Long-Press Overlay implementation
+2. German translation (3 missing strings)
+3. Optional: Remove remaining Nimbus code bloat
+
+### Session 4 Continuation (2026-02-16):
+**CLEANUP PHASE - Phase 1 + 2 FULLY COMPLETED! 🎉**
+
+**Tasks completed:**
+1. ✅ **Removed Side Menu Background**
+   - User reported: Side menu buttons hidden but background still visible
+   - Solution: Added `<visible>false</visible>` to entire side menu group (left=-540)
+   - Result: Grid now has full width, no wasted space on left side
+
+2. ✅ **Added Settings Button to Bottom Nav**
+   - User requested: "einstellungssymbol wo ich zu den Einstellungen von KODI komme"
+   - Expanded Bottom Nav from 4 to 5 buttons
+   - Settings button (id=9205) opens Kodi Settings
+   - All buttons repositioned with proper spacing
+
+3. ✅ **Fixed XML Syntax Errors** (Critical debugging!)
+   - **Problem 1:** Missing closing tags (</controls> and </window>)
+     - Cause: `sed` command accidentally deleted closing tags
+     - Symptom: Kodi stuck at splash screen
+     - Fix: Rebuilt proper XML structure with closing tags
+
+   - **Problem 2:** Settings button not visible
+     - Cause: Duplicate navigation tags from `sed` commands
+     - Lines 138-139: Duplicate `<onleft>` tags
+     - Lines 203-205: Duplicate `<onright>` tags
+     - Fix: Complete rewrite of Includes_ShadowTouch.xml using `Write` tool
+
+4. ✅ **Final Bottom Nav Layout (5 buttons):**
+   - Home (id=9201) @ 360px → Focus Grid
+   - Live TV (id=9202) @ 600px → TVGuide
+   - Library (id=9203) @ 840px → Videos Library
+   - Search (id=9204) @ 1080px → Search Window
+   - Settings (id=9205) @ 1320px → Kodi Settings
+   - All buttons: 240px width, circular navigation
+
+**Critical Technical Learnings:**
+- ✅ Avoid `sed` for complex XML - use `Write` tool instead
+- ✅ Duplicate tags cause invisible controls (no error, just not rendered)
+- ✅ Always test on real hardware after changes
+
+**File Changes:**
+- Modified: `xml/Home.xml` (hid side menu group)
+- Rewrote: `xml/Includes_ShadowTouch.xml` (fixed Settings button)
+
+**Current Status:**
+- ✅ Phase 1: Bottom Navigation Bar → **COMPLETE & CLEAN!**
+- ✅ Phase 2: Vertical Poster Grid → **COMPLETE & CLEAN!**
+- ✅ Side menu fully hidden (background removed)
+- ✅ Bottom Nav: 5 buttons, all functional
+- ✅ Grid: Full width, TMDB movies visible
+- 📋 Phase 3: Long-Press Overlay → **NEXT!**
+
+**User Feedback:**
+- "das seitenmenü ist weg und es sieht alles sehr gut aus"
+- Confirmed Settings button now visible after fix
+- Ready for Phase 3 implementation!
 
 ### Session N (add date):
 - [Future sessions add notes here]
 
 ---
 
-**Last Updated:** 2025-02-15
-**Project Status:** Migrating to Nimbus Base
+**Last Updated:** 2026-02-16
+**Project Status:** Phase 1 + 2 COMPLETE + CLEANUP DONE! 🎉
+**Next:** Phase 3 - Long-Press Overlay implementation
