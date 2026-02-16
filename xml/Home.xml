@@ -6,6 +6,7 @@
 	<controls>
 		<!-- Shadow Touch: TEST BUTTON (zum Testen des Scripts) -->
 		<control type="button" id="9999">
+			<depth>DepthDialog</depth>
 			<left>1600</left>
 			<top>20</top>
 			<width>280</width>
@@ -38,7 +39,8 @@
 			<onclick>noop</onclick>
 			<visible allowhiddenfocus="true">Control.HasFocus(20001)</visible>
 		</control>
-		<include>DefaultBackground</include>
+		<!-- Shadow Touch: Background deaktiviert (brauchen wir nicht) -->
+		<!-- <include>DefaultBackground</include> -->
 		<control type="group">
 			<visible>
 				[
