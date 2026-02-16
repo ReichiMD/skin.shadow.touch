@@ -23,6 +23,8 @@
 			<!-- Long-Press Event: Show Movie Info Dialog -->
 			<onlongclick>RunScript(skin.shadow.touch,action=show_movie_info,tmdb_id=$INFO[ListItem.UniqueID(tmdb)],title=$INFO[ListItem.Label],year=$INFO[ListItem.Year])</onlongclick>
 			<onclick>noop</onclick>
+			<!-- Disable context menu so long-press works -->
+			<oninfo>RunScript(skin.shadow.touch,action=show_movie_info,tmdb_id=$INFO[ListItem.UniqueID(tmdb)],title=$INFO[ListItem.Label],year=$INFO[ListItem.Year])</oninfo>
 
 			<!-- Item Layout (Unfocused) -->
 			<itemlayout width="320" height="480">
