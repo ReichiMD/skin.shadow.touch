@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="2">
+	<section id="shadow.touch.general">
+		<label>32001</label>
+		<category id="shadow.touch.api">
+			<label>32010</label>
+			<group id="1">
+				<setting id="tmdb_api_key" type="string" label="32011" help="32012">
+					<level>0</level>
+					<default></default>
+					<constraints>
+						<allowempty>true</allowempty>
+					</constraints>
+					<control type="edit" format="string">
+						<heading>32011</heading>
+					</control>
+				</setting>
+			</group>
+		</category>
+	</section>
+</settings>
