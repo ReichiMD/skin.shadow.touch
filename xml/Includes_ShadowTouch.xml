@@ -1,139 +1,178 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Includes_ShadowTouch.xml
+    Shadow Touch | Kodi 22 (Piers) | Touch-first
+    =============================================
+    Enthält:
+      - ShadowTouchVerticalGrid  (Panel mit TMDB Helper)
+      - ShadowTouchBottomNav     (5 Buttons, unten fixiert)
+
+    Pixel 7 Layout (1920x1080 virtuell):
+      Grid:   1920 x 930 (top=0, bottom oberhalb Nav)
+      NavBar: 1920 x 150 (bottom=0)
+-->
 <includes>
-	<!-- ============================================ -->
-	<!-- SHADOW TOUCH: Vertical Poster Grid Include -->
-	<!-- ============================================ -->
+
+	<!-- ═══════════════════════════════════════════════════ -->
+	<!-- POSTER GRID - TMDB Helper                          -->
+	<!-- Panel: scrollt vertikal, touch-optimiert           -->
+	<!-- Item: 320x480px, 4 Spalten bei 1920px Breite       -->
+	<!-- TMDB Helper: &widget=True = gecacht, kein API-Key  -->
+	<!-- ═══════════════════════════════════════════════════ -->
 	<include name="ShadowTouchVerticalGrid">
 		<control type="panel" id="9300">
-			<depth>DepthContentPanel</depth>
-			<visible>true</visible>
-			<left>100</left>
-			<top>100</top>
-			<width>1720</width>
-			<height>850</height>
+			<left>0</left>
+			<top>0</top>
+			<width>1920</width>
+			<!-- Höhe = Bildschirm minus NavBar minus kleiner Puffer -->
+			<height>920</height>
+
+			<!-- Touch-Navigation -->
 			<onup>9300</onup>
 			<ondown>9201</ondown>
 			<onleft>9300</onleft>
 			<onright>9300</onright>
-			<pagecontrol>-</pagecontrol>
-			<scrolltime tween="cubic" easing="out">300</scrolltime>
-			<orientation>vertical</orientation>
-			<preloaditems>2</preloaditems>
-			<!-- Tap on poster: Show movie info dialog -->
-			<onclick>RunScript(skin.shadow.touch,action=show_movie_info,tmdb_id=$INFO[ListItem.UniqueID(tmdb)],title=$INFO[ListItem.Label],year=$INFO[ListItem.Year])</onclick>
 
-			<!-- Item Layout (Unfocused) -->
-			<itemlayout width="320" height="480">
-				<!-- Poster Image -->
+			<!-- Scroll-Einstellungen -->
+			<orientation>vertical</orientation>
+			<scrolltime tween="cubic" easing="out">250</scrolltime>
+			<preloaditems>3</preloaditems>
+			<pagecontrol>-</pagecontrol>
+
+			<!-- Tap → Kodi Info-Dialog für das fokussierte Item -->
+			<onclick>Action(Info)</onclick>
+
+			<!-- ─── Unfocused Layout ─── -->
+			<itemlayout width="480" height="340">
+				<!-- Poster -->
 				<control type="image">
 					<left>10</left>
 					<top>10</top>
-					<width>300</width>
-					<height>450</height>
+					<width>460</width>
+					<height>290</height>
 					<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>scale</aspectratio>
-					<bordertexture border="3" colordiffuse="40FFFFFF">colors/white.png</bordertexture>
-					<bordersize>3</bordersize>
 				</control>
-
-				<!-- Title Label -->
+				<!-- Titel -->
 				<control type="label">
 					<left>10</left>
-					<top>465</top>
-					<width>300</width>
+					<top>305</top>
+					<width>460</width>
 					<height>30</height>
-					<font>font13</font>
+					<font>font12</font>
 					<align>center</align>
 					<aligny>center</aligny>
 					<label>$INFO[ListItem.Label]</label>
-					<textcolor>FFFFFFFF</textcolor>
+					<textcolor>ST_TEXT_DIM</textcolor>
+					<scroll>false</scroll>
 				</control>
 			</itemlayout>
 
-			<!-- Focused Layout -->
-			<focusedlayout width="320" height="480">
-				<!-- Focus Glow -->
+			<!-- ─── Focused Layout ─── -->
+			<focusedlayout width="480" height="340">
+				<!-- Hintergrund-Glow (Akzentfarbe) -->
 				<control type="image">
-					<left>0</left>
-					<top>0</top>
-					<width>320</width>
-					<height>460</height>
-					<texture colordiffuse="button_focus">colors/white.png</texture>
+					<left>5</left>
+					<top>5</top>
+					<width>470</width>
+					<height>300</height>
+					<texture colordiffuse="ST_GLOW">colors/white.png</texture>
 					<aspectratio>stretch</aspectratio>
-					<animation effect="fade" start="0" end="40" time="200">Focus</animation>
-					<animation effect="fade" start="40" end="0" time="200">UnFocus</animation>
+					<animation effect="fade" start="0" end="100" time="150">Focus</animation>
+					<animation effect="fade" start="100" end="0" time="150">UnFocus</animation>
 				</control>
-
-				<!-- Poster Image (Focused) -->
+				<!-- Poster (leicht skaliert beim Fokus) -->
 				<control type="image">
 					<left>10</left>
 					<top>10</top>
-					<width>300</width>
-					<height>450</height>
+					<width>460</width>
+					<height>290</height>
 					<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>scale</aspectratio>
-					<bordertexture border="5" colordiffuse="button_focus">colors/white.png</bordertexture>
-					<bordersize>5</bordersize>
-					<animation effect="zoom" start="100" end="105" time="200" tween="sine" easing="out">Focus</animation>
-					<animation effect="zoom" start="105" end="100" time="200" tween="sine" easing="out">UnFocus</animation>
+					<animation effect="zoom" start="100" end="104" time="150" tween="sine" easing="out">Focus</animation>
+					<animation effect="zoom" start="104" end="100" time="150" tween="sine" easing="out">UnFocus</animation>
 				</control>
-
-				<!-- Title Label (Focused) -->
+				<!-- Akzent-Rahmen -->
+				<control type="image">
+					<left>8</left>
+					<top>8</top>
+					<width>464</width>
+					<height>294</height>
+					<bordertexture border="3" colordiffuse="ST_BORDER_FOCUS">colors/white.png</bordertexture>
+					<bordersize>3</bordersize>
+					<texture>-</texture>
+					<animation effect="fade" start="0" end="100" time="150">Focus</animation>
+					<animation effect="fade" start="100" end="0" time="150">UnFocus</animation>
+				</control>
+				<!-- Titel (fokussiert, heller) -->
 				<control type="label">
 					<left>10</left>
-					<top>465</top>
-					<width>300</width>
+					<top>305</top>
+					<width>460</width>
 					<height>30</height>
-					<font>font13</font>
+					<font>font12</font>
 					<align>center</align>
 					<aligny>center</aligny>
 					<label>$INFO[ListItem.Label]</label>
-					<textcolor>button_focus</textcolor>
-					<animation effect="fade" start="80" end="100" time="200">Focus</animation>
-					<animation effect="fade" start="100" end="80" time="200">UnFocus</animation>
+					<textcolor>ST_TEXT</textcolor>
+					<animation effect="fade" start="80" end="100" time="150">Focus</animation>
+					<animation effect="fade" start="100" end="80" time="150">UnFocus</animation>
 				</control>
 			</focusedlayout>
 
-			<!-- Content: Popular Movies from TMDB Helper -->
-			<content target="videos">plugin://plugin.video.themoviedb.helper/?info=popular&amp;type=movie</content>
+			<!-- ─── TMDB Helper Content ─── -->
+			<!-- widget=True: gecacht + kein TMDB API-Key nötig (über TMDB Helper Settings) -->
+			<content target="videos">plugin://plugin.video.themoviedb.helper/?info=popular&amp;type=movie&amp;widget=True</content>
+
 		</control>
 	</include>
 
-	<!-- ============================================ -->
-	<!-- SHADOW TOUCH: Bottom Navigation Bar Include -->
-	<!-- ============================================ -->
+
+	<!-- ═══════════════════════════════════════════════════ -->
+	<!-- BOTTOM NAVIGATION BAR                              -->
+	<!-- 5 Buttons | Fixiert unten | Touch-Targets: 150px   -->
+	<!-- IDs: 9201-9205                                     -->
+	<!-- ═══════════════════════════════════════════════════ -->
 	<include name="ShadowTouchBottomNav">
 		<control type="group" id="9200">
-			<depth>DepthBars</depth>
+			<left>0</left>
 			<bottom>0</bottom>
-			<height>120</height>
 			<width>1920</width>
-			<animation effect="fade" start="0" end="100" time="300" delay="300">WindowOpen</animation>
-			<animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+			<height>150</height>
 
-			<!-- Background -->
+			<!-- Nav Hintergrund: leicht transparent -->
 			<control type="image">
 				<left>0</left>
-				<bottom>0</bottom>
+				<top>0</top>
 				<width>1920</width>
-				<height>120</height>
-				<texture colordiffuse="FF000000">colors/white.png</texture>
+				<height>150</height>
+				<texture colordiffuse="ST_NAV_BG">colors/white.png</texture>
 				<aspectratio>stretch</aspectratio>
 			</control>
 
-			<!-- HOME Button -->
+			<!-- Obere Trennlinie -->
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>1920</width>
+				<height>1</height>
+				<texture colordiffuse="ST_SEPARATOR">colors/white.png</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+
+			<!-- ─── HOME ─── id=9201 @ x=192 ─── -->
 			<control type="button" id="9201">
-				<left>360</left>
-				<bottom>10</bottom>
+				<left>192</left>
+				<top>10</top>
 				<width>240</width>
-				<height>100</height>
+				<height>130</height>
 				<label>Home</label>
 				<font>font13</font>
-				<textcolor>80FFFFFF</textcolor>
-				<focusedcolor>button_focus</focusedcolor>
+				<textcolor>ST_TEXT_DIM</textcolor>
+				<focusedcolor>ST_ACCENT</focusedcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+				<texturefocus colordiffuse="ST_NAV_FOCUS">colors/white.png</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<onup>9300</onup>
 				<ondown>9201</ondown>
@@ -142,41 +181,40 @@
 				<onclick>SetFocus(9300)</onclick>
 			</control>
 
-			<!-- LIVE TV Button -->
+			<!-- ─── LIVE TV ─── id=9202 @ x=576 ─── -->
 			<control type="button" id="9202">
-				<left>600</left>
-				<bottom>10</bottom>
+				<left>576</left>
+				<top>10</top>
 				<width>240</width>
-				<height>100</height>
+				<height>130</height>
 				<label>Live TV</label>
 				<font>font13</font>
-				<textcolor>80FFFFFF</textcolor>
-				<focusedcolor>button_focus</focusedcolor>
+				<textcolor>ST_TEXT_DIM</textcolor>
+				<focusedcolor>ST_ACCENT</focusedcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+				<texturefocus colordiffuse="ST_NAV_FOCUS">colors/white.png</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<onup>9300</onup>
 				<ondown>9202</ondown>
 				<onleft>9201</onleft>
 				<onright>9203</onright>
 				<onclick>ActivateWindow(TVGuide)</onclick>
-				<visible>!Skin.HasSetting(HomeMenuNoTVButton)</visible>
 			</control>
 
-			<!-- LIBRARY Button -->
+			<!-- ─── LIBRARY ─── id=9203 @ x=840 ─── -->
 			<control type="button" id="9203">
 				<left>840</left>
-				<bottom>10</bottom>
+				<top>10</top>
 				<width>240</width>
-				<height>100</height>
-				<label>Library</label>
+				<height>130</height>
+				<label>Bibliothek</label>
 				<font>font13</font>
-				<textcolor>80FFFFFF</textcolor>
-				<focusedcolor>button_focus</focusedcolor>
+				<textcolor>ST_TEXT_DIM</textcolor>
+				<focusedcolor>ST_ACCENT</focusedcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+				<texturefocus colordiffuse="ST_NAV_FOCUS">colors/white.png</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<onup>9300</onup>
 				<ondown>9203</ondown>
@@ -185,40 +223,40 @@
 				<onclick>ActivateWindow(Videos,videodb://movies/titles/,return)</onclick>
 			</control>
 
-			<!-- SEARCH Button -->
+			<!-- ─── SEARCH ─── id=9204 @ x=1248 ─── -->
 			<control type="button" id="9204">
-				<left>1080</left>
-				<bottom>10</bottom>
+				<left>1248</left>
+				<top>10</top>
 				<width>240</width>
-				<height>100</height>
-				<label>Search</label>
+				<height>130</height>
+				<label>Suchen</label>
 				<font>font13</font>
-				<textcolor>80FFFFFF</textcolor>
-				<focusedcolor>button_focus</focusedcolor>
+				<textcolor>ST_TEXT_DIM</textcolor>
+				<focusedcolor>ST_ACCENT</focusedcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+				<texturefocus colordiffuse="ST_NAV_FOCUS">colors/white.png</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<onup>9300</onup>
 				<ondown>9204</ondown>
 				<onleft>9203</onleft>
 				<onright>9205</onright>
-				<onclick>ActivateWindow(1103)</onclick>
+				<onclick>ActivateWindow(Search)</onclick>
 			</control>
 
-			<!-- SETTINGS Button -->
+			<!-- ─── SETTINGS ─── id=9205 @ x=1488 ─── -->
 			<control type="button" id="9205">
-				<left>1320</left>
-				<bottom>10</bottom>
+				<left>1488</left>
+				<top>10</top>
 				<width>240</width>
-				<height>100</height>
-				<label>Settings</label>
-				<font>font13</font>
-				<textcolor>80FFFFFF</textcolor>
-				<focusedcolor>button_focus</focusedcolor>
+				<height>130</height>
+				<label>Einstellungen</label>
+				<font>font12</font>
+				<textcolor>ST_TEXT_DIM</textcolor>
+				<focusedcolor>ST_ACCENT</focusedcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="20FFFFFF">colors/white.png</texturefocus>
+				<texturefocus colordiffuse="ST_NAV_FOCUS">colors/white.png</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<onup>9300</onup>
 				<ondown>9205</ondown>
@@ -226,6 +264,8 @@
 				<onright>9201</onright>
 				<onclick>ActivateWindow(Settings)</onclick>
 			</control>
+
 		</control>
 	</include>
+
 </includes>
