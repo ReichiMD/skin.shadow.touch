@@ -16,15 +16,17 @@
 	<!-- ═══════════════════════════════════════════════════ -->
 	<!-- POSTER GRID - TMDB Helper                          -->
 	<!-- Panel: scrollt vertikal, touch-optimiert           -->
-	<!-- Item: 343x500px, 7 Spalten bei 2400px Breite (7x343≈2400) -->
+	<!-- 7 Spalten × 310px = 2170px | Zentriert in 2400px  -->
+	<!-- left=115px (Rand links=rechts=115px)               -->
 	<!-- TMDB Helper: &widget=True = gecacht, kein API-Key  -->
 	<!-- ═══════════════════════════════════════════════════ -->
 	<include name="ShadowTouchVerticalGrid">
 		<control type="panel" id="9300">
-			<left>0</left>
+			<!-- Zentriert: (2400 - 7×310) / 2 = 115px Rand beidseitig -->
+			<left>115</left>
 			<top>0</top>
-			<width>2400</width>
-			<!-- Höhe = Bildschirm minus NavBar minus kleiner Puffer -->
+			<width>2170</width>
+			<!-- Höhe = Bildschirm minus NavBar -->
 			<height>920</height>
 
 			<!-- Touch-Navigation -->
@@ -43,14 +45,14 @@
 			<onclick>Action(Info)</onclick>
 
 			<!-- ─── Unfocused Layout ─── -->
-			<!-- Item: 343x500px | Poster: 313x470px (≈2:3) | 15px Rand = 30px Abstand -->
-			<itemlayout width="343" height="500">
+			<!-- Item: 310x450px | Poster: 280x420px (exakt 2:3!) | 15px Rand = 30px Abstand -->
+			<itemlayout width="310" height="450">
 				<!-- Poster -->
 				<control type="image">
 					<left>15</left>
 					<top>15</top>
-					<width>313</width>
-					<height>470</height>
+					<width>280</width>
+					<height>420</height>
 					<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>scale</aspectratio>
 				</control>
@@ -58,21 +60,21 @@
 				<control type="image">
 					<left>15</left>
 					<top>15</top>
-					<width>313</width>
-					<height>470</height>
-					<texture>colors/poster_rounded_mask.png</texture>
+					<width>280</width>
+					<height>420</height>
+					<texture>resources/poster_rounded_mask.png</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 			</itemlayout>
 
 			<!-- ─── Focused Layout ─── -->
-			<focusedlayout width="343" height="500">
+			<focusedlayout width="310" height="450">
 				<!-- Hintergrund-Glow (Akzentfarbe) -->
 				<control type="image">
 					<left>12</left>
 					<top>12</top>
-					<width>319</width>
-					<height>476</height>
+					<width>286</width>
+					<height>426</height>
 					<texture colordiffuse="ST_GLOW">colors/white.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<animation effect="fade" start="0" end="100" time="150">Focus</animation>
@@ -82,8 +84,8 @@
 				<control type="image">
 					<left>15</left>
 					<top>15</top>
-					<width>313</width>
-					<height>470</height>
+					<width>280</width>
+					<height>420</height>
 					<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>scale</aspectratio>
 					<animation effect="zoom" start="100" end="104" time="150" tween="sine" easing="out">Focus</animation>
@@ -93,9 +95,9 @@
 				<control type="image">
 					<left>15</left>
 					<top>15</top>
-					<width>313</width>
-					<height>470</height>
-					<texture>colors/poster_rounded_mask.png</texture>
+					<width>280</width>
+					<height>420</height>
+					<texture>resources/poster_rounded_mask.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<animation effect="zoom" start="100" end="104" time="150" tween="sine" easing="out">Focus</animation>
 					<animation effect="zoom" start="104" end="100" time="150" tween="sine" easing="out">UnFocus</animation>
@@ -104,8 +106,8 @@
 				<control type="image">
 					<left>13</left>
 					<top>13</top>
-					<width>317</width>
-					<height>474</height>
+					<width>284</width>
+					<height>424</height>
 					<bordertexture border="3" colordiffuse="ST_BORDER_FOCUS">colors/white.png</bordertexture>
 					<bordersize>3</bordersize>
 					<texture>-</texture>
