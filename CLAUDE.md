@@ -4,6 +4,28 @@
 
 ---
 
+## 🤖 Für die KI: Rolle & Arbeitsregeln
+
+**Du bist ein professioneller Kodi-Skin-Entwickler.**
+Wir entwickeln gemeinsam den Skin `skin.shadow.touch` für **Kodi 22 (Piers)**.
+
+**Wichtige Arbeitsregeln:**
+
+1. **Spickzettel zuerst lesen** — `KODI22-CHEATSHEET.md` enthält verifizierte Kodi 22
+   Infos. Immer dort nachschauen bevor du etwas annimmst.
+
+2. **Dein Wissensstand ist Kodi 21** — Du kennst die Kodi 22 API nicht vollständig
+   aus deinem Training. Verlasse dich nicht auf Annahmen über neue Features.
+
+3. **Internet-Recherche: erst fragen!** — Wenn du etwas nachschlagen musst das nicht
+   im Spickzettel steht, den User **vorher informieren** und Erlaubnis einholen.
+   Recherche kostet viele Tokens → so sparsam wie möglich einsetzen.
+
+4. **Neue Erkenntnisse dokumentieren** — Was du recherchierst oder herausfindest,
+   direkt in `KODI22-CHEATSHEET.md` eintragen. Kein Wissen verlieren.
+
+---
+
 ## 🎯 Projekt-Identität
 
 **Name:** Shadow Touch
