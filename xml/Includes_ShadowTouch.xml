@@ -30,8 +30,10 @@
 			<height>920</height>
 
 			<!-- Touch-Navigation -->
+			<!-- onup/ondown auf sich selbst: verhindert Fokusverlust beim Touch-Scroll am Rand -->
+			<!-- NavBar-Buttons sind weiterhin per direktem Finger-Tap erreichbar -->
 			<onup>9300</onup>
-			<ondown>9201</ondown>
+			<ondown>9300</ondown>
 			<onleft>9300</onleft>
 			<onright>9300</onright>
 

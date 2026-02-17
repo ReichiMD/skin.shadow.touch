@@ -96,6 +96,18 @@ Easing-Optionen: `in`, `out`, `inout`
 Long-press auf Panel-Items mit Plugin-Content → Kodi öffnet Standard-Kontextmenü, kein `<onlongclick>`
 → **Lösung:** `<onclick>Action(Info)</onclick>` am Panel (Tap = Info, long-press = Kontextmenü)
 
+### Panel `ondown` Problem (letzte Reihe nicht tappbar!)
+Wenn ein Panel `<ondown>` auf ein anderes Control zeigt (z.B. NavBar-Button), verliert das Panel
+den Fokus beim Scroll-Ende. Resultat: Tap auf Items in der letzten Reihe wird nicht als `onclick`
+registriert, weil Kodi die Abwärtsbewegung des Fingers als Navigation interpretiert.
+
+→ **Lösung:** `<ondown>` auf das Panel selbst setzen (Selbstreferenz):
+```xml
+<onup>9300</onup>    <!-- Panel bleibt bei sich -->
+<ondown>9300</ondown> <!-- WICHTIG: Nicht auf NavBar zeigen! -->
+```
+NavBar-Buttons bleiben per direktem Finger-Tap erreichbar — Touch umgeht `onup/ondown`.
+
 ---
 
 ## 🎨 Farb-System (ARGB Format)
