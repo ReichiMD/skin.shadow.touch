@@ -5,8 +5,9 @@
 		<import addon="xbmc.gui" version="5.18.0" />
 	</requires>
 	<extension point="xbmc.gui.skin" debugging="false">
-		<!-- Pixel 7 primary: 2400x1080 (20:9), but 1080p resolution is default -->
-		<res width="1920" height="1080" aspect="16:9" default="true" folder="xml" />
+		<!-- Pixel 7: 2400x1080 (20:9) → Primary default. Fallbacks für andere Geräte. -->
+		<res width="2400" height="1080" aspect="20:9" default="true" folder="xml" />
+		<res width="1920" height="1080" aspect="16:9" default="false" folder="xml" />
 		<res width="2338" height="1080" aspect="19.5:9" default="false" folder="xml" />
 		<res width="2160" height="1080" aspect="18:9" default="false" folder="xml" />
 	</extension>

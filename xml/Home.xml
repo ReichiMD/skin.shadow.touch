@@ -18,7 +18,7 @@
 		<control type="image" id="9100">
 			<left>0</left>
 			<top>0</top>
-			<width>1920</width>
+			<width>2400</width>
 			<height>1080</height>
 			<texture colordiffuse="ST_BG">colors/white.png</texture>
 			<aspectratio>stretch</aspectratio>
