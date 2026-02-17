@@ -203,6 +203,48 @@ $INFO[ListItem.ParentalRatingIcon]  <!-- Altersfreigabe Icon -->
 
 ---
 
+## 🖼️ Textur-Pfade in Kodi Skins (KRITISCH!)
+
+**Kodi löst Textur-Pfade relativ zum `media/` Ordner auf, NICHT zum Skin-Root!**
+
+```xml
+<!-- XML-Referenz:   colors/white.png          -->
+<!-- Physischer Pfad: skin.shadow.touch/media/colors/white.png  -->
+
+<!-- XML-Referenz:   poster_rounded_mask.png   -->
+<!-- Physischer Pfad: skin.shadow.touch/media/poster_rounded_mask.png -->
+```
+
+**Regel:** Alle Skin-Bilder (PNG, etc.) gehören in `media/` oder einen Unterordner davon.
+- `media/colors/white.png` → XML: `colors/white.png` ✓
+- `media/poster_rounded_mask.png` → XML: `poster_rounded_mask.png` ✓
+- `resources/poster_rounded_mask.png` → XML: `resources/poster_rounded_mask.png` ✗ (Kodi findet es nicht!)
+
+### Abgerundete Ecken (Poster/Cover in Panel itemlayout)
+
+Technik: PNG-Maske über dem Poster (transparent = Poster sichtbar, opak = Ecke abschneiden)
+
+```xml
+<itemlayout width="310" height="450">
+    <!-- 1. Poster -->
+    <control type="image">
+        <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+    </control>
+    <!-- 2. Ecken-Maske (MUSS in media/ liegen!) -->
+    <control type="image">
+        <texture>poster_rounded_mask.png</texture>  <!-- liegt in media/ -->
+        <aspectratio>stretch</aspectratio>
+    </control>
+</itemlayout>
+```
+
+PNG-Maske erzeugen (Python, nur stdlib):
+- Transparent (0,0,0,0) im gerundeten Rechteck-Bereich → Poster scheint durch
+- Opak (R,G,B,255) in den Ecken → Hintergrundfarbe überdeckt Ecken
+- Radius 40px empfohlen (= ~18px echte Pixel auf Pixel 7)
+
+---
+
 ## 📁 Minimale Skin-Dateistruktur (Kodi 22)
 
 Absolut nötig für funktionierenden Skin:
