@@ -232,6 +232,41 @@ fonts/
 
 ---
 
+## 📱 Spezielle Touch-Optimierungen (Kodi 22 Fokus)
+
+### 1. Präzision & Treffsicherheit
+- **Hitbox-Erweiterung (`<hitrect>`):** Nutze dieses Tag, um die klickbare Fläche über die sichtbare Grafik hinaus zu vergrößern. Besonders wichtig für kleine Icons.
+  ```xml
+  <control type="button">
+      <width>60</width>
+      <height>60</height>
+      <hitrect x="-20" y="-20" width="100" height="100" /> </control>
+
+  Adaptive Scrollbars: Verbreitere Scrollbalken automatisch, wenn ein Touch-Gerät erkannt wird.
+
+  <width condition="System.HasInput(touch)">40</width>
+<width condition="!System.HasInput(touch)">10</width>
+
+Gestik & Interaktion
+Long-Press Support: Nutze das neue Kodi 22 Tag für Kontextmenüs oder Zusatzinfos per langem Fingerdruck.
+
+<onlongclick>ActivateWindow(ContextMenu)</onlongclick>
+
+Haptisches Feedback (Visuell): Minimale Latenz-Kompensation durch extrem kurze Animationen (Sofort-Reaktion bei Berührung).
+
+<animation effect="zoom" start="100" end="95" time="50" condition="Control.HasFocus(ID)">Conditional</animation>
+
+Neue Bedingungen (Conditions)
+System.HasInput(touch): Prüft, ob ein Touchscreen aktiv ist.
+ListItem.IsScrolling: Erlaubt es, visuelle Effekte während des Wischens auszublenden, um die Performance zu erhöhen.
+
+Ergänzung der Dateistruktur
+Zusätzlich zu den Standard-Dateien sollte für Touch-Skins folgendes vorhanden sein:
+xml/Pointer.xml: Definiert das Aussehen des Cursors/Touch-Indikators (verhindert Grafikfehler auf Android).
+xml/Touchscreen.xml: (Optional) Mappt globale Gesten (wie 2-Finger-Tap für "Back").
+
+---
+
 ## 🔗 Referenzen
 
 - [Kodi 22 Skinning Changes](https://kodi.wiki/view/Changes_To_The_Skinning_Engine)
