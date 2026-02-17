@@ -142,6 +142,13 @@
 			<size>22</size>
 			<style>symbol</style>
 		</font>
+		<!-- NavIcon: remixicon für die Floating Pill Navigation Bar -->
+		<font>
+			<name>NavIcon</name>
+			<filename>remixicon.ttf</filename>
+			<size>46</size>
+			<style>symbol</style>
+		</font>
 		<!-- Title Fonts -->
 		<font>
 			<name>font10_title</name>
@@ -405,6 +412,13 @@
 			<name>SmallIcon</name>
 			<filename>remixicon.ttf</filename>
 			<size>22</size>
+			<style>symbol</style>
+		</font>
+		<!-- NavIcon: remixicon für die Floating Pill Navigation Bar -->
+		<font>
+			<name>NavIcon</name>
+			<filename>remixicon.ttf</filename>
+			<size>46</size>
 			<style>symbol</style>
 		</font>
 		<!-- Title Fonts -->

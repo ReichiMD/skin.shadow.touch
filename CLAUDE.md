@@ -256,5 +256,46 @@ NavBar bleibt per direktem Finger-Tap erreichbar.
 
 ---
 
+### Session 10 (2026-02-17): Floating Glassmorphism NavBar
+
+**Aufgabe:** Navigationsleiste komplett neu gestalten nach UI/UX-Spezifikation.
+
+**Spezifikation:**
+- Floating Glassmorphism Pill-Shape Tab Bar
+- 4 Icons: Home, Live TV, Video-Library, Search (kein Settings mehr)
+- Frosted Glass Effekt: semi-transparent dark pill + Layers
+- Remixicon White-Line-Icons (Outline-Stil)
+- Fokus: subtiler Glow + Alpha-Wechsel (dim → bright)
+
+**Durchgeführt:**
+- `remixicon.ttf` per Python-Stdlib inspiziert: Font v4.3, 2819 Glyphen, Codepoints ab U+EA01
+- TTF-Cmap ausgelesen, Codepoints verifiziert:
+  - home-line=U+EDF3, tv-line=U+F1A3, film-line=U+ECFC, search-line=U+F05C
+- `media/nav_pill.png` generiert: 280×26px, radius=13 → skaliert ×5 auf 1400×130 ohne Verzerrung
+- `media/nav_btn_glow.png` generiert: 80×64px, radius=32 (Button-Glow BG)
+- `colors/defaults.xml`: 4 neue Pill-Farben (ST_PILL_BG, ST_PILL_SHADOW, ST_PILL_BORDER, ST_PILL_TOP)
+- `xml/Font.xml`: NavIcon Font (remixicon, 46px, symbol) für Default + Arial Fontsets
+- `xml/Includes_ShadowTouch.xml`: ShadowTouchBottomNav komplett neu:
+  - Floating Pill 1400×130px | left=500 | bottom=40 | horizontal zentriert in 2400px
+  - 4-Layer Glassmorphism: Shadow → Glass BG → Outline → Top-Highlight
+  - 4 Buttons (9201-9204): icon-only per NavIcon-Font, dim/bright + Glow
+  - Settings-Button (9205) entfernt
+- `KODI22-CHEATSHEET.md`: Pill-Technik, Glassmorphism-Layer + Remixicon-Codepoints dokumentiert
+
+**Wichtige Erkenntnisse:**
+- Kein echter Blur in Kodi → Glassmorphism via Layer-Technik simulieren
+- Pill-PNG ohne Verzerrung: gleiche Scale-Faktoren in X und Y (280×26 → ×5 → 1400×130)
+- Remixicon v4.3 Codepoints via Python-Stdlib TTF-Cmap auslesbar (kein Pillow nötig!)
+- `&#xXXXX;` XML-Charakter-Referenzen funktionieren in Kodi `<label>` Tags
+
+**Stand nach Session 10:**
+- ✅ Floating Glassmorphism Pill NavBar implementiert
+- ✅ 4 Remixicon White-Line-Icons (home-line, tv-line, film-line, search-line)
+- ✅ Glow-Fokus-Feedback: dim → bright + blauer Glow-Hintergrund
+- ✅ Pill: 1400×130px, zentriert in 2400px, 40px schwebend über Rand
+- 📋 Nächstes: Auf Pixel 7 testen → Icon-Größe & Pill-Radius ggf. anpassen
+
+---
+
 **Zuletzt aktualisiert:** 2026-02-17
-**Status:** Cover-Touch-Bug gefixt — alle Reihen tappbar ✅
+**Status:** Floating Glassmorphism NavBar implementiert ✅

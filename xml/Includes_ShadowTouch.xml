@@ -5,11 +5,12 @@
     =============================================
     Enthält:
       - ShadowTouchVerticalGrid  (Panel mit TMDB Helper)
-      - ShadowTouchBottomNav     (5 Buttons, unten fixiert)
+      - ShadowTouchBottomNav     (4 Icons, Floating Glassmorphism Pill)
 
     Pixel 7 Layout (2400x1080 virtuell, 20:9):
-      Grid:   2400 x 930 (top=0, bottom oberhalb Nav)
-      NavBar: 2400 x 150 (bottom=0)
+      Grid:   2400 x 920 (top=0, Grid scrollt leicht unter Pill)
+      NavBar: Floating Pill 1400x130 | left=500 | bottom=40
+              → Pill-Top: y=910 | 10px Grid-Overlap (iOS-Stil)
 -->
 <includes>
 
@@ -126,73 +127,115 @@
 	</include>
 
 
-	<!-- ═══════════════════════════════════════════════════ -->
-	<!-- BOTTOM NAVIGATION BAR                              -->
-	<!-- 5 Buttons | Fixiert unten | Touch-Targets: 150px   -->
-	<!-- IDs: 9201-9205 | 2400px breit (20:9 Pixel 7)       -->
-	<!-- Slots: je 480px | Button: 240px | Offset: 120px     -->
-	<!-- ═══════════════════════════════════════════════════ -->
+	<!-- ═══════════════════════════════════════════════════════════════ -->
+	<!-- FLOATING PILL NAVIGATION BAR (Glassmorphism)                   -->
+	<!-- 4 Icons | Floating | Touch-Target: 350×130px pro Button        -->
+	<!-- IDs: 9201–9204 | Pill: 1400×130px | Zentriert (20:9 Pixel 7)  -->
+	<!--                                                                  -->
+	<!-- Remixicon v4.3 Codepoints (verifiziert aus TTF-Cmap):          -->
+	<!--   home-line   U+EDF3  glyph 1011                               -->
+	<!--   tv-line     U+F1A3  glyph 1955                               -->
+	<!--   film-line   U+ECFC  glyph 764                                -->
+	<!--   search-line U+F05C  glyph 1628                               -->
+	<!--                                                                  -->
+	<!-- Pill-PNG: nav_pill.png (280×26px, radius=13 → skaliert 5× auf  -->
+	<!--           1400×130px ohne Verzerrung, Eckenradius=65px)        -->
+	<!-- ═══════════════════════════════════════════════════════════════ -->
 	<include name="ShadowTouchBottomNav">
 		<control type="group" id="9200">
-			<left>0</left>
-			<bottom>0</bottom>
-			<width>2400</width>
-			<height>150</height>
+			<!-- Pill: 1400×130px | Horizontal zentriert: (2400-1400)/2=500 -->
+			<!-- Schwebend: 40px Abstand zum unteren Rand                    -->
+			<left>500</left>
+			<bottom>40</bottom>
+			<width>1400</width>
+			<height>130</height>
 
-			<!-- Nav Hintergrund: leicht transparent -->
+			<!-- ─── Layer 1: Drop Shadow ─── -->
+			<!-- Leicht nach unten versetzt, dunkle Pill → Tiefenwirkung -->
 			<control type="image">
-				<left>0</left>
-				<top>0</top>
-				<width>2400</width>
-				<height>150</height>
-				<texture colordiffuse="ST_NAV_BG">colors/white.png</texture>
+				<left>-5</left>
+				<top>6</top>
+				<width>1410</width>
+				<height>134</height>
+				<texture colordiffuse="ST_PILL_SHADOW">nav_pill.png</texture>
 				<aspectratio>stretch</aspectratio>
 			</control>
 
-			<!-- Obere Trennlinie -->
+			<!-- ─── Layer 2: Glassmorphism Hintergrund ─── -->
+			<!-- Pill-Form: 80% opak, sehr dunkles Blau-Schwarz           -->
 			<control type="image">
 				<left>0</left>
 				<top>0</top>
-				<width>2400</width>
-				<height>1</height>
-				<texture colordiffuse="ST_SEPARATOR">colors/white.png</texture>
-				<aspectratio>stretch</aspectratio>
-			</control>
-
-			<!-- ─── HOME ─── id=9201 | Slot 0: x=0..480 → Button x=120 ─── -->
-			<control type="button" id="9201">
-				<left>120</left>
-				<top>10</top>
-				<width>240</width>
+				<width>1400</width>
 				<height>130</height>
-				<label>Home</label>
-				<font>font13</font>
+				<texture colordiffuse="ST_PILL_BG">nav_pill.png</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+
+			<!-- ─── Layer 3: Outline-Border ─── -->
+			<!-- Subtile weiße Pill-Outline (12% Deckkraft)               -->
+			<control type="image">
+				<left>0</left>
+				<top>0</top>
+				<width>1400</width>
+				<height>130</height>
+				<texture colordiffuse="ST_PILL_BORDER">nav_pill.png</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+
+			<!-- ─── Layer 4: Top-Highlight ─── -->
+			<!-- Helle Linie oben: simuliert Lichteinfall von oben (25%)  -->
+			<!-- Innerhalb der Pill-Kurve: links/rechts 65px Offset        -->
+			<control type="image">
+				<left>65</left>
+				<top>1</top>
+				<width>1270</width>
+				<height>2</height>
+				<texture colordiffuse="ST_PILL_TOP">colors/white.png</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+
+			<!-- ════════════════════════════════════════════════════════ -->
+			<!-- NAV BUTTONS                                              -->
+			<!-- Jeder Button: 350×130px | Icon: NavIcon (remixicon, 46) -->
+			<!-- Unfokussiert: ST_TEXT_DIM (50% weiß)                    -->
+			<!-- Fokussiert: ST_TEXT (100% weiß) + Glow-Hintergrund      -->
+			<!-- ════════════════════════════════════════════════════════ -->
+
+			<!-- ─── HOME ─── id=9201 | x=0 ─── -->
+			<control type="button" id="9201">
+				<left>0</left>
+				<top>0</top>
+				<width>350</width>
+				<height>130</height>
+				<label>&#xEDF3;</label>
+				<font>NavIcon</font>
 				<textcolor>ST_TEXT_DIM</textcolor>
-				<focusedcolor>ST_ACCENT</focusedcolor>
+				<focusedcolor>ST_TEXT</focusedcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="ST_NAV_FOCUS">colors/white.png</texturefocus>
+				<texturefocus colordiffuse="ST_NAV_FOCUS">nav_btn_glow.png</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<onup>9300</onup>
 				<ondown>9201</ondown>
-				<onleft>9205</onleft>
+				<onleft>9204</onleft>
 				<onright>9202</onright>
 				<onclick>SetFocus(9300)</onclick>
 			</control>
 
-			<!-- ─── LIVE TV ─── id=9202 | Slot 1: x=480..960 → Button x=600 ─── -->
+			<!-- ─── LIVE TV ─── id=9202 | x=350 ─── -->
 			<control type="button" id="9202">
-				<left>600</left>
-				<top>10</top>
-				<width>240</width>
+				<left>350</left>
+				<top>0</top>
+				<width>350</width>
 				<height>130</height>
-				<label>Live TV</label>
-				<font>font13</font>
+				<label>&#xF1A3;</label>
+				<font>NavIcon</font>
 				<textcolor>ST_TEXT_DIM</textcolor>
-				<focusedcolor>ST_ACCENT</focusedcolor>
+				<focusedcolor>ST_TEXT</focusedcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="ST_NAV_FOCUS">colors/white.png</texturefocus>
+				<texturefocus colordiffuse="ST_NAV_FOCUS">nav_btn_glow.png</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<onup>9300</onup>
 				<ondown>9202</ondown>
@@ -201,19 +244,19 @@
 				<onclick>ActivateWindow(TVGuide)</onclick>
 			</control>
 
-			<!-- ─── LIBRARY ─── id=9203 | Slot 2: x=960..1440 → Button x=1080 ─── -->
+			<!-- ─── VIDEO LIBRARY ─── id=9203 | x=700 ─── -->
 			<control type="button" id="9203">
-				<left>1080</left>
-				<top>10</top>
-				<width>240</width>
+				<left>700</left>
+				<top>0</top>
+				<width>350</width>
 				<height>130</height>
-				<label>Bibliothek</label>
-				<font>font13</font>
+				<label>&#xECFC;</label>
+				<font>NavIcon</font>
 				<textcolor>ST_TEXT_DIM</textcolor>
-				<focusedcolor>ST_ACCENT</focusedcolor>
+				<focusedcolor>ST_TEXT</focusedcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="ST_NAV_FOCUS">colors/white.png</texturefocus>
+				<texturefocus colordiffuse="ST_NAV_FOCUS">nav_btn_glow.png</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<onup>9300</onup>
 				<ondown>9203</ondown>
@@ -222,46 +265,25 @@
 				<onclick>ActivateWindow(Videos,videodb://movies/titles/,return)</onclick>
 			</control>
 
-			<!-- ─── SEARCH ─── id=9204 | Slot 3: x=1440..1920 → Button x=1560 ─── -->
+			<!-- ─── SEARCH ─── id=9204 | x=1050 ─── -->
 			<control type="button" id="9204">
-				<left>1560</left>
-				<top>10</top>
-				<width>240</width>
+				<left>1050</left>
+				<top>0</top>
+				<width>350</width>
 				<height>130</height>
-				<label>Suchen</label>
-				<font>font13</font>
+				<label>&#xF05C;</label>
+				<font>NavIcon</font>
 				<textcolor>ST_TEXT_DIM</textcolor>
-				<focusedcolor>ST_ACCENT</focusedcolor>
+				<focusedcolor>ST_TEXT</focusedcolor>
 				<align>center</align>
 				<aligny>center</aligny>
-				<texturefocus colordiffuse="ST_NAV_FOCUS">colors/white.png</texturefocus>
+				<texturefocus colordiffuse="ST_NAV_FOCUS">nav_btn_glow.png</texturefocus>
 				<texturenofocus>-</texturenofocus>
 				<onup>9300</onup>
 				<ondown>9204</ondown>
 				<onleft>9203</onleft>
-				<onright>9205</onright>
-				<onclick>ActivateWindow(Search)</onclick>
-			</control>
-
-			<!-- ─── SETTINGS ─── id=9205 | Slot 4: x=1920..2400 → Button x=2040 ─── -->
-			<control type="button" id="9205">
-				<left>2040</left>
-				<top>10</top>
-				<width>240</width>
-				<height>130</height>
-				<label>Einstellungen</label>
-				<font>font12</font>
-				<textcolor>ST_TEXT_DIM</textcolor>
-				<focusedcolor>ST_ACCENT</focusedcolor>
-				<align>center</align>
-				<aligny>center</aligny>
-				<texturefocus colordiffuse="ST_NAV_FOCUS">colors/white.png</texturefocus>
-				<texturenofocus>-</texturenofocus>
-				<onup>9300</onup>
-				<ondown>9205</ondown>
-				<onleft>9204</onleft>
 				<onright>9201</onright>
-				<onclick>ActivateWindow(Settings)</onclick>
+				<onclick>ActivateWindow(Search)</onclick>
 			</control>
 
 		</control>

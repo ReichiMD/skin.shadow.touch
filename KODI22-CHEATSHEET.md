@@ -321,6 +321,79 @@ xml/Touchscreen.xml: (Optional) Mappt globale Gesten (wie 2-Finger-Tap für "Bac
 
 ---
 
+## 💊 Floating Pill Navigation Bar (Glassmorphism)
+
+### Konzept: "Schwebende" Pill-Form Tab Bar
+
+Kein echter CSS-Blur möglich in Kodi → Glassmorphism wird durch Layering simuliert:
+
+```
+Layer 1: Drop Shadow  → nav_pill.png + colordiffuse="ST_PILL_SHADOW" + Offset
+Layer 2: Glass BG     → nav_pill.png + colordiffuse="ST_PILL_BG" (80% dunkles Blau-Schwarz)
+Layer 3: Outline      → nav_pill.png + colordiffuse="ST_PILL_BORDER" (12% weiß)
+Layer 4: Top-Light    → colors/white.png (2px hoch) + colordiffuse="ST_PILL_TOP" (25% weiß)
+Layer 5: Nav-Buttons  → icon-only, NavIcon font (remixicon, size 46)
+```
+
+### Layout-Berechnung (Pixel 7 | 2400×1080)
+
+```
+Pill:    1400 × 130px | left=500 | bottom=40 | top=910
+Buttons: je 350×130px | x: 0, 350, 700, 1050
+Grid:    height=920   | scrollt 10px unter Pill (iOS-Stil)
+```
+
+### Pill-PNG Technik (nav_pill.png)
+
+**Erzeugung:** Python (stdlib, kein Pillow nötig) — `media/nav_pill.png`
+
+Skalierungs-Trick für unverzerrte Pillen-Form:
+- PNG: 280×26px, Eckenradius=13px (= exakt halbe Höhe = echte Pill)
+- Ausgabe (×5 skaliert): 1400×130px, Eckenradius=65px (= 130/2 ✓)
+- **Beide Achsen gleich skaliert → Kreisrunde Ecken bleiben kreisförmig!**
+
+```python
+# Pill PNG mit korrektem Aspect-Ratio (5:1 Skalierung beidseitig)
+create_pill_png(width=280, height=26, radius=13)   # → ×5 → 1400×130
+```
+
+### Remixicon v4.3 Codepoints (verifiziert via TTF-Cmap)
+
+Fontname: `remixicon` | Version: 4.3 | Glyphen: 2819 | Startcodepoint: U+EA01
+
+| Icon       | Remixicon-Name | Codepoint | XML-Referenz |
+|------------|----------------|-----------|--------------|
+| Haus       | home-line      | U+EDF3    | `&#xEDF3;`   |
+| Monitor    | tv-line        | U+F1A3    | `&#xF1A3;`   |
+| Filmstreifen | film-line    | U+ECFC    | `&#xECFC;`   |
+| Lupe       | search-line    | U+F05C    | `&#xF05C;`   |
+
+**Ordnung:** Alphabetisch, fill vor line. Formel: `U+EA01 + (Glyph-Index - 1)`
+
+### Button-Styling (Icon-only, Glow auf Fokus)
+
+```xml
+<control type="button" id="9201">
+    <font>NavIcon</font>            <!-- remixicon, size 46, symbol -->
+    <label>&#xEDF3;</label>         <!-- home-line Icon -->
+    <textcolor>ST_TEXT_DIM</textcolor>     <!-- 50% weiß = inaktiv -->
+    <focusedcolor>ST_TEXT</focusedcolor>   <!-- 100% weiß = aktiv -->
+    <texturefocus colordiffuse="ST_NAV_FOCUS">nav_btn_glow.png</texturefocus>
+    <texturenofocus>-</texturenofocus>
+</control>
+```
+
+### Farben für die Pill (in colors/defaults.xml)
+
+```xml
+<color name="ST_PILL_BG">CC0A0A14</color>      <!-- 80% dark glass background -->
+<color name="ST_PILL_SHADOW">28000000</color>  <!-- 16% black drop shadow -->
+<color name="ST_PILL_BORDER">1EFFFFFF</color>  <!-- 12% white outline -->
+<color name="ST_PILL_TOP">40FFFFFF</color>     <!-- 25% white top highlight -->
+```
+
+---
+
 ## 🔗 Referenzen
 
 - [Kodi 22 Skinning Changes](https://kodi.wiki/view/Changes_To_The_Skinning_Engine)

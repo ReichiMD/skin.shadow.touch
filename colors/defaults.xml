@@ -58,4 +58,14 @@
 	<color name="ST_NAV_FOCUS">264A9FFF</color>
 	<!-- Separator lines -->
 	<color name="ST_SEPARATOR">1AFFFFFF</color>
+
+	<!-- ─── Floating Pill Navigation Bar (Glassmorphism) ─── -->
+	<!-- Pill background: 80% opacity, very dark blue-black -->
+	<color name="ST_PILL_BG">CC0A0A14</color>
+	<!-- Drop shadow: 16% opacity black, offset below pill -->
+	<color name="ST_PILL_SHADOW">28000000</color>
+	<!-- Pill border: 12% opacity white (subtle outline) -->
+	<color name="ST_PILL_BORDER">1EFFFFFF</color>
+	<!-- Top highlight: 25% opacity white (pseudo-lighting from above) -->
+	<color name="ST_PILL_TOP">40FFFFFF</color>
 </colors>
