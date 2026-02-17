@@ -234,7 +234,27 @@ Key Facts:
 - ✅ TMDB Helper: Poster laden korrekt
 - 📋 Nächstes: Info-Dialog bewerten / eigenen bauen
 
+### Session 9 (2026-02-17): Cover-Touch in letzter Reihe gefixt
+
+**Problem:** Tap auf Cover in der letzten Grid-Reihe funktionierte nicht.
+**Ursache:** `<ondown>9201</ondown>` am Panel (id=9300) schickte den Fokus zur NavBar,
+wenn am Scroll-Ende eine minimale Abwärtsbewegung des Fingers erkannt wurde.
+Das Panel verlor den Fokus → Tap wurde nicht als `onclick` verarbeitet.
+
+**Fix:** `<ondown>9300</ondown>` (Selbstreferenz, wie bereits `onup`).
+NavBar bleibt per direktem Finger-Tap erreichbar.
+
+**Durchgeführt:**
+- `Includes_ShadowTouch.xml`: `ondown` von `9201` auf `9300` geändert
+- `KODI22-CHEATSHEET.md`: Panel-ondown-Problem dokumentiert
+- `CLAUDE.md`: Session 9 dokumentiert
+
+**Stand nach Session 9:**
+- ✅ Alle Cover-Reihen per Tap erreichbar
+- ✅ NavBar weiterhin per Finger-Tap bedienbar
+- 📋 Nächstes: Info-Dialog bewerten / eigenen bauen
+
 ---
 
 **Zuletzt aktualisiert:** 2026-02-17
-**Status:** Home Screen fertig & getestet — Cover mit abgerundeten Ecken ✅
+**Status:** Cover-Touch-Bug gefixt — alle Reihen tappbar ✅
