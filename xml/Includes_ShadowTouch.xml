@@ -7,23 +7,23 @@
       - ShadowTouchVerticalGrid  (Panel mit TMDB Helper)
       - ShadowTouchBottomNav     (5 Buttons, unten fixiert)
 
-    Pixel 7 Layout (1920x1080 virtuell):
-      Grid:   1920 x 930 (top=0, bottom oberhalb Nav)
-      NavBar: 1920 x 150 (bottom=0)
+    Pixel 7 Layout (2400x1080 virtuell, 20:9):
+      Grid:   2400 x 930 (top=0, bottom oberhalb Nav)
+      NavBar: 2400 x 150 (bottom=0)
 -->
 <includes>
 
 	<!-- ═══════════════════════════════════════════════════ -->
 	<!-- POSTER GRID - TMDB Helper                          -->
 	<!-- Panel: scrollt vertikal, touch-optimiert           -->
-	<!-- Item: 320x465px, 6 Spalten bei 1920px Breite (6x320=1920) -->
+	<!-- Item: 343x500px, 7 Spalten bei 2400px Breite (7x343≈2400) -->
 	<!-- TMDB Helper: &widget=True = gecacht, kein API-Key  -->
 	<!-- ═══════════════════════════════════════════════════ -->
 	<include name="ShadowTouchVerticalGrid">
 		<control type="panel" id="9300">
 			<left>0</left>
 			<top>0</top>
-			<width>1920</width>
+			<width>2400</width>
 			<!-- Höhe = Bildschirm minus NavBar minus kleiner Puffer -->
 			<height>920</height>
 
@@ -43,14 +43,14 @@
 			<onclick>Action(Info)</onclick>
 
 			<!-- ─── Unfocused Layout ─── -->
-			<!-- Item: 320x465px | Poster: 290x435px (2:3) | 15px Rand = 30px Abstand zwischen Covern -->
-			<itemlayout width="320" height="465">
+			<!-- Item: 343x500px | Poster: 313x470px (≈2:3) | 15px Rand = 30px Abstand -->
+			<itemlayout width="343" height="500">
 				<!-- Poster -->
 				<control type="image">
 					<left>15</left>
 					<top>15</top>
-					<width>290</width>
-					<height>435</height>
+					<width>313</width>
+					<height>470</height>
 					<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>scale</aspectratio>
 				</control>
@@ -58,21 +58,21 @@
 				<control type="image">
 					<left>15</left>
 					<top>15</top>
-					<width>290</width>
-					<height>435</height>
+					<width>313</width>
+					<height>470</height>
 					<texture>colors/poster_rounded_mask.png</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 			</itemlayout>
 
 			<!-- ─── Focused Layout ─── -->
-			<focusedlayout width="320" height="465">
+			<focusedlayout width="343" height="500">
 				<!-- Hintergrund-Glow (Akzentfarbe) -->
 				<control type="image">
 					<left>12</left>
 					<top>12</top>
-					<width>296</width>
-					<height>441</height>
+					<width>319</width>
+					<height>476</height>
 					<texture colordiffuse="ST_GLOW">colors/white.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<animation effect="fade" start="0" end="100" time="150">Focus</animation>
@@ -82,30 +82,30 @@
 				<control type="image">
 					<left>15</left>
 					<top>15</top>
-					<width>290</width>
-					<height>435</height>
+					<width>313</width>
+					<height>470</height>
 					<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>scale</aspectratio>
 					<animation effect="zoom" start="100" end="104" time="150" tween="sine" easing="out">Focus</animation>
 					<animation effect="zoom" start="104" end="100" time="150" tween="sine" easing="out">UnFocus</animation>
 				</control>
-				<!-- Abgerundete Ecken: Maske sitzt über dem Poster -->
+				<!-- Abgerundete Ecken: Maske sitzt über dem Poster, zoomt synchron -->
 				<control type="image">
 					<left>15</left>
 					<top>15</top>
-					<width>290</width>
-					<height>435</height>
+					<width>313</width>
+					<height>470</height>
 					<texture>colors/poster_rounded_mask.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<animation effect="zoom" start="100" end="104" time="150" tween="sine" easing="out">Focus</animation>
 					<animation effect="zoom" start="104" end="100" time="150" tween="sine" easing="out">UnFocus</animation>
 				</control>
-				<!-- Akzent-Rahmen (abgerundet, leicht innen) -->
+				<!-- Akzent-Rahmen -->
 				<control type="image">
 					<left>13</left>
 					<top>13</top>
-					<width>294</width>
-					<height>439</height>
+					<width>317</width>
+					<height>474</height>
 					<bordertexture border="3" colordiffuse="ST_BORDER_FOCUS">colors/white.png</bordertexture>
 					<bordersize>3</bordersize>
 					<texture>-</texture>
@@ -125,20 +125,21 @@
 	<!-- ═══════════════════════════════════════════════════ -->
 	<!-- BOTTOM NAVIGATION BAR                              -->
 	<!-- 5 Buttons | Fixiert unten | Touch-Targets: 150px   -->
-	<!-- IDs: 9201-9205                                     -->
+	<!-- IDs: 9201-9205 | 2400px breit (20:9 Pixel 7)       -->
+	<!-- Slots: je 480px | Button: 240px | Offset: 120px     -->
 	<!-- ═══════════════════════════════════════════════════ -->
 	<include name="ShadowTouchBottomNav">
 		<control type="group" id="9200">
 			<left>0</left>
 			<bottom>0</bottom>
-			<width>1920</width>
+			<width>2400</width>
 			<height>150</height>
 
 			<!-- Nav Hintergrund: leicht transparent -->
 			<control type="image">
 				<left>0</left>
 				<top>0</top>
-				<width>1920</width>
+				<width>2400</width>
 				<height>150</height>
 				<texture colordiffuse="ST_NAV_BG">colors/white.png</texture>
 				<aspectratio>stretch</aspectratio>
@@ -148,15 +149,15 @@
 			<control type="image">
 				<left>0</left>
 				<top>0</top>
-				<width>1920</width>
+				<width>2400</width>
 				<height>1</height>
 				<texture colordiffuse="ST_SEPARATOR">colors/white.png</texture>
 				<aspectratio>stretch</aspectratio>
 			</control>
 
-			<!-- ─── HOME ─── id=9201 @ x=192 ─── -->
+			<!-- ─── HOME ─── id=9201 | Slot 0: x=0..480 → Button x=120 ─── -->
 			<control type="button" id="9201">
-				<left>192</left>
+				<left>120</left>
 				<top>10</top>
 				<width>240</width>
 				<height>130</height>
@@ -175,9 +176,9 @@
 				<onclick>SetFocus(9300)</onclick>
 			</control>
 
-			<!-- ─── LIVE TV ─── id=9202 @ x=576 ─── -->
+			<!-- ─── LIVE TV ─── id=9202 | Slot 1: x=480..960 → Button x=600 ─── -->
 			<control type="button" id="9202">
-				<left>576</left>
+				<left>600</left>
 				<top>10</top>
 				<width>240</width>
 				<height>130</height>
@@ -196,9 +197,9 @@
 				<onclick>ActivateWindow(TVGuide)</onclick>
 			</control>
 
-			<!-- ─── LIBRARY ─── id=9203 @ x=840 ─── -->
+			<!-- ─── LIBRARY ─── id=9203 | Slot 2: x=960..1440 → Button x=1080 ─── -->
 			<control type="button" id="9203">
-				<left>840</left>
+				<left>1080</left>
 				<top>10</top>
 				<width>240</width>
 				<height>130</height>
@@ -217,9 +218,9 @@
 				<onclick>ActivateWindow(Videos,videodb://movies/titles/,return)</onclick>
 			</control>
 
-			<!-- ─── SEARCH ─── id=9204 @ x=1248 ─── -->
+			<!-- ─── SEARCH ─── id=9204 | Slot 3: x=1440..1920 → Button x=1560 ─── -->
 			<control type="button" id="9204">
-				<left>1248</left>
+				<left>1560</left>
 				<top>10</top>
 				<width>240</width>
 				<height>130</height>
@@ -238,9 +239,9 @@
 				<onclick>ActivateWindow(Search)</onclick>
 			</control>
 
-			<!-- ─── SETTINGS ─── id=9205 @ x=1488 ─── -->
+			<!-- ─── SETTINGS ─── id=9205 | Slot 4: x=1920..2400 → Button x=2040 ─── -->
 			<control type="button" id="9205">
-				<left>1488</left>
+				<left>2040</left>
 				<top>10</top>
 				<width>240</width>
 				<height>130</height>
