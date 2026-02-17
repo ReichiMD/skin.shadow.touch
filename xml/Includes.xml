@@ -19,16 +19,7 @@
 	<include file="Includes_FlixPanel.xml" />
 	<include file="Includes_Weather.xml" />
 	<include file="Includes_Seekbar.xml" />
-	<include file="script-nimbus-main_menu_movies.xml" />
-	<include file="script-nimbus-main_menu_tvshows.xml" />
-	<include file="script-nimbus-main_menu_custom1.xml" />
-	<include file="script-nimbus-main_menu_custom2.xml" />
-	<include file="script-nimbus-main_menu_custom3.xml" />
-	<include file="script-nimbus-widget_movies.xml" />
-	<include file="script-nimbus-widget_tvshows.xml" />
-	<include file="script-nimbus-widget_custom1.xml" />
-	<include file="script-nimbus-widget_custom2.xml" />
-	<include file="script-nimbus-widget_custom3.xml" />
+	<!-- script-nimbus-*.xml: entfernt (Nimbus Helper nicht mehr benötigt) -->
 	<include file="View_50_List.xml" />
 	<include file="View_51_PosterFlow.xml" />
 	<include file="View_52_IconWall.xml" />

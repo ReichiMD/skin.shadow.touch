@@ -1,391 +1,94 @@
-# Shadow Touch - Development Roadmap
+# Shadow Touch - Entwicklungs-Roadmap
 
-**Project:** Touch-optimized Kodi skin for Google Pixel 7 (primary) & Samsung S9 FE Tablet
-**Timeline:** Iterative development (MVP → Full Features)
-**Last Updated:** 2026-02-16
-
----
-
-## 📅 Phase 0: Foundation ✅ COMPLETED
-
-**Goal:** Setup project infrastructure and identity
-
-- [x] Clone EstuaryPVR+ Omega base
-- [x] Create CLAUDE.md (session continuity)
-- [x] Create ROADMAP.md (this file)
-- [x] Create skin-structure.md (Kodi concepts reference)
-- [x] Rename addon.xml to `skin.shadow.touch`
-- [x] Update README.md for Shadow Touch
-- [x] Create development branch `claude/fresh-start-019atboB3389YWXj82W62sLt`
-- [x] Initial commit & push
-
-**Deliverable:** Clean skeleton with Shadow Touch identity ✅
+**Projekt:** Touch-optimierter Kodi 22 Skin — Google Pixel 7
+**Basis:** Eigenes Grundgerüst (keine Fremdskin-Abhängigkeiten)
+**Zuletzt aktualisiert:** 2026-02-17
 
 ---
 
-## 📅 Phase 1: Bottom Navigation Bar ✅ COMPLETED
-
-**STATUS:** ✅ **COMPLETED** (2026-02-16)
-
-**Goal:** Replace Nimbus side menu with bottom-fixed navigation
-
-**Decision Made:** Bottom Navigation Bar (touch-first design!)
-- Side menu hidden (entire group with visible=false)
-- Bottom Nav implemented with 5 static buttons
-
-### Implementation Details:
-- [x] Hidden Nimbus side menu (entire group at left=-540)
-- [x] Created ShadowTouchBottomNav Include (xml/Includes_ShadowTouch.xml)
-- [x] 5 individual buttons (NOT scrollable FixedList!):
-  - Home (id=9201) @ 360px → Focus Grid
-  - Live TV (id=9202) @ 600px → TVGuide
-  - Library (id=9203) @ 840px → Videos Library
-  - Search (id=9204) @ 1080px → Search Window
-  - Settings (id=9205) @ 1320px → Kodi Settings
-- [x] Styling: Text labels, focus feedback (blue background 20% opacity)
-- [x] Navigation: Circular onleft/onright, onup to Grid (9300)
-- [x] Touch-optimized: 240px width buttons, thumb-reachable
-- [x] Tested on Google Pixel 7 → **Works!**
-- [x] Cleanup: Side menu background fully removed
-
-**Deliverable:** ✅ Bottom Nav working, 5 buttons, not scrollable, touch-friendly!
+## ✅ Phase 0: Fundament (ABGESCHLOSSEN)
+- ✅ Projektname: `skin.shadow.touch`
+- ✅ Design-Philosophie definiert (Touch-FIRST, Netflix-Style)
+- ✅ Testgerät: Google Pixel 7
+- ✅ Kodi 22 Piers Alpha 2 auf Pixel 7
 
 ---
 
-## 📅 Phase 2: Vertical Poster Grid ✅ COMPLETED
-
-**STATUS:** ✅ **COMPLETED** (2026-02-16)
-
-**Goal:** Replace Nimbus horizontal widgets with vertical poster grid
-
-**Decision Made:** Full replacement with custom Vertical Grid!
-- Nimbus widgets hidden (id="2000" - visible=false)
-- Custom Panel with TMDB Helper integration
-
-### Implementation Details:
-- [x] Hidden Nimbus horizontal widgets (id="2000")
-- [x] Created ShadowTouchVerticalGrid Include (xml/Includes_ShadowTouch.xml)
-- [x] Panel-Container (id=9300):
-  - Vertical orientation (no horizontal scrolling!)
-  - Position: 100x100, Size: 1720x850px
-  - Touch-optimized spacing: 20px padding
-- [x] Poster tiles: 300x450px (portrait 2:3 ratio)
-- [x] Item layout: 320x480px (includes spacing)
-- [x] TMDB Helper content: `plugin://plugin.video.themoviedb.helper/?info=popular&type=movie`
-- [x] Focus effects:
-  - Unfocused: Gray border (40% opacity), white text
-  - Focused: Blue border (button_focus), blue text, 105% zoom
-- [x] Navigation: ondown to Bottom Nav (9201), wraps internally
-- [x] Tested on Google Pixel 7 → **Visible & functional!**
-
-**Critical Debugging:**
-- Panel hierarchy issue solved (control type 7 error)
-- Include registration required in Includes.xml
-- Clean hierarchy: Panel at correct level (not nested in complex Groups)
-
-**Deliverable:** ✅ Vertical Grid working, TMDB movies visible, touch-friendly!
-
-### 2.2 Additional Details (Completed):
-- [x] Cleanup: Hidden Nimbus horizontal widgets (id=2000)
-- [x] Grid has full width (side menu background removed)
-- [x] Touch targets tested on Pixel 7 → Confirmed working!
-- [x] Custom grid implemented (replaced Nimbus widgets)
-
-### 2.3 IF Custom Grid Needed: Panel Container Setup (ARCHIVED - Already Implemented Above)
-- [ ] Replace Nimbus widget containers in Home.xml
-- [ ] Create Panel container (vertical scrolling)
-- [ ] Set poster size: 240x360px (2:3 ratio, per DESIGN.md)
-- [ ] Enable vertical wrap (7 columns, scrolls vertically)
-- [ ] Add focus animations (1.05× zoom, 4px border, shadow)
-- [ ] Connect navigation (Grid ↔ Navigation)
-
-### 2.3 IF Custom Grid Needed: Content Binding
-- [ ] Bind to Movies library (library://video/movies/titles/)
-- [ ] Bind to TV Shows library
-- [ ] Implement "Recently Added" smart playlist
-- [ ] Test scrolling (touch-friendly, no lag)
-
-### 2.4 IF Custom Grid Needed: Poster Visuals
-- [ ] Display poster image (`ListItem.Art(poster)`)
-- [ ] Add subtle shadow (unfocused: 20%, focused: 40%)
-- [ ] Show minimal metadata (title label below poster)
-- [ ] Test with 100+ items for performance
-
-**Deliverable:** Optimal grid layout (Nimbus widgets OR custom grid)
+## ✅ Phase 1: Kodi 22 Grundgerüst (ABGESCHLOSSEN — 2026-02-17)
+- ✅ `addon.xml` für Kodi 22: `xbmc.gui 5.18.0`
+- ✅ Nimbus-Abhängigkeiten entfernt (helper, requests, Python)
+- ✅ `Home.xml` — clean slate, nur unsere Includes
+- ✅ `Includes_ShadowTouch.xml` — Grid + Bottom Nav
+- ✅ ST_* Farb-System in `colors/defaults.xml`
+- ✅ `KODI22-CHEATSHEET.md` als Spickzettel angelegt
 
 ---
 
-## 📅 Phase 3: Tap-to-Info Overlay (Touch UX) ✅ COMPLETED
+## 📋 Phase 2: Home Screen testen & verfeinern (AKTUELL)
 
-**STATUS:** ✅ **COMPLETED** (2026-02-16)
+### 2a — Erster Test auf Pixel 7
+- [ ] Skin als ZIP installieren auf Pixel 7
+- [ ] TMDB Helper installiert und konfiguriert
+- [ ] Home Screen lädt: Grid mit Filmpostern sichtbar
+- [ ] Bottom Nav: alle 5 Buttons reagieren auf Tap
+- [ ] Tap auf Poster → Kodi Info-Dialog öffnet sich
+- [ ] Scrollen im Grid: flüssig, keine Ruckler
 
-**Goal:** Modal info dialog triggered by tap (originally long-press, changed to tap for better UX)
+### 2b — Layout-Anpassungen (nach Test)
+- [ ] Grid-Item-Größe prüfen: 480×340px — passt das auf Pixel 7?
+- [ ] Spacing zwischen Items anpassen falls nötig
+- [ ] NavBar-Größe prüfen: 150px — gut mit Daumen erreichbar?
+- [ ] Poster-Aspect-Ratio: scale vs. stretch prüfen
 
-**Design Decision:** Changed from long-press to tap!
-- Long-press not working due to Kodi hardcoded context menu
-- Tap is more intuitive for touch UI (like Netflix, Disney+)
-- Works perfectly with onclick event!
-
-### 3.1 Custom Dialog Creation (COMPLETED ✅)
-- [x] Create `DialogVideoInfo.xml` (customized Nimbus dialog)
-- [x] Design layout: full-screen modal with centered content
-- [x] Add background blur effect (beautiful!)
-- [x] Semi-transparent black background (works perfectly)
-
-### 3.2 Content Layout (COMPLETED ✅)
-- [x] Large poster on left (500px width)
-- [x] Metadata panel on right:
-  - [x] Title (German language)
-  - [x] Year, Rating (⭐), Runtime
-  - [x] Plot (scrollable text, German)
-  - [x] Genre tags (Drama, Thriller, etc.)
-  - [x] Cast (first 5 actors)
-  - [x] Director
-- [x] Action buttons at bottom:
-  - [x] Close (Schließen)
-  - [x] Add to Watchlist (Merkliste)
-  - [x] Add to Watchlist (Merkliste)
-  - [x] Mark as Watched (Gesehen)
-
-### 3.3 Backend Implementation (COMPLETED ✅)
-- [x] Python backend (resources/lib/modules/)
-  - [x] shadow_actions.py (TMDB API integration)
-  - [x] config.py (API key management)
-  - [x] router.py (RunScript handler)
-- [x] TMDB API integration (German language support)
-- [x] Error handling and notifications
-- [x] Window properties for skin access
-- [x] Settings.xml for API key input (resources/settings.xml)
-- [x] German translation strings for settings
-
-### 3.4 Event Integration (COMPLETED ✅)
-- [x] Add OnClick to grid panel (Includes_ShadowTouch.xml)
-- [x] Pass TMDB ID from ListItem to dialog
-- [x] Test on real device (Pixel 7) → **WORKING!**
-- [x] RunScript integration with proper parameter passing
-
-**Implementation Note:**
-- Originally planned as long-press (`<onlongclick>`)
-- Changed to tap (`<onclick>`) due to Kodi context menu override
-- Long-press shows context menu (Kodi hardcoded behavior)
-- Tap shows our custom dialog → Better UX anyway!
-
-**Deliverable:** ✅ Functional tap-to-info overlay with German TMDB integration!
+### 2c — Touch-Feeling
+- [ ] Scroll-Geschwindigkeit prüfen (scrolltime: 250ms)
+- [ ] Fokus-Animationen (zoom 104%): zu viel? zu wenig?
+- [ ] NavBar-Focus-Indikator sichtbar genug?
 
 ---
 
-## 📅 Phase 4: PVR/Live TV Integration
+## 📋 Phase 3: Info-Dialog (als nächstes)
 
-**Goal:** Adapt EstuaryPVR+ screens to Shadow Touch style
-
-### 4.1 Preserve Core PVR Logic
-- [ ] Audit PVR XML files (MyPVRChannels.xml, MyPVRGuide.xml, etc.)
-- [ ] Document which files contain critical logic (DON'T DELETE!)
-- [ ] Map PVR windows to bottom nav "TV" button
-
-### 4.2 Visual Restyling
-- [ ] Apply dark theme to PVR screens
-- [ ] Enlarge touch targets (channel list items = 80px height)
-- [ ] Adapt EPG grid for touch (larger cells)
-- [ ] Test Now/Next view (keep EstuaryPVR+ feature)
-
-### 4.3 OSD Customization
-- [ ] Modify VideoOSD.xml for live TV
-- [ ] Keep "Last Channel" button (EstuaryPVR+ feature)
-- [ ] Simplify controls (fewer buttons, bigger size)
-- [ ] Test with actual PVR backend
-
-**Deliverable:** Fully functional Live TV with touch-optimized UI
+- [ ] Kodi Standard-Dialog (`Action(Info)`) bewerten:
+  → Reicht der aus? Oder brauchen wir eigenen?
+- [ ] Eigener Info-Dialog (falls nötig):
+  - Poster + Titel + Jahr + Rating + Plot
+  - TMDB Helper Service Monitor nutzen (kein API-Key!)
+  - Deutsch
+- [ ] Alternativer Ansatz: TMDB Helper eigene Detail-Seite aufrufen
 
 ---
 
-## 📅 Phase 5: Additional Windows & Polish
+## 📋 Phase 4: Weitere Bereiche (spätere Phasen)
 
-**Goal:** Complete all essential Kodi screens
+### Navigation erweitern
+- [ ] Live TV (TVGuide) — touch-optimiert
+- [ ] Bibliothek (MyVideoNav) — touch-optimiert
+- [ ] Suche — touch-optimiert
 
-### 5.1 Settings & System Windows
-- [ ] Adapt Settings.xml (touch-friendly lists)
-- [ ] Adapt SkinSettings.xml (Shadow Touch options)
-- [ ] Adapt FileManager.xml (file browser)
+### Home Screen erweitern
+- [ ] Mehrere Content-Reihen (Popular, Trending, etc.)
+- [ ] Section-Header zwischen Reihen
+- [ ] TV-Shows-Tab in Bottom Nav?
 
-### 5.2 Media Windows
-- [ ] MyVideoNav.xml (Movies/TV library)
-- [ ] MyMusicNav.xml (Music library)
-- [ ] Pictures.xml (Photo gallery)
+### Design verfeinern
+- [ ] Remixicon Icons in NavBar (statt Text-Labels)
+- [ ] Fanart als Grid-Hintergrund (dynamisch)
+- [ ] Loading-Indikator während TMDB lädt
 
-### 5.3 Dialogs
-- [ ] DialogContextMenu.xml (right-click menu)
-- [ ] DialogSeekBar.xml (video scrubbing)
-- [ ] DialogVolumeBar.xml (volume slider)
-
-**Deliverable:** Complete skin covering all Kodi functions
-
----
-
-## 📅 Phase 6: Code-First Rendering (Optimization)
-
-**Goal:** Minimize image assets, maximize Variables.xml
-
-### 6.1 Audit Media Folder
-- [ ] List all `.png` files in `media/`
-- [ ] Identify which are deletable (shadows, backgrounds, gradients)
-- [ ] Replace with ColorDiffuse or Variables.xml definitions
-
-### 6.2 Variable Consolidation
-- [ ] Create master color palette in Variables.xml
-- [ ] Define consistent spacing units (8px grid system)
-- [ ] Create reusable dimension variables
-
-### 6.3 Performance Testing
-- [ ] Benchmark memory usage (before/after)
-- [ ] Test Panel scroll performance with 500+ items
-- [ ] Optimize slow areas (lazy-loading if needed)
-
-**Deliverable:** Ultra-lightweight skin with minimal textures
+### Optionales (viel später)
+- [ ] Deutsche Übersetzungen (language/)
+- [ ] TV/Remote Kompatibilität
+- [ ] Skin-Einstellungen (Akzentfarbe wählen)
 
 ---
 
-## 📅 Phase 7: Testing & Refinement
+## 📊 Aktueller Status
 
-**Goal:** Real-world testing on target devices
-
-### 7.1 Samsung S9 FE Testing
-- [ ] Install on tablet via Kodi
-- [ ] Test all touch gestures (tap, long-press, swipe)
-- [ ] Verify grid spacing (no accidental taps)
-- [ ] Check portrait mode handling (should block or show message)
-
-### 7.2 Nvidia Shield Testing
-- [ ] Install via Kodi on Shield
-- [ ] Test remote navigation (D-pad)
-- [ ] Verify OK button = Play, Menu = Long-press equivalent
-- [ ] Check performance (should be faster than tablet)
-
-### 7.3 Bug Fixes & Tweaks
-- [ ] Fix layout issues discovered in testing
-- [ ] Adjust focus behavior (sometimes D-pad gets lost in Panel)
-- [ ] Polish animations (reduce jank)
-
-**Deliverable:** Stable v1.0 release candidate
-
----
-
-## 📅 Phase 8: Documentation & Release
-
-**Goal:** Prepare for public release (optional)
-
-### 8.1 User Documentation
-- [ ] Write comprehensive README.md
-- [ ] Create installation guide
-- [ ] Screenshot gallery (home, PVR, overlay)
-- [ ] Feature comparison (vs Estuary)
-
-### 8.2 Code Documentation
-- [ ] Comment complex XML sections
-- [ ] Document Variables.xml structure
-- [ ] Explain custom dialog architecture
-
-### 8.3 Licensing & Attribution
-- [ ] Maintain GPL v2 license
-- [ ] Credit EstuaryPVR+ authors
-- [ ] Attribute icon fonts (if used)
-
-**Deliverable:** Publicly shareable skin (GitHub release)
-
----
-
-## 🎯 MVP Milestone (Minimum Viable Product)
-
-**To demonstrate core concept, complete:**
-- ✅ Phase 0 (Foundation)
-- ✅ Phase 1 (Bottom Nav)
-- 🟡 Phase 2 (Vertical Grid) - 85% done, needs testing
-- Phase 3 (Long-Press Overlay)
-
-**This proves the touch-first design works!**
-
----
-
-## 📊 Progress Tracking
-
-**Overall Status:** 40% (Phase 1 + 2 + 3 COMPLETE!)
-
-| Phase | Status | Progress |
-|-------|--------|----------|
-| Phase 0 | 🟢 Complete | 100% |
-| Phase 1 | 🟢 Complete | 100% (Bottom Nav with 5 buttons!) |
-| Phase 2 | 🟢 Complete | 100% (Vertical Grid with TMDB!) |
-| Phase 3 | 🟢 Complete | 100% (Tap-to-Info Dialog with German TMDB!) |
-| Phase 4 | ⚪ Pending | 0% (PVR/Live TV - NEXT!) |
-| Phase 5 | ⚪ Pending | 0% |
-| Phase 6 | ⚪ Pending | 0% |
-| Phase 7 | ⚪ Pending | 0% |
-| Phase 8 | ⚪ Pending | 0% |
-
-**Legend:**
-- ⚪ Pending
-- 🟡 In Progress / Evaluation
-- 🟢 Complete
-- 🔴 Blocked
-
----
-
-## 🔄 Update Log
-
-### 2025-02-14 (Session 1 - EstuaryPVR+ Base)
-- Created roadmap
-- Defined 8 development phases
-- Identified MVP scope (Phases 0-3)
-- ✅ Phase 0 completed: Foundation established
-- ✅ Phase 1 completed: Bottom Navigation Bar (EstuaryPVR+ version)
-- 🟡 Phase 2 started: Vertical Poster Grid (EstuaryPVR+ version)
-- 🔴 **CRITICAL BUGS DISCOVERED** → Led to decision to switch base skin
-
-### 2025-02-15 (Session 2 - Switch to Nimbus)
-- **MAJOR DECISION:** Switched from EstuaryPVR+ to Nimbus
-- ✅ Deleted all EstuaryPVR+ files
-- ✅ Cloned Nimbus (v0.1.38) as new base
-- ✅ Updated addon.xml (ID: skin.shadow.touch)
-- ✅ Created NIMBUS-STRUCTURE.md
-- **Result:** Clean Nimbus installation, NO Shadow Touch modifications yet
-
-### 2026-02-15 (Session 3 - Installation Fix & Documentation Cleanup)
-- ✅ Fixed addon.xml syntax error (missing `>` on line 2)
-- ✅ Skin now installs correctly in Kodi
-- ✅ Clarified script.nimbus.helper dependency
-- ✅ Corrected all documentation to reflect TRUE status:
-  - Phase 1 & 2 NOT implemented (were EstuaryPVR+, now deleted)
-  - Nimbus is UNMODIFIED base
-  - Next step: User testing & evaluation
-- **Status:** Nimbus installed & working, ready for testing
-
-### 2026-02-16 (Session 4 - Phase 1 + 2 COMPLETE!)
-- ✅ Implemented Bottom Navigation Bar (5 buttons)
-- ✅ Implemented Vertical Poster Grid (TMDB integration)
-- ✅ Major debugging: Panel hierarchy, Include registration
-- ✅ Cleanup: Removed side menu background
-- ✅ Added Settings button to Bottom Nav
-- ✅ Fixed XML syntax errors (duplicate tags)
-- **Status:** Phase 1 + 2 COMPLETE! Ready for Phase 3!
-
-### 2026-02-16 (Session 5 - Phase 3 COMPLETE!)
-- ✅ Created custom DialogVideoInfo.xml (German TMDB integration)
-- ✅ Implemented Python backend (shadow_actions.py, config.py, router.py)
-- ✅ TMDB API integration with German language support
-- ✅ Created settings.xml for API key configuration
-- ✅ Added German translation strings
-- ✅ Test button working (red button on home screen)
-- **Status:** Dialog working, long-press integration pending
-
-### 2026-02-16 (Session 6 - Tap-to-Info COMPLETE!)
-- ✅ Changed from long-press to tap (better UX!)
-- ✅ Long-press not working due to Kodi context menu override
-- ✅ Implemented onclick event on Panel (id=9300)
-- ✅ Tested on Google Pixel 7 → **WORKING!**
-- ✅ Dialog shows German movie info from TMDB API
-- **Status:** Phase 3 COMPLETE! Tap-to-Info working perfectly!
-
----
-
-**Last Updated:** 2026-02-16
-**Status:** Phase 1 + 2 + 3 COMPLETE! MVP achieved! Next: Phase 4 (PVR/Live TV)
+```
+Phase 0: ██████████ 100% — ABGESCHLOSSEN
+Phase 1: ██████████ 100% — ABGESCHLOSSEN
+Phase 2: ░░░░░░░░░░   0% — NÄCHSTES: Pixel 7 Test
+Phase 3: ░░░░░░░░░░   0% — Ausstehend
+Phase 4: ░░░░░░░░░░   0% — Ausstehend
+```

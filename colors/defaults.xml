@@ -33,4 +33,29 @@
   <color name="osd_dark">e0404040</color>
 	<!-- <color name="player_cache">FF828282</color> -->
 	<color name="player_cache">FF4c75d8</color>
+
+	<!-- ═══════════════════════════════════════════ -->
+	<!-- SHADOW TOUCH COLOR SYSTEM                   -->
+	<!-- Dark theme, minimal, touch-first            -->
+	<!-- ═══════════════════════════════════════════ -->
+	<!-- Background -->
+	<color name="ST_BG">FF0A0A0F</color>
+	<!-- Navigation bar background (semi-transparent black) -->
+	<color name="ST_NAV_BG">E6060608</color>
+	<!-- Accent / focus highlight -->
+	<color name="ST_ACCENT">FF4A9FFF</color>
+	<!-- Primary text (bright white) -->
+	<color name="ST_TEXT">FFFAFAFA</color>
+	<!-- Secondary text (dimmed) -->
+	<color name="ST_TEXT_DIM">80FAFAFA</color>
+	<!-- Poster border: unfocused (nearly invisible) -->
+	<color name="ST_BORDER">1AFFFFFF</color>
+	<!-- Poster border: focused (accent) -->
+	<color name="ST_BORDER_FOCUS">CC4A9FFF</color>
+	<!-- Focus glow overlay on poster -->
+	<color name="ST_GLOW">334A9FFF</color>
+	<!-- Nav button focus background -->
+	<color name="ST_NAV_FOCUS">264A9FFF</color>
+	<!-- Separator lines -->
+	<color name="ST_SEPARATOR">1AFFFFFF</color>
 </colors>
