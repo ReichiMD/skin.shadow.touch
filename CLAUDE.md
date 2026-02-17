@@ -214,10 +214,27 @@ Key Facts:
 - ✅ Nimbus Dialog-XMLs: bleiben als funktionierende Basis
 - 📋 Nächstes: Auf Pixel 7 testen → Feedback → Anpassungen
 
-### Session N (Datum eintragen):
-- [Notizen hier]
+### Session 8 (2026-02-17): Home Screen auf Pixel 7 getestet & verfeinert
+
+**Durchgeführt:**
+- Grid zentriert: 7 Spalten × 310px = 2170px, `left=115` → gleicher Rand links & rechts
+- Auflösung auf 2400×1080 (20:9, echtes Pixel 7 Format) umgestellt
+- Abgerundete Ecken implementiert:
+  - Technik: PNG-Maske (`poster_rounded_mask.png`) über Poster gelegt
+  - Transparent im Zentrum → Poster sichtbar; opak (#0A0A0F) in Ecken → abgeschnitten
+  - Radius 40px (= ~18px echte Pixel auf Pixel 7)
+  - **Kritische Erkenntnis:** PNG muss in `media/` liegen, nicht in `resources/`!
+    Kodi löst Textur-Pfade relativ zum `media/` Ordner auf.
+- `KODI22-CHEATSHEET.md` aktualisiert: Textur-Pfade + Ecken-Technik dokumentiert
+
+**Stand nach Session 8:**
+- ✅ Grid: 7 Spalten, zentriert, kein schwarzer Rand rechts
+- ✅ Abgerundete Cover-Ecken (40px Radius)
+- ✅ Bottom Nav: 5 Buttons, funktional
+- ✅ TMDB Helper: Poster laden korrekt
+- 📋 Nächstes: Info-Dialog bewerten / eigenen bauen
 
 ---
 
 **Zuletzt aktualisiert:** 2026-02-17
-**Status:** Kodi 22 Basis fertig — Home Screen bereit zum Testen!
+**Status:** Home Screen fertig & getestet — Cover mit abgerundeten Ecken ✅
