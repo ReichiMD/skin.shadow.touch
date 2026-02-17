@@ -16,7 +16,7 @@
 	<!-- ═══════════════════════════════════════════════════ -->
 	<!-- POSTER GRID - TMDB Helper                          -->
 	<!-- Panel: scrollt vertikal, touch-optimiert           -->
-	<!-- Item: 310x470px, 6 Spalten bei 1920px Breite       -->
+	<!-- Item: 320x465px, 6 Spalten bei 1920px Breite (6x320=1920) -->
 	<!-- TMDB Helper: &widget=True = gecacht, kein API-Key  -->
 	<!-- ═══════════════════════════════════════════════════ -->
 	<include name="ShadowTouchVerticalGrid">
@@ -43,27 +43,36 @@
 			<onclick>Action(Info)</onclick>
 
 			<!-- ─── Unfocused Layout ─── -->
-			<!-- Item: 310x470px → Poster 300x450px (2:3 Hochformat), 6 Spalten bei 1920px -->
-			<itemlayout width="310" height="470">
-				<!-- Poster (Hochformat, kein Titel darunter) -->
+			<!-- Item: 320x465px | Poster: 290x435px (2:3) | 15px Rand = 30px Abstand zwischen Covern -->
+			<itemlayout width="320" height="465">
+				<!-- Poster -->
 				<control type="image">
-					<left>5</left>
-					<top>5</top>
-					<width>300</width>
-					<height>450</height>
+					<left>15</left>
+					<top>15</top>
+					<width>290</width>
+					<height>435</height>
 					<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>scale</aspectratio>
+				</control>
+				<!-- Abgerundete Ecken: opake Hintergrundfarbe-Maske über dem Poster -->
+				<control type="image">
+					<left>15</left>
+					<top>15</top>
+					<width>290</width>
+					<height>435</height>
+					<texture>colors/poster_rounded_mask.png</texture>
+					<aspectratio>stretch</aspectratio>
 				</control>
 			</itemlayout>
 
 			<!-- ─── Focused Layout ─── -->
-			<focusedlayout width="310" height="470">
+			<focusedlayout width="320" height="465">
 				<!-- Hintergrund-Glow (Akzentfarbe) -->
 				<control type="image">
-					<left>2</left>
-					<top>2</top>
-					<width>306</width>
-					<height>456</height>
+					<left>12</left>
+					<top>12</top>
+					<width>296</width>
+					<height>441</height>
 					<texture colordiffuse="ST_GLOW">colors/white.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<animation effect="fade" start="0" end="100" time="150">Focus</animation>
@@ -71,21 +80,32 @@
 				</control>
 				<!-- Poster (leicht skaliert beim Fokus) -->
 				<control type="image">
-					<left>5</left>
-					<top>5</top>
-					<width>300</width>
-					<height>450</height>
+					<left>15</left>
+					<top>15</top>
+					<width>290</width>
+					<height>435</height>
 					<texture background="true" fallback="DefaultVideo.png">$INFO[ListItem.Art(poster)]</texture>
 					<aspectratio>scale</aspectratio>
 					<animation effect="zoom" start="100" end="104" time="150" tween="sine" easing="out">Focus</animation>
 					<animation effect="zoom" start="104" end="100" time="150" tween="sine" easing="out">UnFocus</animation>
 				</control>
-				<!-- Akzent-Rahmen -->
+				<!-- Abgerundete Ecken: Maske sitzt über dem Poster -->
 				<control type="image">
-					<left>3</left>
-					<top>3</top>
-					<width>304</width>
-					<height>454</height>
+					<left>15</left>
+					<top>15</top>
+					<width>290</width>
+					<height>435</height>
+					<texture>colors/poster_rounded_mask.png</texture>
+					<aspectratio>stretch</aspectratio>
+					<animation effect="zoom" start="100" end="104" time="150" tween="sine" easing="out">Focus</animation>
+					<animation effect="zoom" start="104" end="100" time="150" tween="sine" easing="out">UnFocus</animation>
+				</control>
+				<!-- Akzent-Rahmen (abgerundet, leicht innen) -->
+				<control type="image">
+					<left>13</left>
+					<top>13</top>
+					<width>294</width>
+					<height>439</height>
 					<bordertexture border="3" colordiffuse="ST_BORDER_FOCUS">colors/white.png</bordertexture>
 					<bordersize>3</bordersize>
 					<texture>-</texture>
