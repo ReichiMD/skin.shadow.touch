@@ -62,7 +62,7 @@
 					<top>15</top>
 					<width>280</width>
 					<height>420</height>
-					<texture>resources/poster_rounded_mask.png</texture>
+					<texture>poster_rounded_mask.png</texture>
 					<aspectratio>stretch</aspectratio>
 				</control>
 			</itemlayout>
@@ -97,7 +97,7 @@
 					<top>15</top>
 					<width>280</width>
 					<height>420</height>
-					<texture>resources/poster_rounded_mask.png</texture>
+					<texture>poster_rounded_mask.png</texture>
 					<aspectratio>stretch</aspectratio>
 					<animation effect="zoom" start="100" end="104" time="150" tween="sine" easing="out">Focus</animation>
 					<animation effect="zoom" start="104" end="100" time="150" tween="sine" easing="out">UnFocus</animation>
